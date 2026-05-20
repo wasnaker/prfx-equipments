@@ -1,0 +1,8 @@
+/* Equipments Module CSS */
+
+/* Hide financial columns injected by core add_item_to_table — equipment has no calculations */
+.accounting-template.equipment table.items td.rate,
+.accounting-template.equipment table.items td.taxrate,
+.accounting-template.equipment table.items td.amount {
+    display: none;
+}
