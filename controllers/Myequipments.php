@@ -53,7 +53,8 @@ class Myequipments extends AdminController
             if (staff_cant('create', 'myequipments')) {
                 access_denied('equipments');
             }
-            $data['title'] = _l('new_myequipment');
+            $data['title']           = _l('register_my_unit');
+            $data['prefill_item_id'] = (int) ($this->input->get('item_id') ?: 0);
         }
 
         $data['items']   = $this->db->select('id, description')->order_by('description', 'ASC')->get(db_prefix() . 'items')->result_array();
@@ -75,7 +76,6 @@ class Myequipments extends AdminController
             'unit_code', 'reference', 'latest_cert_number',
             'serial_number', 'location', 'capacity',
             'brand', 'model_type', 'procurement_year',
-            'manufacture_year', 'country_of_origin', 'manufacturer',
             'cert_expired_date', 'notes', 'status',
         ];
         $data = array_intersect_key($postData, array_flip($allowed));

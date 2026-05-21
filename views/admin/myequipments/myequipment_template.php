@@ -44,11 +44,18 @@
                         $item_val = $item_row ? $item_row->description : '';
                     }
                     ?>
-                    <input type="hidden" name="item_id" id="item_id" value="<?= isset($myequipment) ? $myequipment->item_id : ''; ?>">
+                    <?php
+                    $prefill_id = isset($prefill_item_id) && $prefill_item_id ? $prefill_item_id : (isset($myequipment) ? $myequipment->item_id : 0);
+                    if (!$item_val && $prefill_id) {
+                        $prefill_row = get_instance()->db->select('description')->get_where(db_prefix() . 'items', ['id' => $prefill_id])->row();
+                        $item_val    = $prefill_row ? $prefill_row->description : '';
+                    }
+                    ?>
+                    <input type="hidden" name="item_id" id="item_id" value="<?= $prefill_id ?: ''; ?>">
                     <select id="myequipment_item_select" class="ajax-search" data-live-search="true" data-width="100%"
                         data-none-selected-text="<?= _l('dropdown_non_selected_tex'); ?>">
                         <?php if ($item_val): ?>
-                        <option value="<?= isset($myequipment) ? $myequipment->item_id : ''; ?>" selected>
+                        <option value="<?= $prefill_id ?: ''; ?>" selected>
                             <?= e($item_val); ?>
                         </option>
                         <?php endif; ?>

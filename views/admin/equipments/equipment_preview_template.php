@@ -114,11 +114,20 @@ if ($total_reminders > 0) {
                             data-placement="bottom"><i class="fa-regular fa-pen-to-square"></i></a>
                         <?php } ?>
                         <?php if (staff_can('create', 'inspections') || staff_can('convert_to_inspection', 'equipments')) { ?>
-                        <a href="<?= admin_url('inspections/inspection?equipment_id=' . $equipment->id . '&customer_id=' . $equipment->clientid); ?>"
+                        <a href="<?= admin_url('inspections/inspection?equipment_id=' . $equipment->id . '&customer_id=' . $equipment->client_id); ?>"
                             class="btn btn-default btn-with-tooltip sm:!tw-px-3"
                             data-toggle="tooltip" data-placement="bottom"
                             title="<?= _l('convert_equipment_to_inspection'); ?>">
                             <i class="fa-regular fa-clipboard-check"></i>
+                        </a>
+                        <?php } ?>
+                        <?php if (staff_can('create', 'myequipments')) { ?>
+                        <a href="<?= admin_url('equipments/myequipments/myequipment?item_id=' . $equipment->id); ?>"
+                            class="btn btn-primary btn-with-tooltip sm:!tw-px-3"
+                            data-toggle="tooltip" data-placement="bottom"
+                            title="<?= _l('register_my_unit'); ?>">
+                            <i class="fa-regular fa-plus"></i>
+                            <?= is_mobile() ? '' : ' ' . _l('register_my_unit'); ?>
                         </a>
                         <?php } ?>
                         <div class="btn-group">
@@ -160,7 +169,7 @@ if ($equipment->sent == 1) {
     $_tooltip_already_send = _l('equipment_already_send_to_client_tooltip', time_ago($equipment->datesend));
 }
 ?>
-                        <?php if (! empty($equipment->clientid)) { ?>
+                        <?php if (! empty($equipment->client_id)) { ?>
                         <a href="#" class="equipment-send-to-client btn btn-default btn-with-tooltip sm:!tw-px-3"
                             data-toggle="tooltip"
                             title="<?= e($_tooltip); ?>"
@@ -197,7 +206,7 @@ if ($equipment->sent == 1) {
                                 <?php if (staff_can('create', 'projects') && $equipment->project_id == 0) { ?>
                                 <li>
                                     <a
-                                        href="<?= admin_url("projects/project?via_equipment_id={$equipment->id}&customer_id={$equipment->clientid}") ?>">
+                                        href="<?= admin_url("projects/project?via_equipment_id={$equipment->id}&customer_id={$equipment->client_id}") ?>">
                                         <?= _l('equipment_convert_to_project'); ?>
                                     </a>
                                 </li>
