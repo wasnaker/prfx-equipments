@@ -3,9 +3,9 @@
     <div class="_filters _hidden_inputs hidden"></div>
     <div class="tw-flex tw-items-center tw-justify-between tw-mb-3">
         <div class="tw-flex tw-items-center tw-gap-2">
-            <?php if (staff_can('create', 'equipments')) { ?>
+            <?php if (staff_can('create', 'myequipments')) { ?>
             <a href="<?= admin_url('equipments/myequipments/myequipment'); ?>" class="btn btn-primary">
-                <i class="fa fa-plus tw-mr-1"></i><?= _l('new_myequipment'); ?>
+                <i class="fa fa-plus tw-mr-1"></i><?= _l('register_my_unit'); ?>
             </a>
             <?php } ?>
             <?php if (staff_can('create', 'rfqs')) { ?>
