@@ -67,3 +67,13 @@ if (!$CI->db->field_exists('assign_to', db_prefix() . 'equipments')) {
 if (!$CI->db->field_exists('status', db_prefix() . 'items')) {
     $CI->db->query('ALTER TABLE `' . db_prefix() . 'items` ADD COLUMN `status` TINYINT(1) NOT NULL DEFAULT 2 AFTER `addedfrom`');
 }
+
+// Add manufacture_year + status columns to tblcustomer_equipment
+if ($CI->db->table_exists(db_prefix() . 'customer_equipment')) {
+    if (!$CI->db->field_exists('manufacture_year', db_prefix() . 'customer_equipment')) {
+        $CI->db->query('ALTER TABLE `' . db_prefix() . 'customer_equipment` ADD COLUMN `manufacture_year` YEAR DEFAULT NULL AFTER `procurement_year`');
+    }
+    if (!$CI->db->field_exists('status', db_prefix() . 'customer_equipment')) {
+        $CI->db->query('ALTER TABLE `' . db_prefix() . 'customer_equipment` ADD COLUMN `status` TINYINT(1) NOT NULL DEFAULT ' . EQUIPMENT_STATUS_ACTIVE . ' AFTER `cert_expired_date`');
+    }
+}

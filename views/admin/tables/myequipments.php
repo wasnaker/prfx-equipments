@@ -20,6 +20,7 @@ return App_table::find('myequipments')
             db_prefix() . 'customer_equipment.procurement_year',
             db_prefix() . 'customer_equipment.manufacture_year',
             db_prefix() . 'customer_equipment.cert_expired_date',
+            db_prefix() . 'customer_equipment.status',
         ];
 
         $join = [
@@ -109,7 +110,7 @@ return App_table::find('myequipments')
             $row[] = ($cert_date && $cert_date !== '0000-00-00')
                 ? '<span class="label label-' . equipment_status_color_class($cert_status) . '">' . e(_d($cert_date)) . '</span>'
                 : '—';
-            $row[] = format_equipment_status($cert_status);
+            $row[] = format_equipment_status($aRow[db_prefix() . 'customer_equipment.status'] ?? EQUIPMENT_STATUS_ACTIVE);
 
             $row['DT_RowClass'] = 'has-row-options';
             $row['DT_RowData']  = ['id' => $id];
@@ -147,12 +148,7 @@ return App_table::find('myequipments')
 
         App_table_filter::new('status', 'MultiSelectRule')
             ->label(_l('equipment_status'))
-            ->column('CASE
-                WHEN ' . db_prefix() . 'customer_equipment.cert_expired_date IS NULL OR ' . db_prefix() . 'customer_equipment.cert_expired_date = \'0000-00-00\' THEN ' . EQUIPMENT_STATUS_DRAFT . '
-                WHEN ' . db_prefix() . 'customer_equipment.cert_expired_date < CURDATE() THEN ' . EQUIPMENT_STATUS_EXPIRED . '
-                WHEN ' . db_prefix() . 'customer_equipment.cert_expired_date <= DATE_ADD(CURDATE(), INTERVAL 30 DAY) THEN ' . EQUIPMENT_STATUS_INACTIVE . '
-                ELSE ' . EQUIPMENT_STATUS_ACTIVE . '
-            END')
+            ->column(db_prefix() . 'customer_equipment.status')
             ->options(function ($ci) {
                 return collect($ci->myequipments_model->get_statuses())->map(fn ($s) => [
                     'value' => (string) $s,
