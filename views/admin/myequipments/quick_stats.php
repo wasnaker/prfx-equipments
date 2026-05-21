@@ -2,10 +2,17 @@
 $CI    = &get_instance();
 $_total = (int) $CI->db->count_all(db_prefix() . 'customer_equipment');
 
-$_counts = $CI->db->select('status, COUNT(*) as total')
-    ->group_by('status')
+// Status is calculated from cert_expired_date, not stored as column
+// Count by fetching all and computing status for each
+$_all_equipment = $CI->db->select('id, cert_expired_date')
     ->get(db_prefix() . 'customer_equipment')->result_array();
-$_map = array_column($_counts, 'total', 'status');
+
+$_status_counts = [];
+foreach ($_all_equipment as $eq) {
+    $status = $CI->myequipments_model->get_cert_status($eq['cert_expired_date'] ?? '');
+    $_status_counts[$status] = ($_status_counts[$status] ?? 0) + 1;
+}
+$_map = $_status_counts;
 
 $_statuses = $equipment_statuses;
 ?>
