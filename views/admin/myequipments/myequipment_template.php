@@ -12,27 +12,8 @@
             <!-- Kolom kiri -->
             <div class="col-md-6">
 
-                <!-- Customer (AJAX search) -->
-                <div class="form-group select-placeholder">
-                    <label class="control-label"><?= _l('client'); ?> <span class="text-danger">*</span></label>
-                    <?php
-                    $client_val = '';
-                    if (isset($myequipment) && $myequipment->client_id) {
-                        $client_data = get_relation_data('customer', $myequipment->client_id);
-                        $client_rel  = get_relation_values($client_data, 'customer');
-                        $client_val  = $client_rel['name'];
-                    }
-                    ?>
-                    <input type="hidden" name="client_id" id="client_id" value="<?= isset($myequipment) ? $myequipment->client_id : ''; ?>">
-                    <select id="myequipment_client_select" class="ajax-search" data-live-search="true" data-width="100%"
-                        data-none-selected-text="<?= _l('dropdown_non_selected_tex'); ?>">
-                        <?php if ($client_val): ?>
-                        <option value="<?= isset($myequipment) ? $myequipment->client_id : ''; ?>" selected>
-                            <?= e($client_val); ?>
-                        </option>
-                        <?php endif; ?>
-                    </select>
-                </div>
+                <!-- Customer — scoped by actor via render_client_selector() -->
+                <?= render_client_selector('client_id', isset($myequipment) ? (int)$myequipment->client_id : 0); ?>
 
                 <!-- Equipment Type (AJAX search) -->
                 <div class="form-group select-placeholder">
