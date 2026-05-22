@@ -266,6 +266,7 @@ $lang['new_equipment']               = 'New Equipment';
 $lang['edit_equipment']              = 'Edit Equipment';
 $lang['edit_equipment_tooltip']      = 'Edit Equipment';
 $lang['register_my_unit']            = 'Register My Unit';
+$lang['create_new_myequipment']      = 'Register My Unit';
 $lang['manage_groups']               = 'Manage Groups';
 $lang['manage_subgroups']            = 'Manage Subgroups';
 $lang['manage_categories']           = 'Manage Categories';

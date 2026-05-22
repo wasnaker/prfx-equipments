@@ -106,7 +106,7 @@
 
                 <?php
                 $statuses = $this->myequipments_model->get_statuses();
-                $status_options = array_map(fn($s) => ['id' => $s['id'], 'name' => $s['name']], $statuses);
+                $status_options = array_map(fn($s) => ['id' => $s, 'name' => format_equipment_status($s, '', false)], $statuses);
                 echo render_select('status', $status_options, ['id', 'name'], 'status',
                     isset($myequipment) ? $myequipment->status : EQUIPMENT_STATUS_ACTIVE);
                 ?>
