@@ -131,16 +131,3 @@
     </div>
 </div>
 
-<script>
-$(function() {
-    // Customer AJAX search
-    init_ajax_search('customer', '#myequipment_client_select.ajax-search', function(val) {
-        $('#client_id').val(val);
-    });
-
-    // Equipment item AJAX search
-    init_ajax_search('equipment_item', '#myequipment_item_select.ajax-search', function(val) {
-        $('#item_id').val(val);
-    });
-});
-</script>
