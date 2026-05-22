@@ -15,33 +15,38 @@
                 <!-- Customer — scoped by actor via render_client_selector() -->
                 <?= render_client_selector('client_id', isset($myequipment) ? (int)$myequipment->client_id : 0); ?>
 
-                <!-- Equipment Type (AJAX search) -->
+                <!-- Equipment Type -->
+                <?php
+                // Resolve item_id and display name
+                $_item_id  = isset($prefill_item_id) && $prefill_item_id
+                    ? $prefill_item_id
+                    : (isset($myequipment) ? (int)$myequipment->item_id : 0);
+                $_item_row = $_item_id
+                    ? get_instance()->db->select('description')->get_where(db_prefix() . 'items', ['id' => $_item_id])->row()
+                    : null;
+                $_item_val = $_item_row ? $_item_row->description : '';
+
+                // Coming from Register My Unit (item_id known) — show read-only
+                $is_register_flow = isset($prefill_item_id) && $prefill_item_id > 0;
+                ?>
+                <?php if ($is_register_flow): ?>
+                <div class="form-group">
+                    <label class="control-label"><?= _l('equipment_type'); ?></label>
+                    <input type="hidden" name="item_id" id="item_id" value="<?= $_item_id; ?>">
+                    <p class="form-control-static tw-font-medium"><?= e($_item_val ?: '—'); ?></p>
+                </div>
+                <?php else: ?>
                 <div class="form-group select-placeholder">
                     <label class="control-label"><?= _l('equipment_type'); ?> <span class="text-danger">*</span></label>
-                    <?php
-                    $item_val = '';
-                    if (isset($myequipment) && $myequipment->item_id) {
-                        $item_row = get_instance()->db->select('description')->get_where(db_prefix() . 'items', ['id' => $myequipment->item_id])->row();
-                        $item_val = $item_row ? $item_row->description : '';
-                    }
-                    ?>
-                    <?php
-                    $prefill_id = isset($prefill_item_id) && $prefill_item_id ? $prefill_item_id : (isset($myequipment) ? $myequipment->item_id : 0);
-                    if (!$item_val && $prefill_id) {
-                        $prefill_row = get_instance()->db->select('description')->get_where(db_prefix() . 'items', ['id' => $prefill_id])->row();
-                        $item_val    = $prefill_row ? $prefill_row->description : '';
-                    }
-                    ?>
-                    <input type="hidden" name="item_id" id="item_id" value="<?= $prefill_id ?: ''; ?>">
+                    <input type="hidden" name="item_id" id="item_id" value="<?= $_item_id ?: ''; ?>">
                     <select id="myequipment_item_select" class="ajax-search" data-live-search="true" data-width="100%"
                         data-none-selected-text="<?= _l('dropdown_non_selected_tex'); ?>">
-                        <?php if ($item_val): ?>
-                        <option value="<?= $prefill_id ?: ''; ?>" selected>
-                            <?= e($item_val); ?>
-                        </option>
+                        <?php if ($_item_val): ?>
+                        <option value="<?= $_item_id; ?>" selected><?= e($_item_val); ?></option>
                         <?php endif; ?>
                     </select>
                 </div>
+                <?php endif; ?>
 
                 <?= render_input('customer_equipment_name', 'equipment_name',
                     isset($myequipment) ? $myequipment->customer_equipment_name : '',

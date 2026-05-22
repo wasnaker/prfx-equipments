@@ -196,6 +196,10 @@ function equipments_membership_plan_protections(array $protections): array
         'min_plan' => 'enterprise',
         'label'    => _l('bulk_create_rfq'),
     ];
+    $protections['register_my_unit'] = [
+        'min_plan' => 'enterprise',
+        'label'    => _l('register_my_unit'),
+    ];
     return $protections;
 }
 
@@ -475,7 +479,7 @@ function equipments_global_search_result_query($result, $q, $limit)
 
         $CI->db->select()
             ->from(db_prefix() . 'equipments')
-            ->join(db_prefix() . 'clients', db_prefix() . 'equipments.clientid=' . db_prefix() . 'clients.userid', 'left')
+            ->join(db_prefix() . 'clients', db_prefix() . 'equipments.client_id=' . db_prefix() . 'clients.userid', 'left')
             ->like(db_prefix() . 'clients.company', $q)
             ->or_like(db_prefix() . 'equipments.formatted_number', $q)
             ->order_by(db_prefix() . 'clients.company', 'ASC')
@@ -596,7 +600,7 @@ function equipments_get_relation_data($data)
                ->where('p.status !=', 99);
 
         if ($customer_id) {
-            $CI->db->where('p.clientid', (int) $customer_id);
+            $CI->db->where('p.client_id', (int) $customer_id);
         }
         if ($q) {
             $CI->db->like('p.formatted_number', $q);

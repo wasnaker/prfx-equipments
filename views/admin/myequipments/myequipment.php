@@ -19,10 +19,13 @@
 <script>
 init_currency = function() {};
 $(function() {
-    // customer select is handled by render_client_selector() inline script
-    init_ajax_search('equipment_item', '#myequipment_item_select.ajax-search', function(val) {
-        $('#item_id').val(val);
-    });
+    // customer select handled by render_client_selector() inline script
+    // item select only rendered when not in register flow (prefill_item_id=0)
+    if ($('#myequipment_item_select').length) {
+        init_ajax_search('equipment_item', '#myequipment_item_select.ajax-search', function(val) {
+            $('#item_id').val(val);
+        });
+    }
 });
 </script>
 </body>
