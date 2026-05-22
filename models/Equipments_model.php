@@ -14,13 +14,23 @@ class Equipments_model extends App_Model
         $item = $this->invoice_items_model->get($id);
 
         if ($item && is_object($item) && !empty($item->itemid)) {
-            $row = $this->db->select('code, subgroup_id, status, addedfrom')
-                ->get_where(db_prefix() . 'items', ['id' => $item->itemid])->row();
+            $row = $this->db
+                ->select('i.code, i.subgroup_id, i.status, i.addedfrom, i.category_id,
+                          sg.name AS subgroup_name,
+                          cat.name AS category_name')
+                ->from(db_prefix() . 'items i')
+                ->join(db_prefix() . 'items_subgroups sg', 'sg.id = i.subgroup_id', 'left')
+                ->join(db_prefix() . 'items_categories cat', 'cat.id = i.category_id', 'left')
+                ->where('i.id', (int) $item->itemid)
+                ->get()->row();
             if ($row) {
-                $item->code        = $row->code;
-                $item->subgroup_id = $row->subgroup_id;
-                $item->status      = $row->status;
-                $item->addedfrom   = $row->addedfrom;
+                $item->code          = $row->code;
+                $item->subgroup_id   = $row->subgroup_id;
+                $item->subgroup_name = $row->subgroup_name;
+                $item->category_id   = $row->category_id;
+                $item->category_name = $row->category_name;
+                $item->status        = $row->status;
+                $item->addedfrom     = $row->addedfrom;
             }
         }
 

@@ -285,12 +285,14 @@ if ($equipment->sent == 1) {
                             <td class="tw-text-neutral-500"><i class="fa fa-tag fa-fw"></i> <?= _l('equipment_group'); ?></td>
                             <td><?= e($equipment->group_name ?? '—'); ?></td>
                         </tr>
-                        <?php if (!empty($equipment->subgroup_name)) { ?>
                         <tr>
                             <td class="tw-text-neutral-500"><i class="fa fa-sitemap fa-fw"></i> <?= _l('equipment_subgroup'); ?></td>
-                            <td><?= e($equipment->subgroup_name); ?></td>
+                            <td><?= e($equipment->subgroup_name ?? '—'); ?></td>
                         </tr>
-                        <?php } ?>
+                        <tr>
+                            <td class="tw-text-neutral-500"><i class="fa fa-folder fa-fw"></i> <?= _l('category'); ?></td>
+                            <td><?= e($equipment->category_name ?? '—'); ?></td>
+                        </tr>
                         <?php if (!empty($show_rate)) { ?>
                         <tr>
                             <td class="tw-text-neutral-500"><i class="fa fa-money fa-fw"></i> <?= _l('equipment_rate'); ?></td>
