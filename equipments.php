@@ -197,7 +197,7 @@ function equipments_membership_plan_protections(array $protections): array
         'label'    => _l('bulk_create_rfq'),
     ];
     $protections['register_my_unit'] = [
-        'min_plan' => 'enterprise',
+        'min_plan' => 'pro',
         'label'    => _l('register_my_unit'),
     ];
     return $protections;
