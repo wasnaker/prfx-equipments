@@ -22,7 +22,7 @@ class Equipment_expiration_reminder extends App_mail_template
         $this->contact  = $contact;
 
         // For SMS
-        $this->set_merge_fields('client_merge_fields', $this->equipment->clientid, $this->contact['id']);
+        $this->set_merge_fields('client_merge_fields', $this->equipment->client_id, $this->contact['id']);
         $this->set_merge_fields('equipment_merge_fields', $this->equipment->id);
     }
 

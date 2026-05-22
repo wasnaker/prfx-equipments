@@ -9,6 +9,7 @@ class Equipments extends AdminController
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('apps_format_helper');
         $this->load->model('equipments_model');
     }
 
@@ -59,14 +60,14 @@ class Equipments extends AdminController
         }
     }
 
-    public function table($clientid = '')
+    public function table($client_id = '')
     {
         if (staff_cant('view', 'equipments') && staff_cant('view_own', 'equipments') && get_option('allow_staff_view_equipments_assigned') == '0') {
             ajax_access_denied();
         }
 
         App_table::find('equipments')->output([
-            'clientid' => $clientid,
+            'client_id' => $client_id,
         ]);
     }
 
@@ -281,7 +282,7 @@ class Equipments extends AdminController
         $equipment->id             = $equipment->id             ?? $equipment->itemid;
         $equipment->status         = $equipment->status         ?? EQUIPMENT_STATUS_ACTIVE;
         $equipment->sent           = $equipment->sent           ?? 0;
-        $equipment->clientid       = $equipment->clientid       ?? 0;
+        $equipment->client_id       = $equipment->client_id       ?? 0;
         $equipment->project_id     = $equipment->project_id     ?? 0;
         $equipment->sale_agent     = $equipment->sale_agent     ?? 0;
         $equipment->signature      = $equipment->signature      ?? null;
@@ -306,7 +307,7 @@ class Equipments extends AdminController
 
         // Use prepare() with module hint so get_mail_template_path resolves to module path
         $this->load->model('emails_model');
-        $_contact = $this->clients_model->get_contact(get_primary_contact_user_id($equipment->clientid));
+        $_contact = $this->clients_model->get_contact(get_primary_contact_user_id($equipment->client_id));
         $_email   = $_contact ? $_contact->email : '';
         $data['template'] = $this->app_mail_template->prepare($_email, $template_name, ['equipments']);
         $_slug = $this->app_mail_template->get_default_property_value('slug', $template_name, ['equipments']);
@@ -805,12 +806,12 @@ class Equipments extends AdminController
             $sIndexColumn = 'id';
             $sTable       = db_prefix() . 'equipments';
             $join         = [
-                'LEFT JOIN ' . db_prefix() . 'clients ON ' . db_prefix() . 'clients.userid = ' . db_prefix() . 'equipments.clientid',
+                'LEFT JOIN ' . db_prefix() . 'clients ON ' . db_prefix() . 'clients.userid = ' . db_prefix() . 'equipments.client_id',
             ];
 
             $result = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, [
                 'userid',
-                'clientid',
+                'client_id',
                 db_prefix() . 'equipments.id',
                 'deleted_customer_name',
             ]);

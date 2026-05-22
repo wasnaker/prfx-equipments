@@ -21,7 +21,7 @@ if ($equipment['status'] == $status) { ?>
                     <?php } ?>
                 </h4>
                 <span class="tw-inline-block tw-w-full tw-mb-2">
-                    <a href="<?= admin_url('clients/client/' . $equipment['clientid']); ?>"
+                    <a href="<?= admin_url('clients/client/' . $equipment['client_id']); ?>"
                         target="_blank">
                         <?= e($equipment['company']); ?>
                     </a>

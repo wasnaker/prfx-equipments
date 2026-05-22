@@ -20,7 +20,7 @@ class Gdpr_equipments
             $valAllowed = unserialize($valAllowed);
         }
 
-        $this->ci->db->where('clientid', $customer_id);
+        $this->ci->db->where('client_id', $customer_id);
         $equipments = $this->ci->db->get(db_prefix().'equipments')->result_array();
 
         $this->ci->db->where('show_on_client_portal', 1);

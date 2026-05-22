@@ -34,7 +34,7 @@
 </div>
 <?php $this->load->view('admin/invoice_items/item'); ?>
 <script>
-    init_ajax_search('customer', '#clientid.ajax-search');
+    init_ajax_search('customer', '#client_id.ajax-search');
     init_ajax_search('items', '#item_select.ajax-search', undefined, admin_url + 'items/search');
     custom_fields_hyperlink();
     init_selectpicker();
@@ -61,7 +61,7 @@
     $('input[name="show_quantity_as"][value="<?= e($proposal->show_quantity_as); ?>"]')
         .prop('checked', true).change();
     <?php if (! isset($project_id) || ! $project_id) { ?>
-    $('#convert_to_equipment #clientid').change();
+    $('#convert_to_equipment #client_id').change();
     <?php } else { ?>
     init_ajax_project_search_by_customer_id('select#project_id')
     <?php } ?>

@@ -52,13 +52,13 @@ $pdf->Ln(6);
 // ── Customer (To) — left column ───────────────────────────────────────────────
 $equipment_info = '<b>' . _l('equipment_to') . '</b>';
 $equipment_info .= '<div style="color:#424242;">';
-$equipment_info .= format_customer_info($equipment, 'equipment', 'billing');
+$equipment_info .= apps_format_customer_info($equipment, 'equipment', 'billing');
 $equipment_info .= '</div>';
 
 if ($equipment->include_shipping == 1 && $equipment->show_shipping_on_equipment == 1) {
     $equipment_info .= '<br /><b>' . _l('ship_to') . '</b>';
     $equipment_info .= '<div style="color:#424242;">';
-    $equipment_info .= format_customer_info($equipment, 'equipment', 'shipping');
+    $equipment_info .= apps_format_customer_info($equipment, 'equipment', 'shipping');
     $equipment_info .= '</div>';
 }
 

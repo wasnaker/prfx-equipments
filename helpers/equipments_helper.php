@@ -151,7 +151,7 @@ function get_equipment_shortlink($equipment)
 }
 
 /**
- * Check equipment restrictions - hash, clientid
+ * Check equipment restrictions - hash, client_id
  * @param  mixed $id   equipment id
  * @param  string $hash equipment hash
  */
@@ -175,7 +175,7 @@ function check_equipment_restrictions($id, $hash)
     // Do one more check
     if (!is_staff_logged_in()) {
         if (get_option('view_equipment_only_logged_in') == 1) {
-            if ($equipment->clientid != get_client_user_id()) {
+            if ($equipment->client_id != get_client_user_id()) {
                 show_404();
             }
         }

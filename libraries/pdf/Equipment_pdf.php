@@ -12,7 +12,7 @@ class Equipment_pdf extends App_pdf
 
     public function __construct($equipment, $tag = '')
     {
-        $this->load_language($equipment->clientid);
+        $this->load_language($equipment->client_id);
 
         $equipment                = hooks()->apply_filters('equipment_html_pdf_data', $equipment);
         $GLOBALS['equipment_pdf'] = $equipment;
@@ -28,7 +28,7 @@ class Equipment_pdf extends App_pdf
 
     public function prepare()
     {
-        $this->with_number_to_word($this->equipment->clientid);
+        $this->with_number_to_word($this->equipment->client_id);
 
         $this->set_view_vars([
             'status'          => $this->equipment->status,

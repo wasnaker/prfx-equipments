@@ -13,7 +13,7 @@ return App_table::find('equipments_widget')
         ];
 
         $join = [
-            'LEFT JOIN ' . db_prefix() . 'clients ON ' . db_prefix() . 'clients.userid = ' . db_prefix() . 'equipments.clientid',
+            'LEFT JOIN ' . db_prefix() . 'clients ON ' . db_prefix() . 'clients.userid = ' . db_prefix() . 'equipments.client_id',
         ];
 
         $sIndexColumn = 'id';
@@ -34,7 +34,7 @@ return App_table::find('equipments_widget')
                 SELECT staffid FROM ' . db_prefix() . 'staff WHERE client_id = ' . (int) $_me->client_id . '
             )');
         } elseif ($_me->client_type === 'customer' && $_me->client_id) {
-            array_push($where, 'AND ' . db_prefix() . 'equipments.clientid IN (
+            array_push($where, 'AND ' . db_prefix() . 'equipments.client_id IN (
                 SELECT userid FROM ' . db_prefix() . 'clients
                 WHERE (userid = ' . (int) $_me->client_id . ' OR company_id = ' . (int) $_me->client_id . ')
                 AND client_type = "customer"
@@ -43,7 +43,7 @@ return App_table::find('equipments_widget')
 
         $result = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, [
             db_prefix() . 'equipments.id',
-            'hash',
+            db_prefix() . 'equipments.hash',
             // Personnel as subquery — not a sortable column, fetched as extra select
             '(SELECT GROUP_CONCAT(CONCAT(st.firstname," ",st.lastname) ORDER BY st.firstname SEPARATOR ", ")
               FROM ' . db_prefix() . 'equipment_members sm

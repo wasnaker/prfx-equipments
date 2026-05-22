@@ -40,7 +40,7 @@ class Equipment_send_to_customer_already_sent extends App_mail_template
 
         $this->to($this->contact->email)
         ->set_rel_id($this->equipment->id)
-        ->set_merge_fields('client_merge_fields', $this->equipment->clientid, $this->contact->id)
+        ->set_merge_fields('client_merge_fields', $this->equipment->client_id, $this->contact->id)
         ->set_merge_fields('equipment_merge_fields', $this->equipment->id);
     }
 }

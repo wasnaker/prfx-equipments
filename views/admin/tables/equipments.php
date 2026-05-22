@@ -6,7 +6,7 @@ $this->ci->load->model('equipments/equipments_model', 'equipments_model');
 
 return App_table::find('equipments')
     ->outputUsing(function ($params) {
-        $clientid            = $params['clientid'];
+        $client_id            = $params['client_id'];
         $customFieldsColumns = $params['customFieldsColumns'];
 
         $program_id = $this->ci->input->post('program_id');

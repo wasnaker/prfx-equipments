@@ -67,9 +67,9 @@ class EquipmentsPipeline extends AbstractKanban
         $has_permission_view = staff_can('view',  'equipments');
         $noPermissionQuery   = get_equipments_where_sql_for_staff(get_staff_user_id());
 
-        $this->ci->db->select(db_prefix() . 'equipments.id,status,invoiceid,' . get_sql_select_client_company() . ',total,currency,symbol,' . db_prefix() . 'currencies.name as currency_name,date,expirydate,clientid');
+        $this->ci->db->select(db_prefix() . 'equipments.id,status,invoiceid,' . get_sql_select_client_company() . ',total,currency,symbol,' . db_prefix() . 'currencies.name as currency_name,date,expirydate,client_id');
         $this->ci->db->from('equipments');
-        $this->ci->db->join(db_prefix() . 'clients', db_prefix() . 'clients.userid = ' . db_prefix() . 'equipments.clientid', 'left');
+        $this->ci->db->join(db_prefix() . 'clients', db_prefix() . 'clients.userid = ' . db_prefix() . 'equipments.client_id', 'left');
         $this->ci->db->join(db_prefix() . 'currencies', db_prefix() . 'equipments.currency = ' . db_prefix() . 'currencies.id');
         $this->ci->db->where('status', $this->status);
 

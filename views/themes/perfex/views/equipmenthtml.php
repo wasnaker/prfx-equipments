@@ -124,14 +124,14 @@ if ($equipment->status != 4 && $equipment->status != 3 && $equipment->status != 
                             <?= _l('equipment_to'); ?>
                         </span>
                         <address class="equipment-html-customer-billing-info tw-text-neutral-500 tw-text-normal">
-                            <?= format_customer_info($equipment, 'equipment', 'billing'); ?>
+                            <?= apps_format_customer_info($equipment, 'equipment', 'billing'); ?>
                         </address>
                         <?php if ($equipment->include_shipping == 1 && $equipment->show_shipping_on_equipment == 1) { ?>
                         <span class="tw-font-medium tw-text-neutral-700 equipment_ship_to">
                             <?= _l('ship_to'); ?>
                         </span>
                         <address class="equipment-html-customer-shipping-info tw-text-neutral-500 tw-text-normal">
-                            <?= format_customer_info($equipment, 'equipment', 'shipping'); ?>
+                            <?= apps_format_customer_info($equipment, 'equipment', 'shipping'); ?>
                         </address>
                         <?php } ?>
                         <?php if (! empty($equipment->reference_no)) { ?>

@@ -1,22 +1,22 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
-$where_total = ['clientid' => get_client_user_id()];
+$where_total = ['client_id' => get_client_user_id()];
 
 if (get_option('exclude_equipment_from_client_area_with_draft_status') == 1) {
     $where_total['status !='] = 1;
 }
 $total_equipments = total_rows(db_prefix() . 'equipments', $where_total);
 
-$total_sent       = total_rows(db_prefix() . 'equipments', ['status' => 2, 'clientid' => get_client_user_id()]);
-$total_declined   = total_rows(db_prefix() . 'equipments', ['status' => 3, 'clientid' => get_client_user_id()]);
-$total_accepted   = total_rows(db_prefix() . 'equipments', ['status' => 4, 'clientid' => get_client_user_id()]);
-$total_expired    = total_rows(db_prefix() . 'equipments', ['status' => 5, 'clientid' => get_client_user_id()]);
+$total_sent       = total_rows(db_prefix() . 'equipments', ['status' => 2, 'client_id' => get_client_user_id()]);
+$total_declined   = total_rows(db_prefix() . 'equipments', ['status' => 3, 'client_id' => get_client_user_id()]);
+$total_accepted   = total_rows(db_prefix() . 'equipments', ['status' => 4, 'client_id' => get_client_user_id()]);
+$total_expired    = total_rows(db_prefix() . 'equipments', ['status' => 5, 'client_id' => get_client_user_id()]);
 $percent_sent     = ($total_equipments > 0 ? number_format(($total_sent * 100) / $total_equipments, 2) : 0);
 $percent_declined = ($total_equipments > 0 ? number_format(($total_declined * 100) / $total_equipments, 2) : 0);
 $percent_accepted = ($total_equipments > 0 ? number_format(($total_accepted * 100) / $total_equipments, 2) : 0);
 $percent_expired  = ($total_equipments > 0 ? number_format(($total_expired * 100) / $total_equipments, 2) : 0);
 if (get_option('exclude_equipment_from_client_area_with_draft_status') == 0) {
     $col_class     = 'col-md-5ths col-xs-12';
-    $total_draft   = total_rows(db_prefix() . 'equipments', ['status' => 1, 'clientid' => get_client_user_id()]);
+    $total_draft   = total_rows(db_prefix() . 'equipments', ['status' => 1, 'client_id' => get_client_user_id()]);
     $percent_draft = ($total_equipments > 0 ? number_format(($total_draft * 100) / $total_equipments, 2) : 0);
 } else {
     $col_class = 'col-md-3';

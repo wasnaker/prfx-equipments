@@ -8,7 +8,7 @@ $_ctype = $_me ? ($_me->client_type ?? '') : '';
 // CI active-record reset caused by DB calls inside staff_can() / get_option().
 $_extra_where = null;
 if ($_ctype === 'customer' && ! empty($_me->client_id)) {
-    $_extra_where = ['s.clientid' => (int) $_me->client_id];
+    $_extra_where = ['s.client_id' => (int) $_me->client_id];
 } elseif ($_ctype === 'surveyor' && ! empty($_me->client_id)) {
     $_extra_where = 's.addedfrom IN (SELECT staffid FROM ' . db_prefix() . 'staff WHERE client_id = ' . (int) $_me->client_id . ' AND client_type = "surveyor")';
 } elseif (! empty($_ctype)) {
@@ -25,7 +25,7 @@ $_CI->db
          JOIN ' . db_prefix() . 'staff st ON st.staffid = sm.staff_id
          WHERE sm.equipment_id = s.id) as members', false)
     ->from(db_prefix() . 'equipments s')
-    ->join(db_prefix() . 'clients c', 'c.userid = s.clientid', 'left')
+    ->join(db_prefix() . 'clients c', 'c.userid = s.client_id', 'left')
     ->where('s.date >=', date('Y-m-d'));
 
 if ($_extra_where !== null) {
