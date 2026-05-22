@@ -207,6 +207,13 @@ function equipments_membership_plan_features(array $features, string $type = 'cu
 {
     if ($type !== 'customer') { return $features; }
 
+    $_plan_level = function (string $name): int {
+        $h = defined('MEMBERSHIP_PLAN_HIERARCHY')
+            ? MEMBERSHIP_PLAN_HIERARCHY
+            : ['free' => 0, 'basic' => 1, 'pro' => 2, 'enterprise' => 3];
+        return $h[strtolower($name)] ?? 0;
+    };
+
     $features[] = [
         'key'        => 'register_my_unit',
         'label'      => _l('register_my_unit'),
@@ -215,9 +222,8 @@ function equipments_membership_plan_features(array $features, string $type = 'cu
         'value_type' => 'boolean',
         'featured'   => false,
         'sort_order' => 43,
-        'value_callback' => function (array $plan) {
-            $level = MEMBERSHIP_PLAN_HIERARCHY[strtolower($plan['name'])] ?? 0;
-            return $level >= MEMBERSHIP_PLAN_HIERARCHY['pro'] ? 1 : 0;
+        'value_callback' => function (array $plan) use ($_plan_level) {
+            return $_plan_level($plan['name'] ?? '') >= 2 ? 1 : 0; // >= pro
         },
     ];
     $features[] = [
@@ -228,9 +234,8 @@ function equipments_membership_plan_features(array $features, string $type = 'cu
         'value_type' => 'boolean',
         'featured'   => false,
         'sort_order' => 44,
-        'value_callback' => function (array $plan) {
-            $level = MEMBERSHIP_PLAN_HIERARCHY[strtolower($plan['name'])] ?? 0;
-            return $level >= MEMBERSHIP_PLAN_HIERARCHY['enterprise'] ? 1 : 0;
+        'value_callback' => function (array $plan) use ($_plan_level) {
+            return $_plan_level($plan['name'] ?? '') >= 3 ? 1 : 0; // >= enterprise
         },
     ];
     return $features;
