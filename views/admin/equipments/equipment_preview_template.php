@@ -121,7 +121,7 @@ if ($total_reminders > 0) {
                             <i class="fa-regular fa-clipboard-check"></i>
                         </a>
                         <?php } ?>
-                        <?php if (staff_can('create', 'myequipments') && membership_can('register_my_unit')) { ?>
+                        <?php if (staff_can('create', 'myequipments')) { ?>
                         <a href="<?= admin_url('equipments/myequipments/myequipment?item_id=' . $equipment->id); ?>"
                             class="btn btn-primary btn-with-tooltip sm:!tw-px-3"
                             data-membership-guard="register_my_unit"
