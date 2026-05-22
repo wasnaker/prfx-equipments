@@ -70,7 +70,7 @@ class Myequipments_model extends App_Model
     {
         $this->db->insert(db_prefix() . 'equipment_activity', [
             'equipmentid' => $id,
-            'description' => $description,
+            'activity'    => $description,
             'staffid'     => get_staff_user_id(),
             'dateadded'   => date('Y-m-d H:i:s'),
         ]);
