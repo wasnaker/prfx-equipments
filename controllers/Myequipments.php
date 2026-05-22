@@ -87,7 +87,7 @@ class Myequipments extends AdminController
             }
             $success = $this->myequipments_model->update($id, $data);
             if ($success) { set_alert('success', _l('updated_successfully', _l('myequipment_lowercase'))); }
-            redirect(admin_url('equipments/myequipments/' . $id));
+            redirect(admin_url('equipments/myequipments/list_myequipments/' . $id));
         } else {
             $client_id = (int)($data['client_id'] ?? 0);
             if (!can_do_on_entity('create', 'myequipments', $client_id, 'customer')) {
@@ -95,7 +95,7 @@ class Myequipments extends AdminController
             }
             $newid = $this->myequipments_model->add($data);
             if ($newid) { set_alert('success', _l('added_successfully', _l('myequipment_lowercase'))); }
-            redirect(admin_url('equipments/myequipments/' . ($newid ?: '')));
+            redirect(admin_url('equipments/myequipments/list_myequipments/' . ($newid ?: '')));
         }
     }
 
