@@ -79,6 +79,8 @@ hooks()->add_filter('membership_plan_features',    'equipments_membership_plan_f
 hooks()->add_filter('get_relation_data',    'equipments_get_relation_data');
 hooks()->add_filter('relation_values',  'equipments_get_relation_values');
 hooks()->add_filter('init_relation_options', 'equipments_init_relation_options');
+hooks()->add_filter('myequipments_table_sql_columns', 'myequipments_scope_sql_columns');
+hooks()->add_filter('myequipments_table_columns',     'myequipments_scope_header_columns');
 
 // ─── Activation / Deactivation ───────────────────────────────────────────────
 
@@ -188,6 +190,35 @@ function equipments_permissions()
         'delete'   => _l('permission_delete'),
     ];
     register_staff_capabilities('myequipments', $my_capabilities, _l('my_equipment_units'));
+}
+
+/**
+ * Hide client SQL column for customer (they only see their own equipment).
+ * For surveyor: client column stays (scoped by order/connection in WHERE).
+ */
+function myequipments_scope_sql_columns(array $columns): array
+{
+    $me = get_staff(get_staff_user_id());
+    if (($me->client_type ?? '') === 'customer') {
+        $columns = array_values(array_filter($columns, function ($col) {
+            return strpos($col, 'clients.company') === false;
+        }));
+    }
+    return $columns;
+}
+
+/**
+ * Hide client header column for customer — same actor, same reason.
+ */
+function myequipments_scope_header_columns(array $columns): array
+{
+    $me = get_staff(get_staff_user_id());
+    if (($me->client_type ?? '') === 'customer') {
+        // Remove index 4 (client column) — 0=checkbox,1=unit,2=name,3=type,4=client
+        unset($columns[4]);
+        $columns = array_values($columns);
+    }
+    return $columns;
 }
 
 function equipments_membership_plan_protections(array $protections): array

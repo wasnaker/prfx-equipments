@@ -99,7 +99,9 @@ return App_table::find('myequipments')
             $row[] = $unitOutput;
             $row[] = e($aRow[db_prefix() . 'customer_equipment.customer_equipment_name'] ?? '—');
             $row[] = '<span class="label label-info">' . e($aRow['item_name'] ?? '—') . '</span>';
-            $row[] = e($aRow['client_company'] ?? '—');
+            if ($client_type !== 'customer') {
+                $row[] = e($aRow['client_company'] ?? '—');
+            }
 
             $row[] = e($aRow[db_prefix() . 'customer_equipment.serial_number'] ?? '—');
             $row[] = e($aRow[db_prefix() . 'customer_equipment.location'] ?? '—');

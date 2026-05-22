@@ -18,7 +18,14 @@
     </div>
 </div>
 <script>
-var hidden_columns = [6, 7, 8, 9];
+<?php
+// Columns: 0=checkbox,1=unit,2=name,3=type,[4=client],5/4=serial,6/5=location,7/6=procurement,8/7=manufacture,9/8=cert,10/9=status
+// When customer: client column (4) is removed, all subsequent indices shift -1
+$_me = get_staff(get_staff_user_id());
+$_is_customer = ($_me->client_type ?? '') === 'customer';
+$_hidden = $_is_customer ? [5, 6, 7] : [6, 7, 8, 9];
+?>
+var hidden_columns = <?= json_encode($_hidden); ?>;
 </script>
 <?php init_tail(); ?>
 <script>
