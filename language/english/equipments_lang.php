@@ -270,6 +270,7 @@ $lang['create_new_myequipment']      = 'Create My New Equipment';
 $lang['manage_groups']               = 'Manage Groups';
 $lang['manage_subgroups']            = 'Manage Subgroups';
 $lang['manage_categories']           = 'Manage Categories';
+$lang['category']                    = 'Category';
 $lang['manage_equipments']           = 'Manage Equipments';
 $lang['equipment_saved']             = 'Equipment saved successfully';
 $lang['equipment_deleted']           = 'Equipment deleted successfully';
