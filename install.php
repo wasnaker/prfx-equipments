@@ -21,7 +21,7 @@ require_once(__DIR__ . '/install/equipment_activity.php');
 
 // ─── Email Templates ──────────────────────────────────────────────────────────
 
-require_once __DIR__ . '/helpers/email_templates_helper.php';
+require_once __DIR__ . '/helpers/equipments_email_templates_helper.php';
 equipments_register_email_templates();
 
 // Add module options
