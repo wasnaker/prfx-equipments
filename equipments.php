@@ -208,6 +208,19 @@ function equipments_membership_plan_features(array $features, string $type = 'cu
     if ($type !== 'customer') { return $features; }
 
     $features[] = [
+        'key'        => 'register_my_unit',
+        'label'      => _l('register_my_unit'),
+        'group'      => _l('membership_group_transactions'),
+        'module'     => 'equipments',
+        'value_type' => 'boolean',
+        'featured'   => true,
+        'sort_order' => 43,
+        'value_callback' => function (array $plan) {
+            $level = MEMBERSHIP_PLAN_HIERARCHY[strtolower($plan['name'])] ?? 0;
+            return $level >= MEMBERSHIP_PLAN_HIERARCHY['pro'] ? 1 : 0;
+        },
+    ];
+    $features[] = [
         'key'        => 'bulk_create_rfq',
         'label'      => _l('bulk_create_rfq'),
         'group'      => _l('membership_group_transactions'),
