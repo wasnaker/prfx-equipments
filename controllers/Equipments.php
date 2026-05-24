@@ -9,7 +9,7 @@ class Equipments extends AdminController
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper('apps_format_helper');
+        $this->load->helper('apps/apps_format');
         $this->load->model('equipments_model');
     }
 
