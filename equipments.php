@@ -52,7 +52,6 @@ define('EQUIPMENT_STATUS_EXPIRED',  5);
 
 // ─── Hooks ───────────────────────────────────────────────────────────────────
 
-hooks()->add_action('after_email_templates', 'equipments_email_templates_section');
 hooks()->add_action('admin_init',          'equipments_settings_tab');
 hooks()->add_action('admin_init',          'equipments_register_app_table');
 hooks()->add_action('after_cron_run',        'equipments_notification');
@@ -112,6 +111,10 @@ function equipments_module_deactivation_hook()
 
 register_language_files(EQUIPMENTS_MODULE_NAME, [EQUIPMENTS_MODULE_NAME]);
 
+// ─── Email Templates Helper ─────────────────────────────────────────────────
+
+require_once(__DIR__ . '/helpers/equipments_email_templates_helper.php');
+
 // ─── Relation Helpers ──────────────────────────────────────────────────────────
 
 require_once(__DIR__ . '/helpers/equipment_relation_helpers.php');
@@ -127,7 +130,6 @@ require_once(__DIR__ . '/helpers/equipments_global_search_helper.php');
 // ─── Menu ─────────────────────────────────────────────────────────────────────
 
 // ─── Permissions ──────────────────────────────────────────────────────────────
-
 
 function equipments_membership_plan_protections(array $protections): array
 {
@@ -180,12 +182,10 @@ function equipments_membership_plan_features(array $features, string $type = 'cu
     return $features;
 }
 
-
 /**
  * Ensure role-based equipment permissions are seeded in tbl_options.
  * Surveyor role gets view/create/edit by default (read from DB on first setup).
  */
-
 
 // ─── Settings Tab ─────────────────────────────────────────────────────────────
 
@@ -318,18 +318,6 @@ function equipments_other_merge_fields_available_for($available_for)
 }
 
 // ─── Email Templates Section ──────────────────────────────────────────────────
-
-function equipments_email_templates_section()
-{
-    $CI = &get_instance();
-    $CI->load->model('emails_model');
-    $data['equipment_email_templates'] = $CI->emails_model->get([
-        'type'     => 'equipments',
-        'language' => 'english',
-    ]);
-    $data['hasPermissionEdit'] = staff_can('edit', 'email_templates');
-    $CI->load->view('equipments/admin/emails/equipment_email_templates', $data);
-}
 
 // ─── Cron Notification ────────────────────────────────────────────────────────
 
