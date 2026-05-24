@@ -54,10 +54,8 @@ define('EQUIPMENT_STATUS_EXPIRED',  5);
 
 hooks()->add_action('admin_init',          'equipments_module_init_menu_items');
 hooks()->add_action('after_email_templates', 'equipments_email_templates_section');
-hooks()->add_action('admin_init',          'equipments_permissions');
 hooks()->add_action('admin_init',          'equipments_settings_tab');
 hooks()->add_action('admin_init',          'equipments_register_app_table');
-hooks()->add_action('admin_init',          'equipments_ensure_role_permissions');
 hooks()->add_action('after_cron_run',        'equipments_notification');
 hooks()->add_action('staff_member_deleted',  'equipments_staff_member_deleted');
 hooks()->add_action('after_equipment_added',  'equipments_sync_program_on_save');
@@ -72,8 +70,6 @@ hooks()->add_filter('global_search_result_query',  'equipments_global_search_res
 hooks()->add_filter('global_search_result_output', 'equipments_global_search_result_output', 10, 2);
 hooks()->add_filter('get_dashboard_widgets',        'equipments_add_dashboard_widget');
 hooks()->add_filter('module_equipments_action_links', 'module_equipments_action_links');
-hooks()->add_filter('get_contact_permissions',        'equipments_add_contact_permission');
-hooks()->add_filter('staff_can', 'equipments_staff_can_filter', 10, 4);
 hooks()->add_filter('membership_plan_protections', 'equipments_membership_plan_protections');
 hooks()->add_filter('membership_plan_features',    'equipments_membership_plan_features', 20, 2);
 require_once __DIR__ . '/helpers/datatable_helper.php';
@@ -120,6 +116,10 @@ register_language_files(EQUIPMENTS_MODULE_NAME, [EQUIPMENTS_MODULE_NAME]);
 
 require_once(__DIR__ . '/helpers/equipment_relation_helpers.php');
 
+// ─── Capability Helpers ────────────────────────────────────────────────────────
+
+require_once(__DIR__ . '/helpers/equipments_capability_helpers.php');
+
 // ─── Menu ─────────────────────────────────────────────────────────────────────
 
 function equipments_module_init_menu_items()
@@ -165,32 +165,6 @@ function equipments_module_init_menu_items()
 
 // ─── Permissions ──────────────────────────────────────────────────────────────
 
-function equipments_permissions()
-{
-    $capabilities = [];
-    $capabilities['capabilities'] = [
-        'view'     => _l('permission_view') . ' (' . _l('permission_global') . ')',
-        'view_own' => _l('permission_view_own'),
-        'edit_own' => _l('permission_edit_own'),
-        'create'   => _l('permission_create'),
-        'edit'     => _l('permission_edit'),
-        'delete'   => _l('permission_delete'),
-    ];
-    register_staff_capabilities('equipments', $capabilities, _l('equipments'));
-
-    // Customer-facing equipment registry (myequipments = tblcustomer_equipment)
-    $my_capabilities = [];
-    $my_capabilities['capabilities'] = [
-        'view'     => _l('permission_view') . ' (' . _l('permission_global') . ')',
-        'view_own' => _l('permission_view_own'),
-        'create'   => _l('permission_create'),
-        'edit'     => _l('permission_edit'),
-        'edit_own' => _l('permission_edit_own'),
-        'mark_as'  => _l('permission_mark_as'),
-        'delete'   => _l('permission_delete'),
-    ];
-    register_staff_capabilities('myequipments', $my_capabilities, _l('my_equipment_units'));
-}
 
 function equipments_membership_plan_protections(array $protections): array
 {
@@ -243,130 +217,12 @@ function equipments_membership_plan_features(array $features, string $type = 'cu
     return $features;
 }
 
-function equipments_staff_can_filter($result, $capability, $feature, $staff_id)
-{
-    if (!in_array($feature, ['equipments', 'myequipments'])) { return $result; }
-    if ($result === true) { return true; }
-
-    $CI   = &get_instance();
-    $role = $CI->db->select('role')
-        ->get_where(db_prefix() . 'staff', ['staffid' => $staff_id])
-        ->row();
-
-    if (!$role || empty($role->role)) { return $result; }
-
-    $prefix = $feature === 'myequipments' ? 'myequipment' : 'equipment';
-    $opt    = get_option($prefix . '_' . $capability . '_role_' . (int) $role->role);
-    if ($opt !== '') {
-        return $opt == '1';
-    }
-
-    return $result;
-}
 
 /**
  * Ensure role-based equipment permissions are seeded in tbl_options.
  * Surveyor role gets view/create/edit by default (read from DB on first setup).
  */
-function equipments_ensure_role_permissions()
-{
-    $CI = &get_instance();
 
-    $role_caps = [
-        'Customer'              => ['view_own'],
-        'Customer Admin'        => ['view'],
-        'Customer Branch Admin' => ['view_own'],
-        'Surveyor'              => ['view_own'],
-        'Surveyor Admin'        => ['view', 'create', 'edit', 'mark_as', 'convert_to_report'],
-        'Surveyor Branch Admin' => ['view_own', 'create', 'edit_own', 'mark_as', 'convert_to_report'],
-        // Institution (pengawasan K3)
-        'Institution'              => ['view'],
-        'Institution Admin'        => ['view', 'mark_as'],
-        'Institution Unit Admin'   => ['view', 'mark_as'],
-        // Platform roles
-        'Customer Service'      => ['view'],
-        'IT Support'            => ['view'],
-    ];
-
-    $denied = [
-        'Customer Admin'   => ['view_own', 'edit_own'],
-        'Surveyor Admin'   => ['view_own', 'edit_own'],
-    ];
-
-    foreach ($role_caps as $role_name => $caps) {
-        $role = $CI->db->get_where(db_prefix() . 'roles', ['name' => $role_name])->row();
-        if (!$role) { continue; }
-        $rid = (int) $role->roleid;
-        foreach ($caps as $cap) {
-            $key = 'equipment_' . $cap . '_role_' . $rid;
-            if (get_option($key) === '') { add_option($key, '1'); }
-        }
-    }
-
-    foreach ($denied as $role_name => $caps) {
-        $role = $CI->db->get_where(db_prefix() . 'roles', ['name' => $role_name])->row();
-        if (!$role) { continue; }
-        $rid = (int) $role->roleid;
-        foreach ($caps as $cap) {
-            $key = 'equipment_' . $cap . '_role_' . $rid;
-            if (get_option($key) === '') { add_option($key, '0'); }
-        }
-    }
-
-    // ── myequipments (tblcustomer_equipment) defaults ─────────────────────────
-    $my_role_caps = [
-        'Customer'              => ['view', 'view_own'],
-        'Customer Admin'        => ['view', 'create', 'edit', 'mark_as'],
-        'Customer Branch Admin' => ['view', 'view_own', 'create', 'edit_own'],
-        'Customer Service'      => ['view'],
-        'IT Support'            => ['view'],
-        // Surveyor: view connected customer equipment (filtered by tblclient_connections)
-        'Surveyor'              => ['view', 'view_own'],
-        'Surveyor Admin'        => ['view'],
-        'Surveyor Branch Admin' => ['view', 'view_own'],
-    ];
-
-    $my_denied = [
-        'Customer'              => ['create', 'edit', 'edit_own', 'mark_as', 'delete'],
-        'Customer Admin'        => ['view_own', 'edit_own', 'delete'],
-        'Customer Branch Admin' => ['edit', 'mark_as', 'delete'],
-        'Customer Service'      => ['view_own', 'create', 'edit', 'edit_own', 'mark_as', 'delete'],
-        'IT Support'            => ['view_own', 'create', 'edit', 'edit_own', 'mark_as', 'delete'],
-        'Surveyor'              => ['create', 'edit', 'edit_own', 'mark_as', 'delete'],
-        'Surveyor Admin'        => ['view_own', 'create', 'edit', 'edit_own', 'mark_as', 'delete'],
-        'Surveyor Branch Admin' => ['create', 'edit', 'edit_own', 'mark_as', 'delete'],
-    ];
-
-    foreach ($my_role_caps as $role_name => $caps) {
-        $role = $CI->db->get_where(db_prefix() . 'roles', ['name' => $role_name])->row();
-        if (!$role) { continue; }
-        $rid = (int) $role->roleid;
-        foreach ($caps as $cap) {
-            $key = 'myequipment_' . $cap . '_role_' . $rid;
-            if (get_option($key) === '') { add_option($key, '1'); }
-        }
-    }
-
-    foreach ($my_denied as $role_name => $caps) {
-        $role = $CI->db->get_where(db_prefix() . 'roles', ['name' => $role_name])->row();
-        if (!$role) { continue; }
-        $rid = (int) $role->roleid;
-        foreach ($caps as $cap) {
-            $key = 'myequipment_' . $cap . '_role_' . $rid;
-            if (get_option($key) === '') { add_option($key, '0'); }
-        }
-    }
-}
-
-function equipments_add_contact_permission($permissions)
-{
-    $permissions[] = [
-        'id'         => 7,
-        'name'       => _l('customer_permission_equipment'),
-        'short_name' => 'equipments',
-    ];
-    return $permissions;
-}
 
 // ─── Settings Tab ─────────────────────────────────────────────────────────────
 
