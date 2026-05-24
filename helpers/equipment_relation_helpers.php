@@ -188,7 +188,7 @@ function equipments_init_relation_options($data)
     $CI   = &get_instance();
     $type = $CI->input->post('type');
     if ($type === 'equipment_program' || $type === 'equipment_equipment' || $type === 'equipment_job' || $type === 'equipment_member') {
-        if (!has_permission('equipments', '', 'view')) { return []; }
+        if (!staff_can('view', 'equipments') && !staff_can('view_own', 'equipments')) { return []; }
         return $data;
     }
     return $data;
