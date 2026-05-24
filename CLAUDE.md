@@ -21,7 +21,7 @@ if (!staff_can('view', 'equipments') && !staff_can('view_own', 'equipments')) {
 
 **Commit:** acb3773
 
-**Related:** /public_html/module_helper_audit.md (documentation for all 12 modules)
+**Related:** /public_html/audit_relation_helper.md (documentation for all 12 modules)
 
 ---
 
