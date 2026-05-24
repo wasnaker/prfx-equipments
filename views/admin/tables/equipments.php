@@ -49,6 +49,7 @@ return App_table::find('equipments')
 
         $join = hooks()->apply_filters('equipments_table_sql_join', $join);
         $aColumns = hooks()->apply_filters('equipments_table_sql_columns', $aColumns);
+        $where = hooks()->apply_filters('equipments_table_sql_where', $where);
 
         // Fix for big queries. Some hosting have max_join_limit
         if (count($custom_fields) > 4) {
