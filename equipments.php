@@ -66,8 +66,6 @@ hooks()->add_filter('migration_tables_to_replace_old_links',    'equipments_migr
 hooks()->add_filter('other_merge_fields_available_for',          'equipments_other_merge_fields_available_for');
 hooks()->add_filter('get_dashboard_widgets',        'equipments_add_dashboard_widget');
 hooks()->add_filter('module_equipments_action_links', 'module_equipments_action_links');
-hooks()->add_filter('membership_plan_protections', 'equipments_membership_plan_protections');
-hooks()->add_filter('membership_plan_features',    'equipments_membership_plan_features', 20, 2);
 require_once __DIR__ . '/helpers/datatable_helper.php';
 // ─── Menu Helpers ──────────────────────────────────────────────────────────────
 
@@ -127,60 +125,12 @@ require_once(__DIR__ . '/helpers/equipments_capability_helpers.php');
 
 require_once(__DIR__ . '/helpers/equipments_global_search_helper.php');
 
+require_once(__DIR__ . '/helpers/equipments_memberships_helper.php');
+
 // ─── Menu ─────────────────────────────────────────────────────────────────────
 
 // ─── Permissions ──────────────────────────────────────────────────────────────
 
-function equipments_membership_plan_protections(array $protections): array
-{
-    $protections['bulk_create_rfq'] = [
-        'min_plan' => 'enterprise',
-        'label'    => _l('bulk_create_rfq'),
-    ];
-    $protections['register_my_unit'] = [
-        'min_plan' => 'pro',
-        'label'    => _l('register_my_unit'),
-    ];
-    return $protections;
-}
-
-function equipments_membership_plan_features(array $features, string $type = 'customer'): array
-{
-    if ($type !== 'customer') { return $features; }
-
-    $_plan_level = function (string $name): int {
-        $h = defined('MEMBERSHIP_PLAN_HIERARCHY')
-            ? MEMBERSHIP_PLAN_HIERARCHY
-            : ['free' => 0, 'basic' => 1, 'pro' => 2, 'enterprise' => 3];
-        return $h[strtolower($name)] ?? 0;
-    };
-
-    $features[] = [
-        'key'        => 'register_my_unit',
-        'label'      => _l('register_my_unit'),
-        'group'      => _l('membership_group_transactions'),
-        'module'     => 'equipments',
-        'value_type' => 'boolean',
-        'featured'   => false,
-        'sort_order' => 43,
-        'value_callback' => function (array $plan) use ($_plan_level) {
-            return $_plan_level($plan['name'] ?? '') >= 2 ? 1 : 0; // >= pro
-        },
-    ];
-    $features[] = [
-        'key'        => 'bulk_create_rfq',
-        'label'      => _l('bulk_create_rfq'),
-        'group'      => _l('membership_group_transactions'),
-        'module'     => 'equipments',
-        'value_type' => 'boolean',
-        'featured'   => false,
-        'sort_order' => 44,
-        'value_callback' => function (array $plan) use ($_plan_level) {
-            return $_plan_level($plan['name'] ?? '') >= 3 ? 1 : 0; // >= enterprise
-        },
-    ];
-    return $features;
-}
 
 /**
  * Ensure role-based equipment permissions are seeded in tbl_options.
