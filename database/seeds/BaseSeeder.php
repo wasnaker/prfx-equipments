@@ -32,4 +32,20 @@ abstract class EquipmentsBaseSeeder
         ])->row();
         return $row ? (int) $row->id : null;
     }
+
+    protected function insert(string $table, array $data): void
+    {
+        $this->db->insert(db_prefix() . $table, $data);
+    }
+
+    protected function upsert(string $table, string $key, array $data): void
+    {
+        $this->db->where($key, $data[$key])->delete(db_prefix() . $table);
+        $this->db->insert(db_prefix() . $table, $data);
+    }
+
+    protected function no_debug(callable $callback): void
+    {
+        $callback();
+    }
 }
