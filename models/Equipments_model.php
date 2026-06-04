@@ -139,7 +139,8 @@ class Equipments_model extends App_Model
 
     public function get_equipment_activity($id)
     {
-        return $this->db->where('equipmentid', (int) $id)
+        return $this->db->select('*, dateadded as date')
+            ->where('equipmentid', (int) $id)
             ->order_by('dateadded', 'DESC')
             ->get(db_prefix() . 'equipment_activity')->result_array();
     }
