@@ -96,6 +96,8 @@ class Equipments extends AdminController
                 if (staff_cant('create', 'equipments')) {
                     access_denied('equipments');
                 }
+                $is_copy = !empty($equipment_data['is_copy']);
+                unset($equipment_data['is_copy']);
                 $id = $this->equipments_model->add($equipment_data);
 
                 if ($id) {
@@ -108,7 +110,7 @@ class Equipments extends AdminController
                         // die(redirect($redUrl));
                     }
 
-                    if ($this->input->post('is_copy')) {
+                    if ($is_copy) {
                         redirect($redUrl);
                     }
                     redirect(
