@@ -553,8 +553,7 @@ class Equipments extends AdminController
             redirect(admin_url('equipments'));
         }
 
-        // Clear fields that should not be copied
-        $equipment->code   = '';
+        // Reset status to Draft for copy
         $equipment->status = EQUIPMENT_STATUS_DRAFT;
 
         $data['equipment']          = $equipment;
