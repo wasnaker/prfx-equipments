@@ -90,9 +90,9 @@ class Groups extends AdminController
 
         if ($success) {
             set_alert('success', $message);
-        } else {
-            set_alert('danger', $message);
+            redirect(admin_url('equipments/groups') . '#' . $id);
         }
+        set_alert('danger', $message);
         redirect(admin_url('equipments/groups'));
     }
 

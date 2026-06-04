@@ -95,7 +95,7 @@ class Categories extends AdminController
         }
 
         set_alert($success ? 'success' : 'danger', $message);
-        redirect(admin_url('equipments/categories'));
+        redirect(admin_url('equipments/categories') . ($success ? '#' . $id : ''));
     }
 
     public function delete_category($id)
