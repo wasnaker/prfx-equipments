@@ -555,8 +555,9 @@ class Equipments extends AdminController
 
         // Reset status to Draft + generate new unique code for copy
         $equipment->status = EQUIPMENT_STATUS_DRAFT;
+        $this->load->helper('apps/ulid');
         do {
-            $new_code = 'EQP-' . random_string('alnum', 8);
+            $new_code = 'EQP-' . substr(generate_ulid(), -8);
         } while ($this->db->get_where(db_prefix() . 'items', ['code' => $new_code])->num_rows() > 0);
         $equipment->code = $new_code;
 
