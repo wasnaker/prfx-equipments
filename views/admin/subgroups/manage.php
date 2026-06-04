@@ -35,7 +35,7 @@ $(function() {
         Subgroups_ServerParams,
         [0, 'asc']
     );
-    var subgroupid = window.location.hash.substr(1) || $('input[name="subgroupid"]').val();
+    var subgroupid = $('input[name="subgroupid"]').val();
     if (subgroupid) { init_subgroup(subgroupid); }
 });
 

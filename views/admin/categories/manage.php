@@ -35,7 +35,7 @@ $(function() {
         Categories_ServerParams,
         [0, 'asc']
     );
-    var categoryid = window.location.hash.substr(1) || $('input[name="categoryid"]').val();
+    var categoryid = $('input[name="categoryid"]').val();
     if (categoryid) { init_category(categoryid); }
 });
 

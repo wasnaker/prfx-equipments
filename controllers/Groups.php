@@ -88,12 +88,8 @@ class Groups extends AdminController
             return;
         }
 
-        if ($success) {
-            set_alert('success', $message);
-            redirect(admin_url('equipments/groups') . '#' . $id);
-        }
-        set_alert('danger', $message);
-        redirect(admin_url('equipments/groups'));
+        set_alert($success ? 'success' : 'danger', $message);
+        redirect(admin_url('equipments/groups/list_groups' . ($success ? '/' . $id : '')));
     }
 
     public function delete_group($id)

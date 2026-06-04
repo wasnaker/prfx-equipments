@@ -91,7 +91,7 @@ class Subgroups extends AdminController
         }
 
         set_alert($success ? 'success' : 'danger', $message);
-        redirect(admin_url('equipments/subgroups') . ($success ? '#' . $id : ''));
+        redirect(admin_url('equipments/subgroups/list_subgroups' . ($success ? '/' . $id : '')));
     }
 
     public function delete_subgroup($id)
