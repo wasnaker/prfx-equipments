@@ -10,6 +10,7 @@
                 <i class="fa fa-plus tw-mr-1"></i><?= _l('new_equipment'); ?>
             </a>
             <?php } ?>
+            <?php if (staff_can('view', 'equipments')) { ?>
             <a href="<?= admin_url('equipments/groups'); ?>" class="btn btn-default">
                 <i class="fa fa-tags tw-mr-1"></i><?= _l('manage_groups'); ?>
             </a>
@@ -19,6 +20,7 @@
             <a href="<?= admin_url('equipments/categories'); ?>" class="btn btn-default">
                 <i class="fa fa-sitemap tw-mr-1"></i><?= _l('manage_categories'); ?>
             </a>
+            <?php } ?>
         </div>
         <div class="tw-flex tw-items-center tw-gap-2">
             <a href="#" class="btn btn-default btn-with-tooltip sm:!tw-px-3 toggle-small-view hidden-xs"
