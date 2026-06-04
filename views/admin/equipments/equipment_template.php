@@ -80,20 +80,6 @@
 
     </div>
 
-    <hr class="hr-panel-separator" />
-
-    <?php $this->load->view('admin/equipments/_add_edit_jobs'); ?>
-
-    <hr class="hr-panel-separator" />
-
-    <div class="panel-body">
-        <?php
-            $value = (isset($equipment) ? $equipment->clientnote : get_option('predefined_clientnote_equipment'));
-            echo render_textarea('clientnote', 'equipment_add_edit_client_note', $value);
-            $value = (isset($equipment) ? $equipment->terms : get_option('predefined_terms_equipment'));
-            echo render_textarea('terms', 'terms_and_conditions', $value, [], [], 'mtop15');
-        ?>
-    </div>
 </div>
 
 <div class="btn-bottom-pusher"></div>

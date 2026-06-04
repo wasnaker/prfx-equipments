@@ -4,8 +4,9 @@
     <div class="content">
         <div class="row">
             <?php
-            echo form_open($this->uri->uri_string(), ['id' => 'equipment-form', 'class' => '_transaction_form equipment-form']);
-            if (isset($equipment)) {
+            $form_action = (!empty($is_copy)) ? admin_url('equipments/equipment') : $this->uri->uri_string();
+            echo form_open($form_action, ['id' => 'equipment-form', 'class' => '_transaction_form equipment-form']);
+            if (isset($equipment) && empty($is_copy)) {
                 echo form_hidden('isedit');
             }
             ?>
