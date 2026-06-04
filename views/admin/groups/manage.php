@@ -41,6 +41,8 @@ $(function() {
         Groups_ServerParams,
         [[3, 'desc'], [0, 'desc']]
     );
+    var groupid = window.location.hash.substr(1) || $('input[name="groupid"]').val();
+    if (groupid) { init_group(groupid); }
 });
 
 function init_group(id) {
