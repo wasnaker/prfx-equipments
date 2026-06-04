@@ -42,7 +42,11 @@ class Equipments_model extends App_Model
         if (empty($data['addedfrom'])) {
             $data['addedfrom'] = get_staff_user_id();
         }
-        return $this->invoice_items_model->add($data);
+        $itemid = $this->invoice_items_model->add($data);
+        if ($itemid) {
+            $this->_log_equipment_activity($itemid, _l('equipment_activity_created'));
+        }
+        return $itemid;
     }
 
     public function update($data, $id)
@@ -50,12 +54,29 @@ class Equipments_model extends App_Model
         $allowed = ['description', 'long_description', 'rate', 'unit', 'group_id', 'subgroup_id', 'category_id', 'code', 'status', 'addedfrom'];
         $filtered = array_intersect_key($data, array_flip($allowed));
         $filtered['itemid'] = $id;
-        return $this->invoice_items_model->edit($filtered);
+        $result = $this->invoice_items_model->edit($filtered);
+        if ($result) {
+            $this->_log_equipment_activity($id, _l('equipment_activity_updated'));
+        }
+        return $result;
     }
 
     public function delete($id)
     {
         return $this->invoice_items_model->delete($id);
+    }
+
+    private function _log_equipment_activity($equipmentid, $activity)
+    {
+        $staff   = get_staff(get_staff_user_id());
+        $full_name = $staff ? $staff->firstname . ' ' . $staff->lastname : '';
+        $this->db->insert(db_prefix() . 'equipment_activity', [
+            'equipmentid' => (int) $equipmentid,
+            'staffid'     => get_staff_user_id(),
+            'full_name'   => $full_name,
+            'activity'    => $activity,
+            'dateadded'   => date('Y-m-d H:i:s'),
+        ]);
     }
 
     public function get_groups()

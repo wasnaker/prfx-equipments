@@ -115,6 +115,7 @@ $lang['not_equipment_customer_accepted']                           = 'Congratula
 $lang['not_equipment_customer_declined']                           = 'Client declined equipment with number %s';
 $lang['equipment_activity_converted']                              = 'converted this equipment to invoice.<br /> %s';
 $lang['equipment_activity_created']                                = 'Created the equipment';
+$lang['equipment_activity_updated']                                = 'Updated the equipment';
 $lang['invoice_equipment_activity_removed_item']                   = 'removed item <b>%s</b>';
 $lang['equipment_activity_number_changed']                         = 'Equipment number changed from %s to %s';
 $lang['invoice_equipment_activity_updated_item_short_description'] = 'updated item short description from %s to %s';
