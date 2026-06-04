@@ -553,8 +553,12 @@ class Equipments extends AdminController
             redirect(admin_url('equipments'));
         }
 
-        // Reset status to Draft for copy
+        // Reset status to Draft + generate new unique code for copy
         $equipment->status = EQUIPMENT_STATUS_DRAFT;
+        do {
+            $new_code = 'EQP-' . random_string('alnum', 8);
+        } while ($this->db->get_where(db_prefix() . 'items', ['code' => $new_code])->num_rows() > 0);
+        $equipment->code = $new_code;
 
         $data['equipment']          = $equipment;
         $data['is_copy']            = true;
