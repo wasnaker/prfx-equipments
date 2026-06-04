@@ -41,7 +41,7 @@ $(function() {
         Equipments_ServerParams,
         [[3, 'desc'], [0, 'desc']]
     );
-    init_equipment(<?= !empty($equipmentid) ? (int)$equipmentid : ''; ?>);
+    init_equipment();
 });
 </script>
 </body>

@@ -42,7 +42,7 @@
         <div class="col-md-12" id="small-table">
             <div class="panel_s">
                 <div class="panel-body">
-                    <?= form_hidden('equipmentid', ''); ?>
+                    <?= form_hidden('equipmentid', $equipmentid ?? ''); ?>
                     <?php $this->load->view('admin/equipments/table_html'); ?>
                 </div>
             </div>
