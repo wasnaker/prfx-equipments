@@ -107,7 +107,7 @@ if ($total_reminders > 0) {
                         <div class="mtop10"></div>
                     </div>
                     <div class="pull-right _buttons">
-                        <?php if (staff_can('edit', 'equipments') && $_client_type !== 'customer') { ?>
+                        <?php if (staff_can('edit', 'equipments')) { ?>
                         <a href="<?= admin_url('equipments/equipment/' . $equipment->id); ?>"
                             class="btn btn-default btn-with-tooltip sm:!tw-px-3" data-toggle="tooltip"
                             title="<?= _l('edit_equipment_tooltip'); ?>"
