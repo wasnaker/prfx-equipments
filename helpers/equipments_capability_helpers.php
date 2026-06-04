@@ -49,7 +49,7 @@ function equipments_ensure_role_permissions()
         'Institution Admin'        => ['view', 'mark_as'],
         'Institution Unit Admin'   => ['view', 'mark_as'],
         'Customer Service'      => ['view'],
-        'IT Support'            => ['view'],
+        'IT Support'            => ['view', 'edit'],
     ];
 
     $denied = [
