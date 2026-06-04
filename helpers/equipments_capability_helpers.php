@@ -39,12 +39,12 @@ function equipments_ensure_role_permissions()
     $CI = &get_instance();
 
     $role_caps = [
-        'Customer'              => ['view_own'],
+        'Customer'              => ['view'],
         'Customer Admin'        => ['view'],
-        'Customer Branch Admin' => ['view_own'],
-        'Surveyor'              => ['view_own'],
-        'Surveyor Admin'        => ['view', 'mark_as', 'convert_to_report'],
-        'Surveyor Branch Admin' => ['view_own', 'mark_as', 'convert_to_report'],
+        'Customer Branch Admin' => ['view'],
+        'Surveyor'              => ['view'],
+        'Surveyor Admin'        => ['view'],
+        'Surveyor Branch Admin' => ['view'],
         'Assessor'              => ['view'],
         'Surveyor Sales'        => ['view'],
         'Surveyor Finance'      => ['view'],
