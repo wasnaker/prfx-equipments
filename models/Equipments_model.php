@@ -44,7 +44,7 @@ class Equipments_model extends App_Model
         }
         $itemid = $this->invoice_items_model->add($data);
         if ($itemid) {
-            $this->_log_equipment_activity($itemid, _l('equipment_activity_created'));
+            $this->_log_equipment_activity($itemid, 'equipment_activity_created');
         }
         return $itemid;
     }
@@ -56,7 +56,7 @@ class Equipments_model extends App_Model
         $filtered['itemid'] = $id;
         $result = $this->invoice_items_model->edit($filtered);
         if ($result) {
-            $this->_log_equipment_activity($id, _l('equipment_activity_updated'));
+            $this->_log_equipment_activity($id, 'equipment_activity_updated');
         }
         return $result;
     }
@@ -139,7 +139,7 @@ class Equipments_model extends App_Model
 
     public function get_equipment_activity($id)
     {
-        return $this->db->select('*, dateadded as date')
+        return $this->db->select('*, dateadded as date, activity as description')
             ->where('equipmentid', (int) $id)
             ->order_by('dateadded', 'DESC')
             ->get(db_prefix() . 'equipment_activity')->result_array();
