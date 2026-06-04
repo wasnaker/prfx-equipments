@@ -85,7 +85,7 @@
 <div class="btn-bottom-pusher"></div>
 <div class="btn-bottom-toolbar text-right">
     <button type="submit" class="btn btn-primary"><?php echo _l('submit'); ?></button>
-    <a href="<?php echo (isset($equipment) && empty($is_copy)) ? admin_url('equipments/list_equipments#' . $equipment->id) : admin_url('equipments'); ?>" class="btn btn-secondary"><?php echo _l('cancel'); ?></a>
+    <a href="<?php echo (isset($equipment) && empty($is_copy)) ? admin_url('equipments/list_equipments#' . $equipment->itemid) : admin_url('equipments'); ?>" class="btn btn-secondary"><?php echo _l('cancel'); ?></a>
 </div>
 
 <script>
