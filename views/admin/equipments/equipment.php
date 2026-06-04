@@ -6,6 +6,9 @@
             <?php
             $form_action = (!empty($is_copy)) ? admin_url('equipments/equipment') : $this->uri->uri_string();
             echo form_open($form_action, ['id' => 'equipment-form', 'class' => '_transaction_form equipment-form']);
+            if (!empty($is_copy)) {
+                echo form_hidden('is_copy', '1');
+            }
             if (isset($equipment) && empty($is_copy)) {
                 echo form_hidden('isedit');
             }

@@ -108,6 +108,9 @@ class Equipments extends AdminController
                         // die(redirect($redUrl));
                     }
 
+                    if ($this->input->post('is_copy')) {
+                        redirect($redUrl);
+                    }
                     redirect(
                         !$this->set_equipment_pipeline_autoload($id) ? $redUrl : admin_url('equipments/list_equipments/')
                     );
