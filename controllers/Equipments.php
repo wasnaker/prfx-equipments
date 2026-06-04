@@ -546,21 +546,39 @@ class Equipments extends AdminController
         if (!$id || !user_can_view_equipment($id)) {
             access_denied('equipments');
         }
-        $new_id = $this->equipments_model->copy($id);
-        if ($new_id) {
-            set_alert('success', _l('equipment_copied_successfully'));
-            if ($this->set_equipment_pipeline_autoload($new_id)) {
-                redirect(previous_url() ?: $_SERVER['HTTP_REFERER']);
-            } else {
-                redirect(admin_url('equipments/equipment/' . $new_id));
-            }
+
+        $equipment = $this->equipments_model->get($id);
+        if (!$equipment) {
+            set_alert('danger', _l('equipment_not_found'));
+            redirect(admin_url('equipments'));
         }
-        set_alert('danger', _l('equipment_copied_fail'));
-        if ($this->set_equipment_pipeline_autoload($id)) {
-            redirect(previous_url() ?: $_SERVER['HTTP_REFERER']);
+
+        // Clear fields that should not be copied
+        $equipment->code   = '';
+        $equipment->status = EQUIPMENT_STATUS_DRAFT;
+
+        $data['equipment']          = $equipment;
+        $data['is_copy']            = true;
+        $data['title']              = _l('copy_equipment');
+        $data['equipment_statuses'] = $this->equipments_model->get_statuses();
+        $data['groups']             = $this->equipments_model->get_groups();
+        $data['subgroups']          = $this->equipments_model->get_subgroups();
+        $this->load->model('equipments/Categories_model', 'categories_model');
+        $data['categories']         = $this->categories_model->get();
+        $data['taxes']              = $this->db->get(db_prefix() . 'taxes')->result_array();
+
+        $this->load->model('invoice_items_model');
+        $data['ajaxItems'] = false;
+        if (total_rows(db_prefix() . 'items') <= ajax_on_total_items()) {
+            $data['items'] = $this->invoice_items_model->get_grouped();
         } else {
-            redirect(admin_url('equipments/equipment/' . $id));
+            $data['items']     = [];
+            $data['ajaxItems'] = true;
         }
+        $data['items_groups'] = $this->invoice_items_model->get_groups();
+        $data['staff']        = $this->staff_model->get('', ['active' => 1]);
+
+        $this->load->view('admin/equipments/equipment', $data);
     }
 
     /* Delete equipment */
