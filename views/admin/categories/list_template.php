@@ -38,7 +38,7 @@
     <div class="row tw-mt-2">
         <div class="col-md-12" id="small-table">
             <div class="panel_s"><div class="panel-body">
-                <?= form_hidden('categoryid', ''); ?>
+                <?= form_hidden('categoryid', $categoryid ?? ''); ?>
                 <?php $this->load->view('admin/categories/table_html'); ?>
             </div></div>
         </div>

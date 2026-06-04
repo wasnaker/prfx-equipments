@@ -42,7 +42,7 @@
         <div class="col-md-12" id="small-table">
             <div class="panel_s">
                 <div class="panel-body">
-                    <?= form_hidden('groupid', ''); ?>
+                    <?= form_hidden('groupid', $groupid ?? ''); ?>
                     <?php $this->load->view('admin/groups/table_html'); ?>
                 </div>
             </div>

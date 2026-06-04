@@ -38,7 +38,7 @@
     <div class="row tw-mt-2">
         <div class="col-md-12" id="small-table">
             <div class="panel_s"><div class="panel-body">
-                <?= form_hidden('subgroupid', ''); ?>
+                <?= form_hidden('subgroupid', $subgroupid ?? ''); ?>
                 <?php $this->load->view('admin/subgroups/table_html'); ?>
             </div></div>
         </div>
