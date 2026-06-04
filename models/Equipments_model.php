@@ -39,6 +39,9 @@ class Equipments_model extends App_Model
 
     public function add($data)
     {
+        if (empty($data['addedfrom'])) {
+            $data['addedfrom'] = get_staff_user_id();
+        }
         return $this->invoice_items_model->add($data);
     }
 
