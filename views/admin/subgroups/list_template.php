@@ -8,6 +8,12 @@
                 <i class="fa fa-plus tw-mr-1"></i><?= _l('new_subgroup'); ?>
             </a>
             <?php } ?>
+            <a href="<?= admin_url('equipments/groups'); ?>" class="btn btn-default">
+                <i class="fa fa-tags tw-mr-1"></i><?= _l('manage_groups'); ?>
+            </a>
+            <a href="<?= admin_url('equipments/categories'); ?>" class="btn btn-default">
+                <i class="fa fa-sitemap tw-mr-1"></i><?= _l('manage_categories'); ?>
+            </a>
             <a href="<?= admin_url('equipments'); ?>" class="btn btn-default">
                 <i class="fa fa-cubes tw-mr-1"></i><?= _l('manage_equipments'); ?>
             </a>
