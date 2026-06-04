@@ -56,15 +56,10 @@
         </div>
     </div>
 
-    <div class="tw-mt-4">
-        <button type="submit" class="btn btn-primary">
-            <i class="fa fa-save tw-mr-1"></i><?= _l('save'); ?>
-        </button>
-        <a href="<?= admin_url('equipments/categories'); ?>" class="btn btn-default tw-ml-2">
-            <?= _l('cancel'); ?>
-        </a>
-    </div>
-
     <?= form_close(); ?>
-
 </div></div>
+<div class="btn-bottom-pusher"></div>
+<div class="btn-bottom-toolbar text-right">
+    <button type="submit" form="category-form" class="btn btn-primary"><?= _l('submit'); ?></button>
+    <a href="<?= isset($category) ? admin_url('equipments/categories#' . $category->id) : admin_url('equipments/categories'); ?>" class="btn btn-secondary"><?= _l('cancel'); ?></a>
+</div>

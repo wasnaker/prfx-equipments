@@ -84,29 +84,8 @@
 
 <div class="btn-bottom-pusher"></div>
 <div class="btn-bottom-toolbar text-right">
-    <div class="btn-group dropup">
-        <button type="button" class="btn-tr btn btn-primary equipment-form-submit transaction-submit">
-            <?php echo _l('submit'); ?>
-        </button>
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-right width200">
-            <li>
-                <a href="#" class="equipment-form-submit save-and-send transaction-submit">
-                    <?php echo _l('save_and_send'); ?>
-                </a>
-            </li>
-            <?php if (!isset($equipment)) { ?>
-            <li>
-                <a href="#" class="equipment-form-submit save-and-send-later transaction-submit">
-                    <?php echo _l('save_and_send_later'); ?>
-                </a>
-            </li>
-            <?php } ?>
-        </ul>
-    </div>
+    <button type="submit" class="btn btn-primary"><?php echo _l('submit'); ?></button>
+    <a href="<?php echo (isset($equipment) && empty($is_copy)) ? admin_url('equipments/list_equipments#' . $equipment->id) : admin_url('equipments'); ?>" class="btn btn-secondary"><?php echo _l('cancel'); ?></a>
 </div>
 
 <script>
