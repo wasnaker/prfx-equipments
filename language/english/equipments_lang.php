@@ -363,3 +363,6 @@ $lang['new_category']         = 'New Category';
 $lang['saved_successfully']   = 'Saved successfully';
 $lang['are_you_sure']         = 'Are you sure?';
 $lang['deleted_successfully'] = 'Deleted successfully';
+
+$lang['permission_mark_as']  = 'Mark As';
+$lang['permission_edit_own']  = 'Edit (Own)';
