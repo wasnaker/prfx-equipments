@@ -11,16 +11,15 @@ $CI->db->query("CREATE TABLE IF NOT EXISTS `" . db_prefix() . "items_categories`
   KEY `subgroup_id` (`subgroup_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
 
-// Add category_id to tblitems
+// Add subgroup_id + category_id to tblitems
+if (!$CI->db->field_exists('subgroup_id', db_prefix() . 'items')) {
+    $CI->db->query('ALTER TABLE `' . db_prefix() . 'items`
+        ADD COLUMN `subgroup_id` INT DEFAULT NULL AFTER `group_id`,
+        ADD INDEX `subgroup_id` (`subgroup_id`)');
+}
 if (!$CI->db->field_exists('category_id', db_prefix() . 'items')) {
     $CI->db->query('ALTER TABLE `' . db_prefix() . 'items`
         ADD COLUMN `category_id` BIGINT DEFAULT NULL AFTER `subgroup_id`,
         ADD INDEX `category_id` (`category_id`)');
 }
 
-// Add category_id to tblinspection_checklist_items
-if (!$CI->db->field_exists('category_id', db_prefix() . 'inspection_checklist_items')) {
-    $CI->db->query('ALTER TABLE `' . db_prefix() . 'inspection_checklist_items`
-        ADD COLUMN `category_id` BIGINT DEFAULT NULL AFTER `subgroup_id`,
-        ADD INDEX `category_id` (`category_id`)');
-}

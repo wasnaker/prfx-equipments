@@ -219,7 +219,6 @@ class EquipmentsSeeder extends EquipmentsBaseSeeder
                         'subgroup_id' => $sg_id,
                         'category_id' => $cat_id,
                         'rate'        => 0,
-                        'taxrate'     => null,
                         'unit'        => '',
                         'addedfrom'   => 1,
                     ]);

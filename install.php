@@ -5,6 +5,51 @@ defined('BASEPATH') or exit('No direct script access allowed');
 require_once(__DIR__ . '/install/equipments.php');
 require_once(__DIR__ . '/install/items_categories.php');
 
+// Ensure tblitems_groups has required columns (code, status, abbr)
+if ($CI->db->table_exists(db_prefix() . 'items_groups')) {
+    if (!$CI->db->field_exists('code', db_prefix() . 'items_groups')) {
+        $CI->db->query('ALTER TABLE `' . db_prefix() . 'items_groups` ADD COLUMN `code` VARCHAR(4) DEFAULT NULL AFTER `name`');
+    }
+    if (!$CI->db->field_exists('status', db_prefix() . 'items_groups')) {
+        $CI->db->query('ALTER TABLE `' . db_prefix() . 'items_groups` ADD COLUMN `status` TINYINT(1) NOT NULL DEFAULT 1 AFTER `code`');
+    }
+    if (!$CI->db->field_exists('abbr', db_prefix() . 'items_groups')) {
+        $CI->db->query('ALTER TABLE `' . db_prefix() . 'items_groups` ADD COLUMN `abbr` VARCHAR(4) DEFAULT NULL AFTER `status`');
+    }
+} else {
+    // Fallback: create table if doesn't exist (should exist from core)
+    $CI->db->query("CREATE TABLE IF NOT EXISTS `" . db_prefix() . "items_groups` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `name` VARCHAR(50) NOT NULL,
+        `code` VARCHAR(4) DEFAULT NULL,
+        `status` TINYINT(1) NOT NULL DEFAULT 1,
+        `abbr` VARCHAR(4) DEFAULT NULL,
+        PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+}
+
+// Ensure tblitems_subgroups exists with required columns
+if (!$CI->db->table_exists(db_prefix() . 'items_subgroups')) {
+    $CI->db->query("CREATE TABLE IF NOT EXISTS `" . db_prefix() . "items_subgroups` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `name` VARCHAR(100) NOT NULL,
+        `group_id` INT NOT NULL,
+        `sort_order` INT NOT NULL DEFAULT 0,
+        `color` VARCHAR(20) DEFAULT NULL,
+        `code` VARCHAR(4) DEFAULT NULL,
+        `abbr` VARCHAR(4) DEFAULT NULL,
+        PRIMARY KEY (`id`),
+        KEY `group_id` (`group_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+} else {
+    if (!$CI->db->field_exists('code', db_prefix() . 'items_subgroups')) {
+        $CI->db->query('ALTER TABLE `' . db_prefix() . 'items_subgroups` ADD COLUMN `code` VARCHAR(4) DEFAULT NULL AFTER `color`');
+    }
+    if (!$CI->db->field_exists('abbr', db_prefix() . 'items_subgroups')) {
+        $CI->db->query('ALTER TABLE `' . db_prefix() . 'items_subgroups` ADD COLUMN `abbr` VARCHAR(4) DEFAULT NULL AFTER `code`');
+    }
+}
+
 // Seed K3 master data — runs on every install, idempotent
 require_once(__DIR__ . '/database/seeds/BaseSeeder.php');
 require_once(__DIR__ . '/database/seeds/SubgroupsSeeder.php');
@@ -59,7 +104,7 @@ if (!$CI->db->field_exists('assign_to', db_prefix() . 'equipments')) {
 
 // Add status column to tblitems (catalog equipment status)
 if (!$CI->db->field_exists('status', db_prefix() . 'items')) {
-    $CI->db->query('ALTER TABLE `' . db_prefix() . 'items` ADD COLUMN `status` TINYINT(1) NOT NULL DEFAULT 2 AFTER `addedfrom`');
+    $CI->db->query('ALTER TABLE `' . db_prefix() . 'items` ADD COLUMN `status` TINYINT(1) NOT NULL DEFAULT 2');
 }
 
 // Add manufacture_year + status columns to tblcustomer_equipment
