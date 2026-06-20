@@ -781,27 +781,391 @@ MD,
 
         // ── Subgroup: Mesin Perkakas ──────────────────────────────────────────
         'Mesin Perkakas' => [
-            ['description' => 'Mesin Bubut',  'category' => null],
-            ['description' => 'Mesin Milling','category' => null],
-            ['description' => 'Mesin Asah',   'category' => null],
-            ['description' => 'Mesin Bor',    'category' => null],
-            ['description' => 'Mesin Sekrap', 'category' => null],
+            ['description' => 'Mesin Bubut',  'category' => null, 'long_description' => <<<'MD'
+## Mesin Bubut
+
+Mesin bubut adalah alat mekanik yang digunakan untuk memproses benda kerja berbentuk silinder atau melengkung dengan cara memutar benda kerja dan menggerakkan pahat pemotong secara linear.
+
+### Prinsip Kerja
+
+Benda kerja dipasang pada chuck dan berputar pada poros utama, sementara pahat dipindahkan secara maju atau mundur sehingga material terpotong secara bertahap.
+
+### Komponen Utama
+
+| Komponen          | Fungsi                                     |
+|-------------------|--------------------------------------------|
+| Chuck             | Menjepit dan memegang benda kerja          |
+| Poros Utama       | Memutar benda kerja                         |
+| Slide (Carriage) | Menggerakkan pahat secara linear            |
+| Pahat (Tool)      | Memotong material                           |
+| Panel Kontrol     | Mengatur kecepatan dan gerakan            |
+| Motor Penggerak   | Menyediakan tenaga putar pada poros utama  |
+
+### Aplikasi
+
+1. Pembuatan poros mesin
+2. Produksi komponen otomotif
+3. Pengolahan bahan logam presisi
+
+> Mesin bubut merupakan inti dari banyak industri manufaktur karena kemampuannya menghasilkan permukaan halus dan akurasi tinggi.
+MD,
+            ],
+            ['description' => 'Mesin Milling','category' => null, 'long_description' => <<<'MD'
+## Mesin Milling
+
+Mesin milling adalah peralatan pemotongan yang berfungsi menghilangkan material dari permukaan benda kerja dengan pahat berputar secara aksial atau radial.
+
+### Prinsip Kerja
+
+Pahat berputar pada spindle dan bergerak melintasi permukaan benda kerja yang biasanya tetap, menghasilkan profil, potongan, atau lubang sesuai program.
+
+### Komponen Utama
+
+| Komponen          | Fungsi                                   |
+|-------------------|------------------------------------------|
+| Spindle           | Memutar pahat dengan kecepatan tinggi   |
+| Table (Meja)      | Menahan dan memposisikan benda kerja      |
+| Kolom (Column)    | Menyokong struktur mesin                 |
+| Pahat (Tool)      | Memotong material                         |
+| Sistem CNC        | Mengontrol gerakan secara numerik        |
+| Pendingin (Coolant) | Mengurangi suhu dan mengeluarkan chip    |
+
+### Aplikasi
+
+1. Penggilingan slot dan alur pada rangka mesin
+2. Pembuatan gear dan roda gigi
+3. Pembentukan permukaan datar pada blok mesin
+
+> Dengan kemampuan CNC, mesin milling dapat menghasilkan bentuk kompleks secara otomatis dengan toleransi tinggi.
+MD,
+            ],
+            ['description' => 'Mesin Asah',   'category' => null, 'long_description' => <<<'MD'
+## Mesin Asah
+
+Mesin asah (grinding machine) digunakan untuk menghaluskan dan memberi bentuk akhir pada permukaan benda kerja melalui abrasif berputar.
+
+### Prinsip Kerja
+
+Roda abrasif berputar pada spindle; benda kerja dipindahkan mendekati atau menjauhi roda sehingga material terangkat secara progresif.
+
+### Komponen Utama
+
+| Komponen          | Fungsi                                   |
+|-------------------|------------------------------------------|
+| Roda Abrasif      | Menghilangkan material dengan gesekan    |
+| Spindle           | Memutar roda abrasif                     |
+| Meja Penggerak    | Menyesuaikan posisi dan kedalaman pemotongan |
+| Sistem Pendingin | Mendinginkan area kerja dan mengurangi panas |
+| Motor Penarik    | Menggerakkan meja secara linear          |
+| Panel Kontrol     | Mengatur kecepatan spindle dan feed rate |
+
+### Aplikasi
+
+1. Pengasahan poros dan shaft
+2. Pembuatan permukaan datar pada cetakan
+3. Penyelesaian akhir pada komponen presisi
+
+> Mesin asah sangat penting dalam proses finishing karena dapat menghasilkan permukaan dengan kehalusan mikron.
+MD,
+            ],
+            ['description' => 'Mesin Bor',    'category' => null, 'long_description' => <<<'MD'
+## Mesin Bor
+
+Mesin bor adalah peralatan yang menghasilkan lubang pada bahan kerja dengan cara memutar mata bor dan menekannya ke dalam material.
+
+### Prinsip Kerja
+
+Mata bor berputar cepat pada spindle, sementara tekanan axial diberikan sehingga mata bor menembus material dan menghasilkan lubang berdiameter sesuai.
+
+### Komponen Utama
+
+| Komponen          | Fungsi                                   |
+|-------------------|------------------------------------------|
+| Spindle           | Memutar mata bor dengan kecepatan variabel |
+| Meja (Table)      | Menahan dan mengarahkan posisi benda kerja |
+| Pin (Chuck)       | Menjepit mata bor dengan kuat              |
+| Motor Penggerak   | Menyediakan tenaga rotasi untuk spindle    |
+| Sistem Pendingin  | Mencegah panas berlebih pada mata bor     |
+| Panel Kontrol      | Mengatur kecepatan dan kedalaman pengeboran |
+
+### Aplikasi
+
+1. Pengeboran lubang pemasangan baut pada rangka mesin
+2. Pembuatan lubang penyesuaian pada panel logam
+3. Pengeboran material non-logam seperti kayu dan plastik
+
+> Dengan pilihan mata bor yang beragam, mesin bor dapat melayani kebutuhan produksi yang sangat luas.
+MD,
+            ],
+            ['description' => 'Mesin Sekrap', 'category' => null, 'long_description' => <<<'MD'
+## Mesin Sekrap
+
+Mesin sekrap (shaper machine) berfungsi untuk menghilangkan material pada permukaan benda kerja dengan menggunakan pahat yang bergerak bolak-balik secara linear.
+
+### Prinsip Kerja
+
+Pahat sekrap bergerak melintasi permukaan benda kerja yang tetap, mengikis lapisan tipis material sehingga menghasilkan permukaan datar atau profil yang diinginkan.
+
+### Komponen Utama
+
+| Komponen          | Fungsi                                   |
+|-------------------|------------------------------------------|
+| Pahat Sekrap      | Mengikis material secara presisi         |
+| Meja Penggerak    | Menyediakan gerakan linear pahat        |
+| Poros Utama       | Menyokong mekanisme gerakan pahat        |
+| Sistem Penekan   | Mengatur tekanan pahat pada benda kerja   |
+| Panel Kontrol     | Mengatur kecepatan dan kedalaman pemotongan |
+| Sistem Pendingin | Mengurangi suhu akibat gesekan            |
+
+### Aplikasi
+
+1. Pengerjaan permukaan datar pada blok cetakan
+2. Pembentukan profil pada bagian mesin presisi
+3. Finishing akhir pada komponen metalurgi
+
+> Mesin sekrap memberikan kontrol yang sangat baik pada penghilangan material tipis, cocok untuk proses finishing presisi tinggi.
+MD,
+            ],
         ],
 
         // ── Subgroup: Mesin Produksi ──────────────────────────────────────────
         'Mesin Produksi' => [
-            ['description' => 'Mesin Press',             'category' => null],
-            ['description' => 'Mesin Tempa',             'category' => null],
-            ['description' => 'Mesin Crusher',           'category' => null],
-            ['description' => 'Mesin Cor',               'category' => null],
-            ['description' => 'Mesin Injection Moulding','category' => null],
+            ['description' => 'Mesin Press',             'category' => null, 'long_description' => <<<'MD'
+## Mesin Press
+
+Mesin Press adalah peralatan manufaktur yang memanfaatkan gaya tekan tinggi untuk membentuk, memotong, atau memadatkan material (seperti logam, plastik, atau karet) sesuai dengan cetakan yang digunakan.
+
+### Prinsip Kerja
+
+Mesin press bekerja dengan memberikan tekanan tinggi melalui ram (pendorong) yang bergerak secara vertikal atau horizontal ke arah cetakan. Material ditempatkan di antara ram dan cetakan, kemudian ditekan dengan gaya yang besar sehingga material mengalir mengikuti bentuk cetakan.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Ram (Pendorong) | Menekan material dengan gaya tinggi |
+| Cetakan (Die) | Membentuk material sesuai profil yang diinginkan |
+| Sistem Hidrolik/Mekanik | Menghasilkan gaya tekan yang besar |
+| Meja Kerja | Tempat cetakan dipasang dan material diletakkan |
+| Panel Kontrol | Mengatur tekanan, kecepatan, dan siklus operasi |
+| Sistem Pengaman | Melindungi operator dari cedera saat operasi |
+
+### Aplikasi
+
+1. Stamping dan blanking lembaran logam untuk komponen otomotif
+2. Deep drawing untuk pembentukan komponen cekung seperti kaleng dan casing
+3. Powder metallurgy untuk pemadatan serbuk logam menjadi komponen padat
+
+> Mesin press memungkinkan produksi massal dengan presisi tinggi dan kecepatan yang dapat disesuaikan dengan kebutuhan.
+MD,
+            ],
+            ['description' => 'Mesin Tempa',             'category' => null, 'long_description' => <<<'MD'
+## Mesin Tempa
+
+Mesin Tempa (Forging Machine) digunakan untuk membentuk logam padat dengan memberikan gaya tekan atau pukulan berulang. Proses ini mengubah struktur mikro logam sehingga menghasilkan komponen dengan kekuatan mekanik dan ketahanan fatik yang jauh lebih tinggi.
+
+### Prinsip Kerja
+
+Billet logam dipanaskan hingga temperatur tempa, kemudian ditempatkan di atas cetakan bawah. Ram atau hammer memberikan tekanan atau pukulan berulang sehingga logam mengisi rongga cetakan dan membentuk komponen yang diinginkan.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Hammer/Ram | Memberikan pukulan atau tekanan pada material |
+| Cetakan (Die) | Membentuk material sesuai profil yang diinginkan |
+| Tungku Pemanas | Memanaskan billet logam hingga temperatur tempa |
+| Sistem Hidrolik/Pneumatik | Menggerakkan hammer dengan gaya yang dapat diatur |
+| Manipulator | Memegang dan memposisikan billet logam |
+| Pondasi | Menyerap getaran dan dampak dari proses penempaan |
+
+### Aplikasi
+
+1. Pembuatan poros engkol dan connecting rod untuk mesin otomotif
+2. Produksi flange dan fitting pipa bertekanan tinggi
+3. Komponen alat berat seperti track link, gear, dan shaft
+
+> Penempaan menghasilkan komponen dengan kekuatan lebih tinggi dibanding pengecoran karena struktur butir logam yang lebih rapat dan aliran serat yang kontinu.
+MD,
+            ],
+            ['description' => 'Mesin Crusher',           'category' => null, 'long_description' => <<<'MD'
+## Mesin Crusher
+
+Mesin Crusher adalah alat industri yang dirancang untuk mereduksi ukuran material padat (seperti batuan, mineral, limbah konstruksi, atau plastik) menjadi ukuran yang lebih kecil, kerikil, atau serbuk.
+
+### Prinsip Kerja
+
+Material dimasukkan ke dalam ruang penghancuran melalui hopper, kemudian dihancurkan oleh mekanisme seperti rahang bergerak (jaw), kerucut berputar (cone), atau rotor berkecepatan tinggi (impact) yang memberikan gaya tekan atau benturan hingga material pecah.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Rahang Tetap/Rahang Bergerak | Menghancurkan material dengan gaya tekan (Jaw Crusher) |
+| Mantle/Concave | Menghancurkan material secara bertahap (Cone Crusher) |
+| Rotor/Blow Bar | Memberikan benturan kecepatan tinggi (Impact Crusher) |
+| Hopper | Tempat masuknya material yang akan dihancurkan |
+| Motor Penggerak | Sumber tenaga untuk memutar rotor atau menggerakkan rahang |
+| Screen/Saringan | Memisahkan material berdasarkan ukuran hasil penghancuran |
+
+### Aplikasi
+
+1. Penghancuran batu andesit, granit, dan batuan tambang untuk material konstruksi
+2. Daur ulang limbah beton dan aspal untuk recycled aggregate
+3. Penghancuran plastik dan karet untuk proses daur ulang
+
+> Pemilihan tipe crusher disesuaikan dengan karakteristik material, kapasitas produksi, dan ukuran output yang diinginkan.
+MD,
+            ],
+            ['description' => 'Mesin Cor',               'category' => null, 'long_description' => <<<'MD'
+## Mesin Cor
+
+Mesin Cor (Casting Machine) digunakan dalam proses manufaktur untuk melelehkan logam dan menuangkannya ke dalam cetakan (mold) hingga memadat dan membentuk komponen dengan geometri yang kompleks.
+
+### Prinsip Kerja
+
+Logam padat dilelehkan dalam tungku hingga mencapai temperatur tuang, kemudian dituangkan ke dalam rongga cetakan melalui sistem saluran tuang. Setelah logam membeku, cetakan dibuka dan komponen hasil cor dikeluarkan untuk proses finishing.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Tungku Peleburan | Melelehkan logam hingga temperatur yang diinginkan |
+| Cetakan (Mold) | Rongga yang membentuk profil komponen hasil cor |
+| Sistem Saluran Tuang | Mengalirkan logam cair ke rongga cetakan |
+| Sistem Pendingin | Mempercepat pembekuan logam dalam cetakan |
+| Mekanisme Buka/Tutup | Membuka dan menutup cetakan secara otomatis |
+| Panel Kontrol | Mengatur temperatur, tekanan, dan waktu siklus |
+
+### Aplikasi
+
+1. Die casting untuk komponen aluminium dan zinc produksi massal
+2. Sand casting untuk komponen berukuran besar volume rendah
+3. Investment casting untuk komponen presisi dengan permukaan halus
+
+> Mesin cor mampu memproduksi bentuk 3D yang sangat kompleks dalam satu siklus, menjadikannya esensial untuk industri manufaktur komponen.
+MD,
+            ],
+            ['description' => 'Mesin Injection Moulding','category' => null, 'long_description' => <<<'MD'
+## Mesin Injection Moulding
+
+Mesin Injection Moulding adalah peralatan utama dalam industri plastik yang bekerja dengan cara melelehkan pelet polimer dan menyuntikkannya ke dalam cetakan (mold) bertekanan tinggi untuk menghasilkan komponen plastik secara massal.
+
+### Prinsip Kerja
+
+Pelet plastik dimasukkan ke dalam barrel melalui hopper, kemudian dipanaskan dan dilelehkan oleh heater bands. Sekrup berputar mendorong material leleh ke depan hingga terkumpul di depan screw tip, kemudian diinjeksikan ke dalam rongga cetakan dengan tekanan tinggi. Setelah plastik mendingin dan membeku, cetakan dibuka dan komponen dikeluarkan oleh ejector pin.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Hopper | Tempat masuknya pelet plastik sebelum diproses |
+| Barrel dan Screw | Melelehkan dan mendorong material ke cetakan |
+| Heater Bands | Memanaskan barrel untuk melelehkan plastik |
+| Cetakan (Mold) | Rongga yang membentuk profil komponen plastik |
+| Unit Clamping | Menjepit cetakan dengan gaya besar saat injeksi |
+| Ejector Pin | Mendorong komponen keluar dari cetakan setelah selesai |
+
+### Aplikasi
+
+1. Produksi komponen interior dan eksterior otomotif (dashboard, bumper, panel)
+2. Pembuatan wadah, tutup botol, dan kemasan plastik untuk FMCG
+3. Komponen elektronik seperti casing, konektor, dan switch
+
+> Injection moulding memungkinkan produksi massal komponen plastik dengan toleransi dimensi ketat, siklus cepat, dan limbah material minimal.
+MD,
+            ],
         ],
 
         // ── Subgroup: Transmisi Tenaga Mekanik ────────────────────────────────
         'Transmisi Tenaga Mekanik' => [
-            ['description' => 'Transmisi Sabuk',    'category' => null],
-            ['description' => 'Transmisi Rantai',   'category' => null],
-            ['description' => 'Transmisi Roda Gigi','category' => null],
+            ['description' => 'Transmisi Sabuk',    'category' => null, 'long_description' => <<<'MD'
+## Transmisi Sabuk
+
+Transmisi sabuk (belt drive) adalah sistem pemindah tenaga mekanik yang menggunakan sabuk (belt) yang dipasang pada dua atau lebih puli. Sistem ini digunakan untuk mentransmisikan daya dari satu poros ke poros lainnya dengan jarak yang relatif jauh dan memerlukan kecepatan putaran yang bervariasi.
+
+### Prinsip Kerja
+
+Daya ditransmisikan melalui gesekan antara permukaan sabuk dan alur puli. Sabuk yang terpasang pada puli penggerak (driver) akan menggerakkan puli yang digerakkan (driven) sehingga terjadi pemindahan daya rotasi antara dua poros.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Sabuk (Belt) | Komponen fleksibel yang mentransmisikan daya melalui gesekan |
+| Puli (Pulley) | Roda beralur yang berfungsi sebagai tempat sabuk dipasang |
+| Tensioner | Alat penegang sabuk untuk menjaga ketegangan optimal |
+| Poros (Shaft) | Menyokong puli dan menghubungkan dengan mesin |
+| Bantalan (Bearing) | Menopang poros agar berputar dengan lancar |
+| Pelindung (Guard) | Melindungi operator dari komponen bergerak |
+
+### Aplikasi
+
+1. Sistem pemindah daya pada mesin-mesin industri (pompa, kipas, kompresor)
+2. Sistem alternator dan AC pada kendaraan bermotor
+3. Konveyor dan sistem material handling
+
+> Transmisi sabuk sangat umum digunakan karena operasi yang halus, senyap, dapat menyerap getaran, dan biaya perawatan yang rendah.
+MD,
+            ],
+            ['description' => 'Transmisi Rantai',   'category' => null, 'long_description' => <<<'MD'
+## Transmisi Rantai
+
+Transmisi rantai (chain drive) adalah sistem pemindah tenaga mekanik yang menggunakan rantai yang dipasang pada sproket (sprocket) untuk mentransmisikan daya dan gerakan rotasi. Sistem ini mampu memindahkan daya dengan efisiensi tinggi tanpa slip.
+
+### Prinsip Kerja
+
+Rantai yang terpasang pada sproket penggerak (driver) akan menggerakkan sproket yang digerakkan (driven) karena mata rantai berinterlock dengan gigi sproket. Sistem ini merupakan positive drive yang tidak mengalami slip seperti sabuk.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Rantai (Chain) | Rangkaian mata rantai yang mentransmisikan daya |
+| Sproket | Roda bergigi yang berfungsi sebagai penggerak dan penggerak |
+| Tensioner | Alat penegang rantai untuk menjaga kekencangan yang tepat |
+| Poros (Shaft) | Menyokong sproket dan menghubungkan dengan mesin |
+| Bantalan (Bearing) | Menopang poros agar berputar dengan lancar |
+| Pelumas | Mengurangi gesekan dan keausan pada mata rantai dan sproket |
+
+### Aplikasi
+
+1. Sistem penggerak pada sepeda motor dan mesin industri
+2. Sistem konveyor untuk material handling
+3. Mesin pertanian dan alat berat
+
+> Transmisi rantai memiliki efisiensi tinggi (95-98%), tidak terjadi slip, dan mampu mentransmisikan daya yang besar pada berbagai jarak poros.
+MD,
+            ],
+            ['description' => 'Transmisi Roda Gigi','category' => null, 'long_description' => <<<'MD'
+## Transmisi Roda Gigi
+
+Transmisi roda gigi (gear drive) adalah sistem pemindah tenaga mekanik yang menggunakan roda gigi yang saling berkaitan (meshing) untuk mentransmisikan daya, mengubah kecepatan, torsi, dan arah putaran. Sistem ini merupakan metode transmisi yang paling presisi dan efisien.
+
+### Prinsip Kerja
+
+Roda gigi penggerak (driver) berputar dan bertaut dengan roda gigi penggerak (driven) sehingga terjadi pemindahan daya rotasi. Perbandingan jumlah gigi menentukan rasio kecepatan dan torsi antara kedua poros.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Roda Gigi (Gear) | Komponen bergigi yang saling berkaitan untuk mentransmisikan daya |
+| Poros (Shaft) | Tempat roda gigi dipasang dan berputar |
+| Bantalan (Bearing) | Menopang poros agar berputar dengan lancar |
+| Gigi Helical/Spur | Menentukan karakteristik operasi dan rasio kecepatan |
+| Sistem Pelumasan | Melumasi permukaan gigi untuk mengurangi gesekan |
+| Rumah Gearbox | Melindungi komponen internal dan menahan pelumas |
+
+### Aplikasi
+
+1. Transmisi kendaraan bermotor (otomotif, kereta api, kapal)
+2. Mesin industri (pompa, kipas, conveyor, turbine)
+3. Robotika dan sistem otomasi pabrik
+
+> Transmisi roda gigi memiliki efisiensi sangat tinggi (98-99%), tidak terjadi slip, dan mampu mentransmisikan daya serta torsi yang sangat besar dengan presisi tinggi.
+MD,
+            ],
         ],
 
         // ── Subgroup: Tanur ───────────────────────────────────────────────────
