@@ -318,9 +318,9 @@ class Equipments extends AdminController
         $_slug = $this->app_mail_template->get_default_property_value('slug', $template_name, ['equipments']);
         $_tpl  = $this->emails_model->get(['slug' => $_slug, 'language' => 'english'], 'row');
         $data['template_name']        = $_slug;
-        $data['template_system_name'] = $_tpl->name;
-        $data['template_id']          = $_tpl->emailtemplateid;
-        $data['template_disabled']    = $_tpl->active == 0;
+        $data['template_system_name'] = $_tpl->name ?? '';
+        $data['template_id']          = $_tpl->emailtemplateid ?? 0;
+        $data['template_disabled']    = isset($_tpl->active) ? $_tpl->active == 0 : true;
 
         $data['activity']          = $this->equipments_model->get_equipment_activity($id);
         $data['equipment']          = $equipment;
