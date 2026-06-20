@@ -11,37 +11,37 @@ require_once __DIR__ . '/BaseSeeder.php';
 class SubgroupsSeeder extends EquipmentsBaseSeeder
 {
     private array $groups = [
-        ['code' => 'PAA', 'name' => 'Pesawat Angkat dan Angkut',             'subgroups' => [
-            ['name' => 'Pesawat Angkat',              'sort_order' => 1],
-            ['name' => 'Pesawat Angkut',              'sort_order' => 2],
+        ['code' => 'PAA', 'abbr' => 'PA', 'name' => 'Pesawat Angkat dan Angkut',             'subgroups' => [
+            ['name' => 'Pesawat Angkat',              'sort_order' => 1, 'abbr' => 'PA'],
+            ['name' => 'Pesawat Angkut',              'sort_order' => 2, 'abbr' => 'PK'],
         ]],
-        ['code' => 'PTP', 'name' => 'Pesawat Tenaga dan Produksi',            'subgroups' => [
-            ['name' => 'Penggerak Mula',              'sort_order' => 1],
-            ['name' => 'Mesin Perkakas',              'sort_order' => 2],
-            ['name' => 'Mesin Produksi',              'sort_order' => 3],
-            ['name' => 'Transmisi Tenaga Mekanik',    'sort_order' => 4],
-            ['name' => 'Tanur',                       'sort_order' => 5],
-            ['name' => 'Turbin',                      'sort_order' => 6],
-            ['name' => 'Kincir Angin',                'sort_order' => 7],
-            ['name' => 'Motor Listrik',               'sort_order' => 8],
+        ['code' => 'PTP', 'abbr' => 'PT', 'name' => 'Pesawat Tenaga dan Produksi',            'subgroups' => [
+            ['name' => 'Penggerak Mula',              'sort_order' => 1, 'abbr' => 'GM'],
+            ['name' => 'Mesin Perkakas',              'sort_order' => 2, 'abbr' => 'MP'],
+            ['name' => 'Mesin Produksi',              'sort_order' => 3, 'abbr' => 'MR'],
+            ['name' => 'Transmisi Tenaga Mekanik',    'sort_order' => 4, 'abbr' => 'TM'],
+            ['name' => 'Tanur',                       'sort_order' => 5, 'abbr' => 'TN'],
+            ['name' => 'Turbin',                      'sort_order' => 6, 'abbr' => 'TB'],
+            ['name' => 'Kincir Angin',                'sort_order' => 7, 'abbr' => 'KA'],
+            ['name' => 'Motor Listrik',               'sort_order' => 8, 'abbr' => 'ML'],
         ]],
-        ['code' => 'PUBT', 'name' => 'Pesawat Uap Bejana Tekan dan Tangki Timbun', 'subgroups' => [
-            ['name' => 'Pesawat Uap',                 'sort_order' => 1],
-            ['name' => 'Bejana Bertekanan',           'sort_order' => 2],
-            ['name' => 'Tangki Timbun',               'sort_order' => 3],
+        ['code' => 'PUBT', 'abbr' => 'UB', 'name' => 'Pesawat Uap Bejana Tekan dan Tangki Timbun', 'subgroups' => [
+            ['name' => 'Pesawat Uap',                 'sort_order' => 1, 'abbr' => 'PU'],
+            ['name' => 'Bejana Bertekanan',           'sort_order' => 2, 'abbr' => 'BT'],
+            ['name' => 'Tangki Timbun',               'sort_order' => 3, 'abbr' => 'TT'],
         ]],
-        ['code' => 'IPK', 'name' => 'Sarana Proteksi Kebakaran',              'subgroups' => [
-            ['name' => 'APAR',                        'sort_order' => 1],
-            ['name' => 'Instalasi Hydrant',           'sort_order' => 2],
-            ['name' => 'Fire Alarm',                  'sort_order' => 3],
+        ['code' => 'IPK', 'abbr' => 'PK', 'name' => 'Sarana Proteksi Kebakaran',              'subgroups' => [
+            ['name' => 'APAR',                        'sort_order' => 1, 'abbr' => 'AP'],
+            ['name' => 'Instalasi Hydrant',           'sort_order' => 2, 'abbr' => 'IH'],
+            ['name' => 'Fire Alarm',                  'sort_order' => 3, 'abbr' => 'FA'],
         ]],
-        ['code' => 'ILP', 'name' => 'Instalasi Listrik dan Penyalur Petir',   'subgroups' => [
-            ['name' => 'Instalasi Listrik',           'sort_order' => 1],
-            ['name' => 'Penyalur Petir',              'sort_order' => 2],
+        ['code' => 'ILP', 'abbr' => 'IL', 'name' => 'Instalasi Listrik dan Penyalur Petir',   'subgroups' => [
+            ['name' => 'Instalasi Listrik',           'sort_order' => 1, 'abbr' => 'IL'],
+            ['name' => 'Penyalur Petir',              'sort_order' => 2, 'abbr' => 'PP'],
         ]],
-        ['code' => 'LIE', 'name' => 'Elevator dan Eskalator',                 'subgroups' => [
-            ['name' => 'Lift',                        'sort_order' => 1],
-            ['name' => 'Eskalator',                   'sort_order' => 2],
+        ['code' => 'LIE', 'abbr' => 'LE', 'name' => 'Elevator dan Eskalator',                 'subgroups' => [
+            ['name' => 'Lift',                        'sort_order' => 1, 'abbr' => 'LF'],
+            ['name' => 'Eskalator',                   'sort_order' => 2, 'abbr' => 'ES'],
         ]],
     ];
 
@@ -62,10 +62,16 @@ class SubgroupsSeeder extends EquipmentsBaseSeeder
                     $this->db->where('id', $group_id)
                              ->update(db_prefix() . 'items_groups', ['code' => $g['code']]);
                 }
+                // Update abbr if provided but missing
+                if (!empty($g['abbr']) && empty($existing_group->abbr)) {
+                    $this->db->where('id', $group_id)
+                             ->update(db_prefix() . 'items_groups', ['abbr' => $g['abbr']]);
+                }
             } else {
                 $this->db->insert(db_prefix() . 'items_groups', [
                     'name' => $g['name'],
                     'code' => $g['code'],
+                    'abbr' => $g['abbr'] ?? null,
                 ]);
                 $group_id = (int) $this->db->insert_id();
             }
@@ -79,12 +85,18 @@ class SubgroupsSeeder extends EquipmentsBaseSeeder
 
                 if ($existing_sg) {
                     $sg_id = (int) $existing_sg->id;
+                    // Update abbr if provided but missing
+                    if (!empty($sg['abbr']) && empty($existing_sg->abbr)) {
+                        $this->db->where('id', $sg_id)
+                                 ->update(db_prefix() . 'items_subgroups', ['abbr' => $sg['abbr']]);
+                    }
                 } else {
                     $this->db->insert(db_prefix() . 'items_subgroups', [
                         'name'       => $sg['name'],
                         'group_id'   => $group_id,
                         'sort_order' => $sg['sort_order'],
                         'color'      => '#3b82f6',
+                        'abbr'       => $sg['abbr'] ?? null,
                     ]);
                     $sg_id = (int) $this->db->insert_id();
                 }

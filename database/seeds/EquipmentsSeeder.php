@@ -86,7 +86,48 @@ class EquipmentsSeeder extends EquipmentsBaseSeeder
 
         // ── Subgroup: Turbin ──────────────────────────────────────────────────
         'Turbin' => [
-            ['description' => 'Turbin Uap','category' => null],
+            ['description' => 'Turbin Uap', 'category' => null, 'long_description' => <<<'MD'
+## Turbin Uap
+
+Turbin Uap adalah mesin panas berputar yang mengubah energi potensial uap menjadi energi mekanik untuk menggerakkan generator listrik atau peralatan mekanis lainnya.
+
+### Prinsip Kerja
+
+Prinsip kerja turbin uap didasarkan pada **konversi energi uap bertekanan tinggi** menjadi energi rotasi melalui nozzle dan baling-baling (blade). Uap masuk pada tekanan dan temperatur tinggi, kemudian mengembang di dalam turbin, menghasilkan daya putar yang diteruskan ke poros (shaft) utama.
+
+### Tahap Tekanan
+
+Turbin uap biasanya terdiri dari beberapa tahap (stage):
+
+- **High Pressure (HP)** — tahap tekanan tinggi
+- **Intermediate Pressure (IP)** — tahap tekanan menengah
+- **Low Pressure (LP)** — tahap tekanan rendah
+
+Tahapan ini dirancang untuk mengoptimalkan efisiensi energi di setiap tekanan.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Rotor | Elemen berputar |
+| Stator | Elemen tetap (nozzle) |
+| Casing | Pelindung luar |
+| Bearing | Penopang poros |
+| Seal | Pencegah kebocoran uap |
+| Sistem Kontrol | Pengaturan operasi |
+
+### Aplikasi Industri
+
+Turbin uap digunakan pada:
+
+1. Pembangkit Listrik Tenaga Uap (PLTU)
+2. Pabrik pulp dan kertas
+3. Industri petrokimia
+4. Instalasi cogeneration (combined heat and power)
+
+> Turbin uap merupakan salah satu penggerak utama dalam industri tenaga dan manufaktur modern.
+MD,
+            ],
             ['description' => 'Turbin Gas', 'category' => null],
         ],
 
@@ -193,8 +234,10 @@ class EquipmentsSeeder extends EquipmentsBaseSeeder
         $by_name  = [];
 
         foreach ($this->catalog as $subgroup_name => $items) {
-            $sg_id = $this->find_subgroup($subgroup_name);
-            if (!$sg_id) { continue; }
+            $subgroup = $this->find_subgroup_with_group($subgroup_name);
+            if (!$subgroup) { continue; }
+            $sg_id = $subgroup->id;
+            $group_id = $subgroup->group_id;
 
             foreach ($items as $item) {
                 $cat_id = null;
@@ -209,19 +252,34 @@ class EquipmentsSeeder extends EquipmentsBaseSeeder
 
                 if ($existing) {
                     $item_id = (int) $existing->id;
+                    $update_data = [];
                     if ($cat_id && empty($existing->category_id)) {
+                        $update_data['category_id'] = $cat_id;
+                    }
+                    if ($group_id && empty($existing->group_id)) {
+                        $update_data['group_id'] = $group_id;
+                    }
+                    if (!empty($item['long_description']) && empty($existing->long_description)) {
+                        $update_data['long_description'] = $item['long_description'];
+                    }
+                    if (!empty($update_data)) {
                         $this->db->where('id', $item_id)
-                                 ->update(db_prefix() . 'items', ['category_id' => $cat_id]);
+                                 ->update(db_prefix() . 'items', $update_data);
                     }
                 } else {
-                    $this->db->insert(db_prefix() . 'items', [
+                    $insert_data = [
                         'description' => $item['description'],
                         'subgroup_id' => $sg_id,
+                        'group_id'    => $group_id,
                         'category_id' => $cat_id,
                         'rate'        => 0,
                         'unit'        => '',
                         'addedfrom'   => 1,
-                    ]);
+                    ];
+                    if (!empty($item['long_description'])) {
+                        $insert_data['long_description'] = $item['long_description'];
+                    }
+                    $this->db->insert(db_prefix() . 'items', $insert_data);
                     $item_id = (int) $this->db->insert_id();
                 }
 

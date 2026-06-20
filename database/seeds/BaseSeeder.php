@@ -24,6 +24,12 @@ abstract class EquipmentsBaseSeeder
         return $row ? (int) $row->id : null;
     }
 
+    protected function find_subgroup_with_group(string $name): ?object
+    {
+        $row = $this->db->get_where(db_prefix() . 'items_subgroups', ['name' => $name])->row();
+        return $row ? (object) ['id' => (int) $row->id, 'group_id' => (int) $row->group_id] : null;
+    }
+
     protected function find_category(string $name, int $subgroup_id): ?int
     {
         $row = $this->db->get_where(db_prefix() . 'items_categories', [
