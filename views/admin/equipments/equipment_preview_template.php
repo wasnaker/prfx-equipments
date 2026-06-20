@@ -297,12 +297,6 @@ if ($equipment->sent == 1) {
                 <div role="tabpanel" class="tab-pane ptop10 active" id="tab_equipment">
 
                     <table class="table table-condensed no-border no-mtop">
-                        <?php if (!empty($equipment->long_description)) { ?>
-                        <tr>
-                            <td class="tw-w-1/3 tw-text-neutral-500"><i class="fa fa-align-left fa-fw"></i> <?= _l('long_description'); ?></td>
-                            <td><?= nl2br(e($equipment->long_description)); ?></td>
-                        </tr>
-                        <?php } ?>
                         <tr>
                             <td class="tw-text-neutral-500"><i class="fa fa-tag fa-fw"></i> <?= _l('equipment_group'); ?></td>
                             <td><?= e($equipment->group_name ?? '—'); ?></td>
@@ -341,6 +335,26 @@ if ($equipment->sent == 1) {
                         <?php } ?>
                     </table>
                 
+                    <?php if (!empty($equipment->long_description)) { ?>
+                    <style>
+                        .equipment-description h2 { font-size: 1.2em; font-weight: 600; color: #333; margin-top: 16px; margin-bottom: 8px; }
+                        .equipment-description h3 { font-size: 1.1em; font-weight: 600; color: #444; margin-top: 14px; margin-bottom: 6px; }
+                        .equipment-description p { margin-bottom: 10px; line-height: 1.6; }
+                        .equipment-description ul, .equipment-description ol { margin: 8px 0; padding-left: 24px; }
+                        .equipment-description li { margin-bottom: 4px; line-height: 1.5; }
+                        .equipment-description strong { font-weight: 600; }
+                        .equipment-description blockquote { border-left: 3px solid #d1d5db; padding-left: 12px; color: #6b7280; margin: 12px 0; font-style: italic; }
+                        .equipment-description table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+                        .equipment-description th, .equipment-description td { border: 1px solid #e5e7eb; padding: 6px 10px; text-align: left; }
+                        .equipment-description th { background-color: #f9fafb; font-weight: 600; }
+                    </style>
+                    <div class="tw-mt-4 tw-mb-4 tw-p-3 tw-bg-neutral-50 tw-rounded-md tw-border tw-border-neutral-200">
+                        <div class="tw-text-xs tw-text-neutral-500 tw-uppercase tw-tracking-wide tw-font-medium tw-mb-1">
+                            <i class="fa fa-align-left fa-fw"></i> <?= _l('long_description'); ?>
+                        </div>
+                        <div class="equipment-description tw-text-sm tw-text-neutral-700"><?= markdown_to_html($equipment->long_description); ?></div>
+                    </div>
+                    <?php } ?>
 
                 </div>
                 <div role="tabpanel" class="tab-pane" id="tab_equipment_jobs">
