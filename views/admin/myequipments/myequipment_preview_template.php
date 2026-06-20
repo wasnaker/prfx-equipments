@@ -14,30 +14,52 @@
                                 <?= _l('equipment'); ?>
                             </a>
                         </li>
-                        <li role="presentation">
+                        <?php if (is_module_active('jobs')): ?>
+                        <li role="presentation" data-toggle="tooltip"
+                            title="<?= _l('jobs'); ?>">
                             <a href="#tab_myequipment_jobs"
                                 onclick="initDataTable('.table-myequipment-jobs', admin_url + 'equipments/myequipments/get_jobs_table/' + <?= (int)$myequipment->id; ?>, [0], [0], undefined, [1,'asc']); return false;"
                                 aria-controls="tab_myequipment_jobs" role="tab" data-toggle="tab">
+                                <?php if (! is_mobile()) { ?>
+                                <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                <?php } else { ?>
                                 <?= _l('jobs'); ?>
+                                <?php } ?>
                             </a>
                         </li>
-                        <li role="presentation">
+                        <?php endif; ?>
+                        <li role="presentation" data-toggle="tooltip"
+                            title="<?= _l('history'); ?>">
                             <a href="#tab_history"
                                 onclick="initDataTable('.table-myequipment-history', admin_url + 'equipments/myequipments/get_history_table/' + <?= (int)$myequipment->id; ?>, [0], [0], undefined, [1,'asc']); return false;"
                                 aria-controls="tab_history" role="tab" data-toggle="tab">
-                                <i class="fa fa-timeline"></i> <?= _l('history'); ?>
+                                <?php if (! is_mobile()) { ?>
+                                <i class="fa fa-timeline" aria-hidden="true"></i>
+                                <?php } else { ?>
+                                <?= _l('history'); ?>
+                                <?php } ?>
                             </a>
                         </li>
-                        <li role="presentation">
+                        <li role="presentation" data-toggle="tooltip"
+                            title="<?= _l('equipment_view_activity_tooltip'); ?>">
                             <a href="#tab_activity" aria-controls="tab_activity" role="tab" data-toggle="tab">
+                                <?php if (! is_mobile()) { ?>
+                                <i class="fa fa-history" aria-hidden="true"></i>
+                                <?php } else { ?>
                                 <?= _l('equipment_view_activity_tooltip'); ?>
+                                <?php } ?>
                             </a>
                         </li>
-                        <li role="presentation">
+                        <li role="presentation" data-toggle="tooltip"
+                            title="<?= _l('equipment_reminders'); ?>">
                             <a href="#tab_reminders"
                                 onclick="initDataTable('.table-reminders', admin_url + 'misc/get_reminders/' + <?= $myequipment->id; ?> + '/' + 'myequipment', undefined, undefined, undefined,[1,'asc']); return false;"
                                 aria-controls="tab_reminders" role="tab" data-toggle="tab">
+                                <?php if (! is_mobile()) { ?>
+                                <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                                <?php } else { ?>
                                 <?= _l('equipment_reminders'); ?>
+                                <?php } ?>
                                 <?php
                         $total_reminders = total_rows(
                             db_prefix() . 'reminders',
@@ -54,11 +76,16 @@ if ($total_reminders > 0) {
 ?>
                             </a>
                         </li>
-                        <li role="presentation" class="tab-separator">
+                        <li role="presentation" class="tab-separator" data-toggle="tooltip"
+                            title="<?= _l('equipment_notes'); ?>">
                             <a href="#tab_notes"
                                 onclick="get_sales_notes(<?= e($myequipment->id); ?>,'equipments/myequipments'); return false"
                                 aria-controls="tab_notes" role="tab" data-toggle="tab">
+                                <?php if (! is_mobile()) { ?>
+                                <i class="fa-regular fa-sticky-note" aria-hidden="true"></i>
+                                <?php } else { ?>
                                 <?= _l('equipment_notes'); ?>
+                                <?php } ?>
                                 <span class="notes-total">
                                     <?php if ($totalNotes > 0) { ?>
                                     <span

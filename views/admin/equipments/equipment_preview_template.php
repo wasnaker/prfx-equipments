@@ -14,23 +14,39 @@
                                 <?= _l('equipment'); ?>
                             </a>
                         </li>
+                        <?php if (is_module_active('jobs')): ?>
                         <li role="presentation">
                             <a href="#tab_equipment_jobs"
                                 onclick="initDataTable('.table-equipment-jobs', admin_url + 'equipments/get_jobs_table/' + <?= (int)$equipment->id; ?>, [0], [0], undefined, [1,'asc']); return false;"
                                 aria-controls="tab_equipment_jobs" role="tab" data-toggle="tab">
+                                <?php if (! is_mobile()) { ?>
+                                <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                <?php } else { ?>
                                 <?= _l('jobs'); ?>
+                                <?php } ?>
                             </a>
                         </li>
-                        <li role="presentation">
+                        <?php endif; ?>
+                        <li role="presentation" data-toggle="tooltip"
+                            title="<?= _l('equipment_view_activity_tooltip'); ?>">
                             <a href="#tab_activity" aria-controls="tab_activity" role="tab" data-toggle="tab">
+                                <?php if (! is_mobile()) { ?>
+                                <i class="fa fa-history" aria-hidden="true"></i>
+                                <?php } else { ?>
                                 <?= _l('equipment_view_activity_tooltip'); ?>
+                                <?php } ?>
                             </a>
                         </li>
-                        <li role="presentation">
+                        <li role="presentation" data-toggle="tooltip"
+                            title="<?= _l('equipment_reminders'); ?>">
                             <a href="#tab_reminders"
                                 onclick="initDataTable('.table-reminders', admin_url + 'misc/get_reminders/' + <?= $equipment->id; ?> + '/' + 'equipment', undefined, undefined, undefined,[1,'asc']); return false;"
                                 aria-controls="tab_reminders" role="tab" data-toggle="tab">
+                                <?php if (! is_mobile()) { ?>
+                                <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                                <?php } else { ?>
                                 <?= _l('equipment_reminders'); ?>
+                                <?php } ?>
                                 <?php
                         $total_reminders = total_rows(
                             db_prefix() . 'reminders',
@@ -47,11 +63,16 @@ if ($total_reminders > 0) {
 ?>
                             </a>
                         </li>
-                        <li role="presentation" class="tab-separator">
+                        <li role="presentation" class="tab-separator" data-toggle="tooltip"
+                            title="<?= _l('equipment_notes'); ?>">
                             <a href="#tab_notes"
                                 onclick="get_sales_notes(<?= e($equipment->id); ?>,'equipments'); return false"
                                 aria-controls="tab_notes" role="tab" data-toggle="tab">
+                                <?php if (! is_mobile()) { ?>
+                                <i class="fa-regular fa-sticky-note" aria-hidden="true"></i>
+                                <?php } else { ?>
                                 <?= _l('equipment_notes'); ?>
+                                <?php } ?>
                                 <span class="notes-total">
                                     <?php if ($totalNotes > 0) { ?>
                                     <span
