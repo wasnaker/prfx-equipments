@@ -1170,10 +1170,122 @@ MD,
 
         // ── Subgroup: Tanur ───────────────────────────────────────────────────
         'Tanur' => [
-            ['description' => 'Furnace',      'category' => null],
-            ['description' => 'Blast Furnace','category' => null],
-            ['description' => 'Oven Industri','category' => null],
-            ['description' => 'Kiln',         'category' => null],
+            ['description' => 'Furnace',      'category' => null, 'long_description' => <<<'MD'
+## Furnace
+
+Furnace adalah perangkat pemanas yang digunakan untuk melebur logam, memanaskan material, atau menghasilkan suhu tinggi dalam proses industri.
+
+### Prinsip Kerja
+
+Furnace bekerja dengan mengubah energi dari bahan bakar (gas, listrik, atau kokas) menjadi panas melalui pembakaran atau pemanasan resistif. Panas tersebut ditransfer ke material di dalam ruang bakar secara konduksi, konveksi, dan radiasi hingga mencapai suhu yang diinginkan.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Ruang Bakar | Tempat material dipanaskan atau dilebur |
+| Burner / Elemen Pemanas | Sumber panas (pembakar atau elemen listrik) |
+| Refraktori | Pelapis tahan panas untuk menjaga isolasi termal |
+| Sistem Kontrol Suhu | Mengatur dan memonitor temperatur operasi |
+| Cerobong / Exhaust | Mengeluarkan gas buang dan menjaga sirkulasi udara |
+| Pintu / Tutup | Akses untuk memasukkan dan mengeluarkan material |
+
+### Aplikasi
+
+1. Peleburan logam besi dan non-besi di industri pengecoran.
+2. Perlakuan panas (heat treatment) pada komponen baja.
+3. Pemanasan bahan baku sebelum proses forming atau forging.
+
+> Furnace merupakan peralatan esensial di berbagai sektor manufaktur yang membutuhkan suhu tinggi secara terkontrol.
+MD,
+            ],
+            ['description' => 'Blast Furnace','category' => null, 'long_description' => <<<'MD'
+## Blast Furnace
+
+Blast Furnace atau tanur tiup adalah tungku besar yang digunakan untuk memproduksi pig iron dari bijih besi melalui proses reduksi dengan kokas dan udara panas.
+
+### Prinsip Kerja
+
+Blast furnace diisi dari atas dengan bijih besi, kokas, dan fluks (batu kapur). Udara panas dihembuskan dari bagian bawah melalui tuyeres, menyebabkan kokas terbakar dan menghasilkan gas CO yang mereduksi bijih besi menjadi besi cair. Besi cair terkumpul di dasar sedangkan terak mengapung di atasnya.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Throat / Top | Tempat pengisian material baku |
+| Stack / Shaft | Bagian vertikal tempat berlangsungnya pemanasan dan reduksi awal |
+| Bosh | Bagian terluas tempat reaksi reduksi intensif terjadi |
+| Hearth | Penampung besi cair dan terak di bagian bawah |
+| Tuyeres | Saluran pemasukan udara panas ke dalam tungku |
+| Tap Hole | Lubang pengeluaran besi cair secara periodik |
+
+### Aplikasi
+
+1. Produksi pig iron sebagai bahan baku pembuatan baja.
+2. Peleburan nikel dan logam lainnya dalam skala besar.
+3. Daur ulang limbah logam mengandung besi pada beberapa variant furnace.
+
+> Blast furnace merupakan inti dari industri baja hulu dan menjadi teknologi dominan dalam produksi besi primer.
+MD,
+            ],
+            ['description' => 'Oven Industri','category' => null, 'long_description' => <<<'MD'
+## Oven Industri
+
+Oven industri adalah tungku pemanas yang beroperasi pada suhu menengah untuk proses pengeringan, pematangan, atau pemanasan produk di lingkungan pabrik.
+
+### Prinsip Kerja
+
+Oven industri memanaskan udara di dalam ruang tertutup menggunakan elemen pemanas listrik atau gas burner. Udara panas disirkulasikan oleh kipas agar suhu merata, sehingga produk mengalami perpindahan panas konveksi dan radiasi secara seragam hingga mencapai kondisi yang dikehendaki.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Ruang Pemanas | Area tertutup tempat produk diolah |
+| Elemen Pemanas | Sumber panas (listrik atau gas) |
+| Kipas Sirkulasi | Mendistribusikan udara panas agar suhu homogen |
+| Kontrol Suhu (Thermostat) | Mengatur dan menjaga kestabilan temperatur |
+| Isolasi Termal | Mencegah kehilangan panas ke lingkungan |
+| Sistem Ventilasi | Mengatur kelembaban dan mengeluarkan uap hasil pengeringan |
+
+### Aplikasi
+
+1. Pengeringan cat atau coating pada komponen otomotif dan furnitur.
+2. Pematangan (curing) resin, karet, atau komposit dalam proses produksi.
+3. Sterilisasi peralatan medis dan pengolahan makanan dengan panas kering.
+
+> Oven industri memberikan kontrol suhu yang presisi untuk proses thermal yang membutuhkan kondisi seragam dan terprogram.
+MD,
+            ],
+            ['description' => 'Kiln',         'category' => null, 'long_description' => <<<'MD'
+## Kiln
+
+Kiln adalah tungku bersuhu tinggi yang digunakan untuk membakar keramik, batu bata, kapur, atau semen melalui proses kalsinasi dan sintering.
+
+### Prinsip Kerja
+
+Kiln menggunakan panas dari pembakaran gas, batubara, atau listrik untuk memanaskan material di dalam ruang tertutup. Proses pembakaran berlangsung secara bertahap mulai dari preheating, sintering, hingga pendinginan terkontrol, sehingga menghasilkan perubahan fisik dan kimia permanen pada material.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Ruang Bakar | Tempat material ditumpuk dan dibakar |
+| Burner / Sumber Panas | Generator api untuk mencapai suhu tinggi (hingga 1500°C) |
+| Refraktori & Lining | Pelapis dinding tahan suhu ekstrem |
+| Sistem Ventilasi & Cerobong | Mengalirkan aliran gas panas dan mengontrol atmosfer |
+| Rel atau Kereta Kiln | (pada tunnel kiln) untuk memindahkan muatan secara kontinu |
+| Unit Kontrol & Sensor | Memonitor suhu, tekanan, dan siklus pembakaran |
+
+### Aplikasi
+
+1. Pembuatan keramik meja (tableware) dan sanitary ware.
+2. Produksi batu bata, genteng, dan paving blok.
+3. Kalsinasi batu kapur menjadi kapur tohor (quicklime) dan semen klinker.
+
+> Kiln memungkinkan transformasi material yang memerlukan suhu tinggi dan siklus termal terkontrol dalam industri keramik dan mineral.
+MD,
+            ],
         ],
 
         // ── Subgroup: Turbin ──────────────────────────────────────────────────
