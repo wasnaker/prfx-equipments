@@ -47,14 +47,246 @@ Crane terdiri dari **girder** (balok jembatan) yang berjalan di atas rel sejajar
 > Overhead crane dapat mengangkat beban dari 1 ton hingga 500+ ton dengan span hingga 40 meter.
 MD,
             ],
-            ['description' => 'Gantry Crane',    'category' => 'Crane'],
-            ['description' => 'Tower Crane',     'category' => 'Crane'],
-            ['description' => 'Mobile Crane',    'category' => 'Crane'],
-            ['description' => 'Jib Crane',       'category' => 'Crane'],
-            ['description' => 'Electric Hoist',  'category' => 'Hoist'],
-            ['description' => 'Manual Hoist',    'category' => 'Hoist'],
-            ['description' => 'Chain Hoist',     'category' => 'Hoist'],
-            ['description' => 'Gondola',         'category' => 'Gondola'],
+            ['description' => 'Gantry Crane',    'category' => 'Crane', 'long_description' => <<<'MD'
+## Gantry Crane
+
+Gantry Crane adalah crane yang berjalan di atas jalur rel atau trek yang dipasang di tanah, dengan struktur utama berbentuk portal yang menopang hoist dan mekanisme pengangkatan. Crane ini memiliki dua kaki penyangga yang menopang gelagar utama (main girder) di atasnya, membentuk seperti huruf "U" atau "A". Gantry Crane sangat efektif untuk area luar ruangan (outdoor) di galangan kapal, pelabuhan, dan area penyimpanan material berat di mana pier (tiang penyangga) tidak memungkinkan untuk dipasang.
+
+### Prinsip Kerja
+
+Gantry Crane beroperasi dengan menggerakkan seluruh struktur portal di atas jalur rel yang terpasang di tanah menggunakan motor penggerak yang terpasang pada kaki crane. Hoist yang tergantung pada gelagar utama bergerak bolak-balik (traversing) untuk menjangkau posisi beban secara lateral, sementara trolley bergerak sepanjang gelagar untuk posisi melintang. Beban diangkat dan diturunkan melalui sistem hoist dengan kontrol yang dioperasikan dari panel kontrol atau remote control.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Main Girder (Gelagar Utama) | Menopang trolley dan hoist, menahan beban yang diangkat |
+| Leg (Kaki Crane) | Menyangga gelagar utama dan menghubungkan ke trek rel di tanah |
+| End Truck (Travelling Bogie) | Mekanisme penggerak yang memungkinkan crane bergerak di atas rel |
+| Trolley | Bergerak menyilang di atas gelagar utama untuk menentukan posisi beban |
+| Hoist | Mekanisme pengangkat beban dengan sistem kawat sling atau rantai |
+| Rail Track (Jalur Rel) | Jalur pandu yang terpasang di tanah untuk pergerakan gantry crane |
+| Control Panel (Panel Kontrol) | Mengatur semua fungsi operasi crane termasuk travel, trolley, dan hoist |
+
+### Aplikasi
+
+1. Pelabuhan dan galangan kapal untuk bongkar muat kontainer dan material berat
+2. Area penyimpanan besi baja dan material konstruksi di lapangan terbuka
+3. Pabrik metalurgi dan manufaktur untuk memindahkan produk jadi atau bahan baku berukuran besar
+
+> Gantry Crane memerlukan perawatan berkala pada sistem rel, roda end truck, dan kawat sling untuk menjamin keselamatan operasional. Inspeksi harus dilakukan sesuai standar SNI dan peraturan Kementerian Ketenagakerjaan RI.
+MD,
+            ],
+            ['description' => 'Tower Crane',     'category' => 'Crane', 'long_description' => <<<'MD'
+## Tower Crane
+
+Tower Crane adalah jenis crane menara yang biasa digunakan dalam proyek konstruksi gedung tinggi, dengan struktur vertikal (mast) yang terdiri dari segmen-segmen yang disusun bertingkat. Crane ini memiliki jib horizontal panjang yang berputar 360 derajat di sekitar sumbu mast, memungkinkan jangkauan area kerja yang sangat luas. Tower Crane merupakan salah satu alat berat konstruksi paling esensial untuk pembangunan gedung bertingkat, jembatan, dan infrastruktur besar lainnya.
+
+### Prinsip Kerja
+
+Tower Crane bekerja dengan memanfaatkan prinsip tuas (lever) di mana beban diangkat oleh hoist dan dipindahkan secara horizontal oleh trolley yang bergerak di sepanjang jib. Seluruh struktur jib berputar 360 derajat di atas mast menggunakan slewing unit (meja putar). Counter jib di sisi berlawanan membawa counterweight untuk menyeimbangkan momen beban agar crane tetap stabil dan tidak mengalami kelebihan beban (overload).
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Mast (Menara) | Struktur vertikal utama yang menopang seluruh komponen crane di ketinggian |
+| Jib (Keranjang/Katir) | Lengan horizontal tempat trolley bergerak untuk menjangkau beban |
+| Counter Jib | Lengan penyeimbang di sisi berlawanan jib yang membawa counterweight |
+| Counterweight | Beban penyeimbang berupa beton atau besi untuk menjaga stabilitas crane |
+| Trolley | Mekanisme penggerak yang bergerak di atas jib untuk menentukan jarak beban |
+| Hoist (Pengangkat) | Sistem kawat sling dan motor untuk mengangkat dan menurunkan beban |
+| Slewing Unit (Meja Putar) | Mekanisme berputar yang memungkinkan jib bergerak 360 derajat |
+
+### Aplikasi
+
+1. Konstruksi gedung bertingkat dan menara untuk pengangkatan beton, besi, dan material bangunan
+2. Pembangunan jembatan besar untuk memindahkan material konstruksi di atas ketinggian
+3. Proyek infrastruktur seperti pembangkit listrik dan kilang minyak yang membutuhkan pengangkatan di area yang luas
+
+> Tower Crane harus dipasang dan dibongkar oleh tenaga ahli bersertifikat. Setiap perubahan ketinggian (jumping) memerlukan perhitungan struktur dan inspeksi menyeluruh sebelum operasi dilanjutkan.
+MD,
+            ],
+            ['description' => 'Mobile Crane',    'category' => 'Crane', 'long_description' => <<<'MD'
+## Mobile Crane
+
+Mobile Crane adalah crane yang terpasang pada kendaraan beroda (truk atau chassis khusus) sehingga dapat berpindah lokasi secara mandiri tanpa perlu perakitan ulang. Crane ini dilengkapi dengan boom (lengan teleskopik atau lattice) yang dapat dipanjang-pendekkan dan ditegakkan sesuai kebutuhan operasi. Mobile Crane sangat fleksibel untuk digunakan di berbagai lokasi proyek karena kemampuan mobilitasnya yang tinggi dan waktu setup yang relatif singkat.
+
+### Prinsip Kerja
+
+Mobile Crane mengangkat beban menggunakan sistem kawat sling yang melalui sheave (katrol) di ujung boom, ditarik oleh drum winch. Boom dapat dipanjangkan secara teleskopik atau ditegakkan/diturunkan menggunakan silinder hidrolik atau motor listrik. Untuk menjaga stabilitas, crane dilengkapi outrigger (kaki penyangga) yang diperluas ke sisi kendaraan guna memperlebar area tumpuan dan mencegah crane terguling saat mengangkat beban berat.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Boom (Lengan Crane) | Struktur teleskopik atau lattice yang menjadi jalur kawat sling pengangkat beban |
+| Winch (Dere) | Motor dan drum penggulung kawat sling untuk mengangkat dan menurunkan beban |
+| Outrigger (Kaki Penyangga) | Kaki hidrolik yang diperluas untuk menstabilkan crane saat operasi pengangkatan |
+| Superstructure (Badan Atas) | Bagian crane yang berputar di atas chassis, menampung boom dan operator |
+| Counterweight | Beban penyeimbang yang terpasang di bagian belakang superstructure |
+| Chassis/Kendaraan | Basis kendaraan beroda yang memungkinkan crane berpindah lokasi |
+| Hydraulic System | Sistem penggerak hidrolik untuk operasi boom, winch, dan outrigger |
+
+### Aplikasi
+
+1. Proyek konstruksi bangunan dan infrastruktur yang membutuhkan fleksibilitas perpindahan lokasi
+2. Pekerjaan instalasi dan maintenance di pabrik, kilang minyak, dan pembangkit listrik
+3. Operasi darurat (emergency rescue) untuk pengangkatan material di lokasi bencana alam
+
+> Mobile Crane memiliki berbagai varian kapasitas dari 20 ton hingga lebih dari 500 ton. Pemilihan tipe crane harus disesuaikan dengan jenis beban, radius jangkau, dan kondisi lapangan untuk menjamin keselamatan operasi.
+MD,
+            ],
+            ['description' => 'Jib Crane',       'category' => 'Crane', 'long_description' => <<<'MD'
+## Jib Crane
+
+Jib Crane adalah crane dengan lengan horizontal (jib atau boom) yang terpasang pada tiang vertikal (mast/column) atau dinding, dan dapat berputar untuk memindahkan beban dalam area kerja tertentu. Crane ini memiliki desain sederhana namun sangat efektif untuk pengangkatan beban di area kerja lokal yang terbatas. Jib Crane biasanya digunakan sebagai pelengkap crane utama di area pemuatan, perakitan, atau workstation pabrik.
+
+### Prinsip Kerja
+
+Jib Crane beroperasi dengan memutar lengan jib di sekitar titik poros yang terpasang pada kolom atau bracket dinding, memungkinkan beban dipindahkan dalam bentuk busur lingkaran. Hoist digantung pada jib dan dapat digerakkan (traversing) sepanjang lengan untuk menyesuaikan posisi beban secara radial. Penggerakan bisa dilakukan secara manual atau motoris tergantung pada kapasitas beban dan frekuensi penggunaan.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Mast/Kolom | Tiang vertikal penyangga utama yang menopang seluruh struktur jib |
+| Jib (Boom) | Lengan horizontal yang berputar di sekitar mast, menempuh area operasi |
+| Trolley/Travelling Beam | Mekanisme bergerak di atas jib yang membawa hoist bolak-balik |
+| Hoist | Unit pengangkat beban berupa chain hoist atau wire rope hoist |
+| Pivot/Slewing Bearing | Titik poros putar yang menghubungkan jib ke mast atau bracket dinding |
+| Foundation/Basi Beton | Pondasi yang menahan beban dan momen puntir dari kolom jib crane |
+| Control Pendant | Panel kontrol gantung untuk mengoperasikan hoist dan slewing |
+
+### Aplikasi
+
+1. Workstation pabrik dan bengkel manufaktur untuk pengangkatan komponen mesin dan produk jadi
+2. Area pemuatan dan bongkar muat truk di gudang dan distribusi logistik
+3. Pabrik logam dan manufaktur baja untuk memindahkan material pada proses perakitan
+
+> Jib Crane harus dipasang pada struktur penyangga yang memadai (kolom atau dinding) dengan perhitungan beban yang cermat. Radius putar dan kapasitas beban harus diperhatikan untuk mencegah kelebihan beban dan kerusakan struktur.
+MD,
+            ],
+            ['description' => 'Electric Hoist',  'category' => 'Hoist', 'long_description' => <<<'MD'
+## Electric Hoist
+
+Electric Hoist adalah unit pengangkat beban yang digerakkan oleh motor listrik, digunakan untuk mengangkat, menurunkan, dan memindahkan beban secara vertikal maupun horizontal. Hoist ini bekerja menggunakan sistem kawat sling yang digulung pada drum oleh motor listrik, atau menggunakan rantai yang ditarik oleh sprocket bermotor. Electric Hoist banyak digunakan di pabrik, bengkel, gudang, dan area kerja yang membutuhkan pengangkatan beban secara rutin dan efisien.
+
+### Prinsip Kerja
+
+Electric Hoist mengubah energi listrik menjadi energi mekanik melalui motor listrik yang terhubung ke gearbox reduksi. Gearbox mengurangi kecepatan putaran motor sementara meningkatkan torsi yang diperlukan untuk mengangkat beban berat. Kawat sling atau rantai digulung pada drum atau sprocket, mengangkat atau menurunkan beban sesuai arah putaran motor yang dikontrol melalui panel kontrol atau pendant control.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Motor Listrik | Penggerak utama yang menghasilkan tenaga untuk mengangkat beban |
+| Gearbox (Transmisi) | Mereduksi kecepatan motor dan meningkatkan torsi pengangkat |
+| Drum/Sprocket | Komponen penggulung kawat sling atau rantai pengangkat beban |
+| Kawat Sling/Rantai | Media pengikat beban yang kuat dan fleksibel |
+| Brake (Rem) | Sistem pengereman otomatis untuk menahan beban saat motor berhenti |
+| Limit Switch | Pengaman yang membatasi pergerakan hoist agar tidak melewati batas atas/bawah |
+| Pendant Control | Panel kontrol gantung untuk mengoperasikan hoist dari bawah |
+
+### Aplikasi
+
+1. Pabrik manufaktur dan perakitan untuk pengangkatan komponen berat pada lini produksi
+2. Bengkel las dan fabrikasi logam untuk memindahkan material baja dan besi
+3. Gudang dan pusat distribusi logistik untuk operasi pemuatan dan penyimpanan vertikal
+
+> Electric Hoist harus dipasang pada struktur penyangga yang memadai seperti overhead crane, jib crane, atau beam crane. Perawatan berkala meliputi inspeksi kawat sling, pemeriksaan rem, dan penggantian oli gearbox sesuai jadwal pemeliharaan.
+MD,
+            ],
+            ['description' => 'Manual Hoist',    'category' => 'Hoist', 'long_description' => <<<'MD'
+## Manual Hoist
+
+Manual Hoist adalah unit pengangkat beban yang dioperasikan sepenuhnya oleh tenaga manusia tanpa memerlukan sumber energi eksternal seperti listrik atau hidrolik. Hoist ini menggunakan sistem roda gigi (gear) dan tuas (lever) yang diketik atau ditarik rantai oleh operator untuk mengangkat beban. Manual Hoist cocok untuk lokasi kerja yang tidak memiliki akses listrik atau untuk pengangkatan beban ringan hingga sedang dengan frekuensi operasi yang tidak terlalu tinggi.
+
+### Prinsip Kerja
+
+Manual Hoist bekerja berdasarkan prinsip mekanik di mana tenaga tangan operator ditransmisikan melalui sistem roda gigi reduksi untuk menghasilkan gaya angkat yang lebih besar. Operator menarik rantai hand chain yang memutar sprocket, yang terhubung ke gearbox untuk menggulung load chain (rantai beban). Sistem ratchet dan brake otomatis menahan beban agar tidak terjatuh saat operator berhenti menarik rantai.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Hand Chain | Rantai yang ditarik oleh operator untuk menggerakkan mekanisme hoist |
+| Load Chain | Rantai pengangkat beban yang kuat dari baja berkekerasan |
+| Sprocket | Roda gigi yang menghubungkan hand chain ke gearbox |
+| Gearbox Mekanik | Sistem roda gigi reduksi untuk mengubah tenaga tangan menjadi gaya angkat |
+| Brake Mekanik (Ratchet) | Sistem pengereman otomatis yang menahan beban saat operasi berhenti |
+| Hook (Kait) | Pengait baja berputar untuk menggantung beban yang akan diangkat |
+| Housing (Casing) | Rumah proteksi yang menampung seluruh mekanisme internal hoist |
+
+### Aplikasi
+
+1. Lokasi konstruksi atau area kerja tanpa akses listrik yang membutuhkan pengangkatan beban
+2. Maintenance dan instalasi mesin di pabrik dengan beban ringan hingga sedang
+3. Operasi di area berbahaya (hazardous area) di mana penggunaan peralatan listrik terbatas
+
+> Manual Hoist memerlukan tenaga operator yang cukup dan memiliki batasan kapasitas serta kecepatan pengangkatan dibandingkan hoist listrik. Pemeriksaan berkala pada load chain, brake, dan hook sangat penting untuk keselamatan.
+MD,
+            ],
+            ['description' => 'Chain Hoist',     'category' => 'Hoist', 'long_description' => <<<'MD'
+## Chain Hoist
+
+Chain Hoist adalah unit pengangkat beban yang menggunakan rantai baja sebagai media pengangkat, tersedia dalam varian manual, listrik, dan pneumatik. Rantai baja yang digunakan pada hoist ini memiliki kekuatan tarik tinggi dan ketahanan terhadap abrasi, sehingga sangat cocok untuk lingkungan industri berat. Chain Hoist umumnya lebih ringan dan kompak dibandingkan wire rope hoist dengan kapasitas yang setara, menjadikannya pilihan populer untuk berbagai aplikasi industri.
+
+### Prinsip Kerja
+
+Chain Hoist bekerja dengan menggerakkan rantai baja melalui sistem sprocket dan gearbox reduksi untuk mengangkat beban. Pada tipe listrik, motor listrik menggerakkan gearbox yang memutar sprocket untuk menggulung load chain. Pada tipe manual, operator menarik hand chain yang memutar sprocket secara mekanik. Sistem brake otomatis terintegrasi untuk menahan beban pada posisi tertentu saat pengangkatan dihentikan.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Load Chain | Rantai baja berkekerasan tinggi yang menahan dan mengangkat beban |
+| Hand Chain | Rantai penggerak untuk tipe manual, ditarik oleh operator |
+| Sprocket | Roda gigi bergerigi yang mencengkeram dan menggerakkan rantai |
+| Gearbox | Sistem reduksi roda gigi untuk meningkatkan gaya angkat |
+| Motor Listrik | Penggerak pada tipe elektrik yang menghasilkan tenaga untuk mengangkat |
+| Hook Assembly | Kait baja berputar dengan safety latch untuk pengaman beban |
+| Brake System | Sistem pengereman otomatis yang menahan beban saat operasi berhenti |
+
+### Aplikasi
+
+1. Workshop dan bengkel las untuk pengangkatan komponen baja dan produk fabrikasi
+2. Assembly line di pabrik otomotif dan elektronik untuk perakitan komponen berat
+3. Gudang industri untuk operasi pemuatan dan penyimpanan material pada rak tinggi
+
+> Chain Hoist harus menggunakan rantai baja dengan spesifikasi yang tepat sesuai kapasitas beban nominal. Penggunaan rantai yang aus atau rusak sangat berbahaya dan harus segera diganti sesuai standar inspeksi yang berlaku.
+MD,
+            ],
+            ['description' => 'Gondola',         'category' => 'Gondola', 'long_description' => <<<'MD'
+## Gondola
+
+Gondola (juga dikenal sebagai Building Maintenance Unit/BMU atau gondola akses kerja) adalah platform tergantung yang digunakan untuk mengakses fasad bangunan tinggi guna keperluan pembersihan kaca, perawatan fasad, dan inspeksi struktur bangunan. Gondola terdiri dari platform kerja yang digantung oleh kawat sling baja dari rigging di atas atap gedung, dengan sistem winch untuk menaikkan dan menurunkan platform. Peralatan ini merupakan solusi akses kerja ketinggian yang efisien dan relatif aman untuk bangunan bertingkat.
+
+### Prinsip Kerja
+
+Gondola bekerja dengan menggantung platform kerja pada kawat sling baja yang dihubungkan ke rigging (penyangga) di atas atap gedung. Operator mengontrol pergerakan platform naik-turun dan bolak-balik menggunakan motor winch yang terpasang pada rigging, serta traverse motor untuk pergerakan horizontal di sepanjang fasad. Sistem pengaman termasuk overspeed device, upper dan lower limit switch, serta emergency brake yang berfungsi otomatis jika terjadi kegagalan sistem.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Platform Kerja | Area kerja tempat operator berdiri saat melakukan pekerjaan di ketinggian |
+| Wire Rope (Kawat Sling) | Kawat baja yang menahan berat platform dan operator dari rigging atas |
+| Rigging/Davit Arm | Struktur penyangga di atas atap yang menopang seluruh sistem gondola |
+| Winch Motor | Motor penggulung kawat sling untuk menaikkan dan menurunkan platform |
+| Traverse Motor | Motor penggerak horizontal untuk memindahkan platform di sepanjang fasad |
+| Safety Device | Sistem pengaman termasuk overspeed brake, limit switch, dan emergency stop |
+| Control Panel | Panel kontrol yang terpasang pada platform untuk mengoperasikan pergerakan |
+
+### Aplikasi
+
+1. Pembersihan dan perawatan kaca gedung (curtain wall) pada gedung bertingkat
+2. Inspeksi dan maintenance fasad bangunan termasuk perbaikan sealant dan cat
+3. Pemasangan dan perbaikan panel reklame, spanduk, atau elemen arsitektural di ketinggian
+
+> Gondola merupakan peralatan akses kerja ketinggian yang diatur oleh peraturan Kementerian Ketenagakerjaan RI. Operator harus memiliki sertifikasi kompetensi dan gondola harus menjalani inspeksi berkala oleh lembaga sertifikasi yang terakreditasi.
+MD,
+            ],
         ],
 
         // ── Subgroup: Pesawat Angkut ──────────────────────────────────────────
@@ -90,23 +322,400 @@ Forklift menggunakan **sistem hidrolik** untuk mengangkat garpu. Mast (tiang) be
 > Forklift tersedia dalam kapasitas 1-50 ton dengan tinggi angkat hingga 12+ meter.
 MD,
             ],
-            ['description' => 'Reach Stacker',         'category' => 'Fork'],
-            ['description' => 'Electric Stacker',      'category' => 'Fork'],
-            ['description' => 'Hand Stacker',          'category' => 'Fork'],
-            ['description' => 'Reach Truck',           'category' => 'Gudang Tinggi'],
-            ['description' => 'Order Picker',          'category' => 'Gudang Tinggi'],
-            ['description' => 'VNA Truck',             'category' => 'Gudang Tinggi'],
-            ['description' => 'Scissor Lift',          'category' => 'Scissor/AWP'],
-            ['description' => 'Aerial Work Platform',  'category' => 'Scissor/AWP'],
-            ['description' => 'Conveyor Belt',         'category' => null],
-            ['description' => 'Lift Barang',           'category' => null],
+            ['description' => 'Reach Stacker',         'category' => 'Fork', 'long_description' => <<<'MD'
+## Reach Stacker
+
+Reach Stacker adalah alat angkut dan penumpukan kontainer yang dirancang khusus untuk menangani kontainer di terminal peti kemas, pelabuhan, dan depo. Alat ini mampu mengangkat kontainer hingga beberapa tumpukan dengan stabilitas tinggi.
+
+### Prinsip Kerja
+
+Reach Stacker menggunakan mekanisme teleskopik pada lengan angkatnya (boom) yang dapat menjangkau kontainer dari baris kedua atau ketiga. Dengan sistem hidrolik yang kuat, alat ini dapat mengangkat dan memindahkan kontainer ke lokasi yang diinginkan dengan presisi tinggi.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Boom Teleskopik | Menjangkau dan mengangkat kontainer dari berbagai posisi |
+| Sistem Hidrolik | Menggerakkan boom dan mekanisme angkat |
+| Spreader | Alat penjepit kontainer yang dapat disesuaikan ukurannya |
+| Kabin Operator | Tempat operator mengendalikan seluruh operasi |
+| Mesin Diesel | Sumber tenaga utama penggerak alat |
+| Ban Pneumatik | Memberikan mobilitas di berbagai permukaan |
+| Sistem Stabilizer | Menjaga kestabilan saat mengangkat beban berat |
+
+### Aplikasi
+
+1. Penumpukan kontainer di terminal peti kemas
+2. Bongkar muat kontainer dari truk atau trailer
+3. Penataan kontainer di depo penyimpanan
+
+> Reach Stacker merupakan solusi efisien untuk penanganan kontainer dengan produktivitas tinggi dan fleksibilitas operasional yang optimal.
+MD,
+            ],
+            ['description' => 'Electric Stacker',      'category' => 'Fork', 'long_description' => <<<'MD'
+## Electric Stacker
+
+Electric Stacker adalah alat angkut bertenaga listrik yang digunakan untuk mengangkat dan memindahkan palet atau beban di gudang dan area industri. Alat ini dirancang ergonomis dengan emisi nol dan kebisingan rendah.
+
+### Prinsip Kerja
+
+Electric Stacker menggunakan motor listrik untuk menggerakkan roda dan sistem hidrolik untuk mengangkat garpu. Operator mengendalikan alat melalui stang kendali yang dilengkapi tombol untuk maju, mundur, dan mengangkat beban.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Motor Listrik | Sumber tenaga penggerak roda dan hidrolik |
+| Baterai | Menyimpan energi listrik untuk operasional |
+| Sistem Hidrolik | Menggerakkan silinder angkat pada garpu |
+| Garpu (Fork) | Menyangga dan mengangkat palet |
+| Stang Kendali | Mengontrol pergerakan dan fungsi angkat |
+| Roda Beban | Roda depan yang menopang beban |
+| Panel Kontrol | Mengatur kecepatan dan arah gerakan |
+
+### Aplikasi
+
+1. Pemindahan barang di gudang penyimpanan
+2. Bongkar muat barang dari truk pengangkut
+3. Penataan palet di rak penyimpanan
+
+> Electric Stacker menawarkan solusi ramah lingkungan dan efisien untuk operasional gudang dengan biaya perawatan yang rendah.
+MD,
+            ],
+            ['description' => 'Hand Stacker',          'category' => 'Fork', 'long_description' => <<<'MD'
+## Hand Stacker
+
+Hand Stacker adalah alat angkut manual yang digunakan untuk mengangkat dan memindahkan beban ringan hingga sedang di area gudang atau toko. Alat ini dioperasikan secara manual dengan tenaga manusia.
+
+### Prinsip Kerja
+
+Hand Stacker menggunakan sistem hidrolik manual yang dioperasikan dengan pompa tangan untuk mengangkat garpu. Gerakan maju mundur dilakukan dengan mendorong alat secara manual oleh operator.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Garpu (Fork) | Menyangga palet atau beban |
+| Pompa Hidrolik Manual | Menghasilkan tekanan untuk mengangkat garpu |
+| Stang Dorong | Digunakan untuk mendorong dan mengarahkan alat |
+| Roda Depan | Mendukung beban dan memudahkan manuver |
+| Roda Belakang | Roda putar untuk kemudahan belok |
+| Tuas Angkat | Mengontrol naik turunnya garpu |
+| Rangka Baja | Struktur utama penopang beban |
+
+### Aplikasi
+
+1. Pemindahan barang di gudang skala kecil
+2. Bongkar muat barang di toko atau swalayan
+3. Penataan palet di area produksi
+
+> Hand Stacker adalah solusi ekonomis untuk kebutuhan angkat ringan tanpa memerlukan sumber daya listrik.
+MD,
+            ],
+            ['description' => 'Reach Truck',           'category' => 'Gudang Tinggi', 'long_description' => <<<'MD'
+## Reach Truck
+
+Reach Truck adalah alat angkut gudang yang dirancang khusus untuk menjangkau rak penyimpanan tinggi dengan lorong sempit. Alat ini memiliki mekanisme reach yang memungkinkan garpu bergerak maju mundur secara independen.
+
+### Prinsip Kerja
+
+Reach Truck menggunakan mekanisme reach (pantograf) yang memungkinkan garpu menjangkau ke dalam rak tanpa menggerakkan seluruh badan alat. Sistem hidrolik dan motor listrik mengontrol pergerakan garpu dan ketinggian angkat.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Mekanisme Pantograf | Memperpanjang jangkauan garpu ke dalam rak |
+| Garpu (Fork) | Menyangga palet |
+| Tiang Mast | Struktur vertikal untuk mengangkat garpu |
+| Motor Listrik | Menggerakkan roda dan sistem hidrolik |
+| Baterai | Sumber tenaga listrik |
+| Kabin Operator | Tempat duduk dan kontrol operator |
+| Roda Beban | Roda khusus untuk stabilitas tinggi |
+
+### Aplikasi
+
+1. Penyimpanan dan pengambilan barang di rak tinggi
+2. Operasi gudang dengan lorong sempit (narrow aisle)
+3. Sistem penyimpanan palet bervolume tinggi
+
+> Reach Truck meningkatkan kapasitas penyimpanan gudang dengan memanfaatkan ruang vertikal secara optimal.
+MD,
+            ],
+            ['description' => 'Order Picker',          'category' => 'Gudang Tinggi', 'long_description' => <<<'MD'
+## Order Picker
+
+Order Picker adalah alat angkut yang dirancang untuk mengambil barang secara individual dari rak penyimpanan tinggi. Operator naik bersama platform untuk menjangkau barang di ketinggian.
+
+### Prinsip Kerja
+
+Order Picker mengangkat operator beserta platform ke ketinggian rak yang dituju. Setelah mencapai posisi yang tepat, operator dapat mengambil barang secara manual dan meletakkannya di platform.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Platform Kerja | Tempat operator berdiri dan menampung barang |
+| Tiang Mast | Menopang dan mengangkat platform secara vertikal |
+| Motor Listrik | Menggerakkan roda dan sistem angkat |
+| Baterai | Sumber tenaga operasional |
+| Kontrol Operasi | Panel kendali pergerakan dan ketinggian |
+| Roda | Memberikan mobilitas di lorong gudang |
+| Sistem Pengaman | Sabuk pengaman dan sensor keselamatan |
+
+### Aplikasi
+
+1. Pengambilan barang eceran (piece picking) dari rak tinggi
+2. Persiapan pesanan (order fulfillment) di gudang
+3. Inventarisasi dan pengecekan stok di ketinggian
+
+> Order Picker meningkatkan efisiensi picking dan mengurangi risiko cedera operator saat bekerja di ketinggian.
+MD,
+            ],
+            ['description' => 'VNA Truck',             'category' => 'Gudang Tinggi', 'long_description' => <<<'MD'
+## VNA Truck (Very Narrow Aisle Truck)
+
+VNA Truck adalah alat angkut khusus yang dirancang untuk beroperasi di lorong sangat sempit (Very Narrow Aisle) dengan memaksimalkan pemanfaatan ruang penyimpanan vertikal dan horizontal.
+
+### Prinsip Kerja
+
+VNA Truck menggunakan sistem navigasi khusus, seperti rel atau panduan optik, untuk bergerak lurus di lorong sempit. Mekanisme rotasi garpu 180 derajat memungkinkan pengambilan palet dari kedua sisi tanpa memutar badan alat.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Garpu Berputar | Memutar palet 180° untuk penempatan di rak |
+| Tiang Mast Tinggi | Menjangkau rak hingga ketinggian maksimal |
+| Sistem Panduan | Memandu alat tetap pada jalur di lorong sempit |
+| Motor Listrik | Menggerakkan semua fungsi operasional |
+| Baterai Tegangan Tinggi | Menyediakan tenaga untuk operasi berat |
+| Kabin Operator | Dilengkapi kontrol canggih dan visibilitas |
+| Sensor Keselamatan | Mendeteksi halangan dan menjaga jarak aman |
+
+### Aplikasi
+
+1. Gudang dengan lorong sangat sempit (VNA)
+2. Sistem penyimpanan palet densitas tinggi
+3. Distribusi barang dengan rotasi cepat
+
+> VNA Truck memaksimalkan kapasitas penyimpanan gudang hingga 50% lebih banyak dibandingkan gudang konvensional.
+MD,
+            ],
+            ['description' => 'Scissor Lift',          'category' => 'Scissor/AWP', 'long_description' => <<<'MD'
+## Scissor Lift
+
+Scissor Lift adalah platform kerja yang dapat dinaikkan secara vertikal menggunakan mekanisme gunting (scissor) untuk mendukung pekerjaan di ketinggian. Alat ini memberikan platform yang stabil dan luas.
+
+### Prinsip Kerja
+
+Scissor Lift menggunakan sistem hidrolik untuk mengembangkan mekanisme gunting yang mengangkat platform secara vertikal. Platform tetap horizontal selama pengangkatan berlangsung.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Platform Kerja | Tempat pekerja berdiri dan menaruh peralatan |
+| Mekanisme Gunting (Scissor) | Struktur lipat yang mengangkat platform |
+| Silinder Hidrolik | Menggerakkan mekanisme gunting |
+| Motor Penggerak | Sumber tenaga untuk sistem hidrolik |
+| Panel Kontrol | Mengontrol naik turun platform |
+| Roda | Untuk mobilitas alat |
+| Stabilisator | Menjaga kestabilan saat platform diangkat |
+
+### Aplikasi
+
+1. Instalasi dan perawatan listrik di ketinggian
+2. Pekerjaan konstruksi bangunan
+3. Pengecatan dan perbaikan langit-langit
+
+> Scissor Lift memberikan akses aman dan stabil ke area kerja di ketinggian dengan kapasitas angkat yang besar.
+MD,
+            ],
+            ['description' => 'Aerial Work Platform',  'category' => 'Scissor/AWP', 'long_description' => <<<'MD'
+## Aerial Work Platform (AWP)
+
+Aerial Work Platform atau Platform Kerja Udara adalah alat yang digunakan untuk mengangkat pekerja ke ketinggian tertentu guna melakukan berbagai tugas. AWP memiliki desain yang fleksibel dengan lengan artikulasi atau teleskopik.
+
+### Prinsip Kerja
+
+Aerial Work Platform menggunakan lengan artikulasi atau teleskopik yang digerakkan secara hidrolik untuk menjangkau posisi kerja yang sulit dijangkau. Platform dapat dimiringkan dan diputar untuk memberikan akses optimal.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Platform Kerja | Tempat pekerja berdiri, dilengkapi pengaman |
+| Lengan Artikulasi/Teleskopik | Menjangkau area kerja vertikal dan horizontal |
+| Silinder Hidrolik | Menggerakkan lengan dan platform |
+| Sistem Rotasi | Memutar platform 360 derajat |
+| Panel Kontrol | Mengendalikan semua gerakan alat |
+| Stabilisator Kaki | Menjaga kestabilan alat saat operasi |
+| Mesin atau Motor | Sumber tenaga penggerak |
+
+### Aplikasi
+
+1. Pembersihan dan perawatan gedung bertingkat
+2. Instalasi penerangan dan papan reklame
+3. Pekerjaan penyelamatan dan pemeliharaan infrastruktur
+
+> Aerial Work Platform memberikan fleksibilitas tinggi dalam menjangkau area kerja yang rumit dengan aman.
+MD,
+            ],
+            ['description' => 'Conveyor Belt',         'category' => null, 'long_description' => <<<'MD'
+## Conveyor Belt
+
+Conveyor Belt adalah sistem transportasi kontinu yang digunakan untuk memindahkan barang atau material dari satu titik ke titik lainnya secara otomatis. Alat ini sangat umum di industri manufaktur, pertambangan, dan logistik.
+
+### Prinsip Kerja
+
+Conveyor Belt bekerja dengan menggunakan sabuk (belt) yang berputar terus menerus melalui drum penggerak (drive pulley). Barang ditempatkan di atas sabuk dan bergerak mengikuti arah putaran sabuk.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Sabuk (Belt) | Media pembawa material yang bergerak |
+| Drum Penggerak | Memutar sabuk dengan motor |
+| Drum Pembalik | Mengarahkan sabuk kembali ke jalur |
+| Motor Listrik | Sumber tenaga penggerak drum |
+| Roller Penyangga | Menyangga sabuk dan muatan |
+| Rangka Baja | Struktur penopang seluruh sistem |
+| Sistem Pengencang | Menjaga ketegangan sabuk tetap optimal |
+
+### Aplikasi
+
+1. Pemindahan material curah di pertambangan
+2. Distribusi barang di jalur produksi industri
+3. Proses sortasi dan pengemasan di gudang logistik
+
+> Conveyor Belt meningkatkan efisiensi transportasi material secara kontinu dengan biaya operasional yang rendah.
+MD,
+            ],
+            ['description' => 'Lift Barang',           'category' => null, 'long_description' => <<<'MD'
+## Lift Barang
+
+Lift Barang adalah alat angkat vertikal yang digunakan untuk memindahkan barang antar lantai dalam gedung atau pabrik. Lift ini dirancang khusus untuk membawa beban berat dengan aman.
+
+### Prinsip Kerja
+
+Lift Barang bekerja dengan sistem tali baja dan motor penggerak yang mengangkat kabin barang secara vertikal di sepanjang rel panduan. Sistem rem dan sensor keamanan memastikan pergerakan yang aman.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Kabin Barang | Ruang yang membawa muatan |
+| Tali Baja | Mengangkat dan menurunkan kabin |
+| Motor Penggerak | Sumber tenaga untuk menggerakkan sistem |
+| Rel Panduan | Memandu kabin tetap pada lintasan vertikal |
+| Sistem Rem | Menghentikan kabin pada posisi yang diinginkan |
+| Panel Kontrol | Mengatur operasi naik turun |
+| Sensor Beban | Mendeteksi kelebihan beban dan mengaktifkan alarm |
+
+### Aplikasi
+
+1. Pemindahan barang antar lantai di gudang atau pabrik
+2. Loading dan unloading barang di area bongkar muat
+3. Distribusi material di gedung bertingkat
+
+> Lift Barang meningkatkan efisiensi logistik vertikal dengan keamanan dan kapasitas angkat yang besar.
+MD,
+            ],
         ],
 
         // ── Subgroup: Penggerak Mula ──────────────────────────────────────────
         'Penggerak Mula' => [
-            ['description' => 'Motor Diesel',    'category' => null],
-            ['description' => 'Motor Bakar',     'category' => null],
-            ['description' => 'Kompresor Udara', 'category' => null],
+            ['description' => 'Motor Diesel',    'category' => null, 'long_description' => <<<'MD'
+## Motor Diesel
+
+Motor diesel adalah jenis motor bakar torak yang menggunakan prinsip pembakaran kompresi (compression ignition) untuk mengubah energi kimia bahan bakar menjadi energi mekanik dalam bentuk putaran poros. Mesin ini dikenal memiliki efisiensi termal tinggi serta keandalan yang baik pada operasi kontinu beban berat.
+
+### Prinsip Kerja
+
+Udara dikompresi di dalam silinder hingga mencapai temperatur tinggi, kemudian bahan bakar diesel diinjeksikan ke dalam ruang bakar dan terbakar secara spontan akibat temperatur tinggi tersebut. Energi hasil pembakaran mendorong torak yang dihubungkan ke poros engkol sehingga menghasilkan putaran.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Blok Silinder | Tempat berlangsungnya proses pembakaran dan rumah bagi komponen utama mesin |
+| Torak (Piston) | Menerima tekanan gas pembakaran dan meneruskannya ke batang penggerak |
+| Batang Penggerak (Connecting Rod) | Meneruskan gerak translasi torak ke poros engkol |
+| Poros Engkol (Crankshaft) | Mengubah gerak translasi torak menjadi gerak rotasi |
+| Kepala Silinder (Cylinder Head) | Menutup silinder serta menjadi dudukan katup dan injektor |
+| Injektor Bahan Bakar | Menyemprotkan bahan bakar diesel ke dalam ruang bakar pada tekanan tinggi |
+| Sistem Pelumasan | Melumasi komponen bergerak untuk mengurangi gesekan dan keausan |
+
+### Aplikasi
+
+1. Pembangkit listrik skala kecil dan menengah (generator set) untuk cadangan maupun utama
+2. Penggerak kapal nelayan dan kapal barang sebagai mesin induk
+3. Penggerak alat berat seperti bulldozer, excavator, dan truk tambang
+
+> Motor diesel dikenal memiliki efisiensi termal tinggi dan torsi besar pada putaran rendah sehingga sangat cocok untuk aplikasi berat dan operasi kontinu.
+MD,
+            ],
+            ['description' => 'Motor Bakar',     'category' => null, 'long_description' => <<<'MD'
+## Motor Bakar
+
+Motor bakar (motor bensin) adalah jenis motor bakar torak yang menggunakan busi untuk menyalakan campuran udara dan bahan bakar di dalam silinder (spark ignition). Mesin ini mengubah energi kimia bahan bakar menjadi energi mekanik melalui proses pembakaran terkendali dan banyak digunakan pada aplikasi yang membutuhkan putaran tinggi dan respons cepat.
+
+### Prinsip Kerja
+
+Campuran udara dan bahan bakar dikompresi oleh torak di dalam silinder, kemudian dinyalakan oleh percikan busi sehingga terjadi pembakaran. Tekanan gas hasil pembakaran mendorong torak turun, dan gerak translasi ini diubah menjadi putaran poros engkol melalui batang penggerak.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Blok Silinder | Tempat proses pembakaran dan rumah bagi komponen utama mesin |
+| Torak (Piston) | Menerima tekanan gas pembakaran dan meneruskannya ke batang penggerak |
+| Batang Penggerak (Connecting Rod) | Meneruskan gerak torak ke poros engkol |
+| Poros Engkol (Crankshaft) | Mengubah gerak translasi torak menjadi gerak rotasi |
+| Busi (Spark Plug) | Menyalakan campuran udara dan bahan bakar pada akhir langkah kompresi |
+| Karburator/Sistem Injeksi | Mencampur udara dan bahan bakar dalam rasio yang tepat |
+| Sistem Pendinginan | Menjaga temperatur mesin tetap optimal selama operasi |
+
+### Aplikasi
+
+1. Penggerak kendaraan ringan seperti mobil, sepeda motor, dan kendaraan niaga kecil
+2. Penggerak pompa, generator darurat, dan peralatan portable lainnya
+3. Penggerak peralatan pertanian dan perkebunan seperti traktor dan mesin pemotong
+
+> Motor bakar bensin menawarkan putaran tinggi, responsif, dan bobot ringan sehingga ideal untuk aplikasi transportasi dan peralatan yang memerlukan mobilitas.
+MD,
+            ],
+            ['description' => 'Kompresor Udara', 'category' => null, 'long_description' => <<<'MD'
+## Kompresor Udara
+
+Kompresor udara adalah peralatan mekanik yang mengubah daya dari motor listrik atau motor bakar menjadi energi potensial yang tersimpan dalam bentuk udara bertekanan. Udara bertekanan ini kemudian digunakan sebagai sumber tenaga untuk berbagai peralatan pneumatik di industri, konstruksi, dan perbengkelan.
+
+### Prinsip Kerja
+
+Udara atmosfer dihisap masuk ke dalam ruang kompresi melalui katup isap, kemudian volume ruang diperkecil oleh gerakan torak atau elemen putar sehingga tekanan udara meningkat. Udara bertekanan selanjutnya dialirkan ke tangki penampung untuk distribusi ke peralatan pengguna.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Motor Penggerak | Menyediakan tenaga mekanik untuk menggerakkan elemen kompresi |
+| Elemen Kompresi (Screw/Resiprokal) | Bagian yang melakukan proses kompresi udara secara mekanik |
+| Tangki Udara (Air Receiver) | Menampung udara bertekanan dan menstabilkan fluktuasi tekanan |
+| Katup Pengaman (Safety Valve) | Melepaskan tekanan berlebih secara otomatis untuk keselamatan |
+| Pengatur Tekanan (Pressure Switch) | Mengontrol hidup/mati motor berdasarkan tekanan operasi |
+| Pengering Udara (Air Dryer) | Menghilangkan kadar air dari udara bertekanan untuk melindungi peralatan |
+| Filter Udara | Menyaring partikel debu dan kotoran dari udara yang masuk |
+
+### Aplikasi
+
+1. Suplai udara tekan untuk alat-alat pneumatik (bor, impact wrench, spray gun, nailer)
+2. Sistem kontrol pneumatik di pabrik dan industri manufaktur
+3. Proses pengemasan, pembersihan, pengecatan, dan instrumentasi di berbagai sektor
+
+> Kompresor udara merupakan sumber daya utama untuk sistem pneumatik dan menjadi bagian vital dalam operasi industri modern, bengkel, serta fasilitas konstruksi.
+MD,
+            ],
             ['description' => 'Generator Set',   'category' => null, 'long_description' => <<<'MD'
 ## Generator Set
 
@@ -138,7 +747,36 @@ Engine menggerakkan rotor generator yang berputar di dalam medan magnet stator. 
 > Genset tersedia dari 5 kVA hingga 5.000+ kVA dengan berbagai jenis bahan bakar (diesel, gas, dual fuel).
 MD,
             ],
-            ['description' => 'Pompa Industri',  'category' => null],
+            ['description' => 'Pompa Industri',  'category' => null, 'long_description' => <<<'MD'
+## Pompa Industri
+
+Pompa industri adalah peralatan mekanik yang digunakan untuk memindahkan fluida cair dari satu tempat ke tempat lain dengan cara memberikan energi pada fluida tersebut. Pompa berperan penting dalam sistem sirkulasi, distribusi, dan transfer fluida di berbagai sektor industri dan utilitas.
+
+### Prinsip Kerja
+
+Pompa mengubah energi mekanik dari motor penggerak menjadi energi kinetik dan tekanan pada fluida. Fluida dihisap masuk ke dalam rumah pompa melalui saluran isap, kemudian didorong keluar menuju sistem perpipaan oleh impeler atau mekanisme pemindah positif lainnya.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Impeler (Impeller) | Komponen berputar yang memberikan energi kinetik pada fluida |
+| Rumah Pompa (Casing) | Melindungi komponen internal dan mengarahkan aliran fluida |
+| Poros Pompa (Shaft) | Meneruskan putaran dari motor ke impeler |
+| Bantalan (Bearing) | Menopang poros dan mengurangi gesekan saat berputar |
+| Mechanical Seal | Mencegah kebocoran fluida di sepanjang poros yang menembus rumah pompa |
+| Motor Penggerak | Sumber tenaga listrik atau mekanik untuk memutar poros pompa |
+| Sistem Perpipaan Sambungan | Menghubungkan pompa ke sumber fluida dan jaringan distribusi |
+
+### Aplikasi
+
+1. Sistem penyediaan air bersih dan distribusi air pada jaringan PDAM
+2. Sirkulasi air pendingin (cooling water) di industri, pembangkit listrik, dan HVAC
+3. Transfer bahan kimia, minyak, dan fluida proses pada pabrik dan kilang
+
+> Pompa industri tersedia dalam berbagai jenis seperti sentrifugal, gear, diaphragm, dan submersible; pemilihannya disesuaikan dengan karakteristik fluida, kapasitas aliran, dan tekanan operasi yang dibutuhkan.
+MD,
+            ],
         ],
 
         // ── Subgroup: Mesin Perkakas ──────────────────────────────────────────
