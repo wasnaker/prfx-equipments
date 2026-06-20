@@ -16,7 +16,37 @@ class EquipmentsSeeder extends EquipmentsBaseSeeder
 
         // ── Subgroup: Pesawat Angkat ──────────────────────────────────────────
         'Pesawat Angkat' => [
-            ['description' => 'Overhead Crane',  'category' => 'Crane'],
+            ['description' => 'Overhead Crane',  'category' => 'Crane', 'long_description' => <<<'MD'
+## Overhead Crane
+
+Overhead Crane (Crane Jembatan) adalah pesawat angkat yang bergerak di atas rel (runway) untuk memindahkan beban berat secara horizontal dan vertikal di dalam gedung pabrik, bengkel, atau area produksi.
+
+### Prinsip Kerja
+
+Crane terdiri dari **girder** (balok jembatan) yang berjalan di atas rel sejajar, dengan **trolley** (kereta) yang bergerak sepanjang girder. **Hoist** (alat angkat) dipasang pada trolley untuk mengangkat dan menurunkan beban.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Girder | Balok jembatan utama |
+| End Truck | Penopang girder + motor travel |
+| Trolley | Kereta pembawa hoist |
+| Hoist | Alat angkat (wire rope/chain) |
+| Hook | Kait pengangkat beban |
+| Pendant/Remote | Kontrol operator |
+| Limit Switch | Pengaman batas angkat & travel |
+
+### Aplikasi
+
+1. Bengkel fabrikasi
+2. Pabrik manufaktur
+3. Gudang logistik
+4. Workshop maintenance
+
+> Overhead crane dapat mengangkat beban dari 1 ton hingga 500+ ton dengan span hingga 40 meter.
+MD,
+            ],
             ['description' => 'Gantry Crane',    'category' => 'Crane'],
             ['description' => 'Tower Crane',     'category' => 'Crane'],
             ['description' => 'Mobile Crane',    'category' => 'Crane'],
@@ -29,7 +59,37 @@ class EquipmentsSeeder extends EquipmentsBaseSeeder
 
         // ── Subgroup: Pesawat Angkut ──────────────────────────────────────────
         'Pesawat Angkut' => [
-            ['description' => 'Forklift',              'category' => 'Fork'],
+            ['description' => 'Forklift',              'category' => 'Fork', 'long_description' => <<<'MD'
+## Forklift
+
+Forklift adalah kendaraan industri bertenaga yang dilengkapi dengan **garpu (fork)** untuk mengangkat, memindahkan, dan menumpuk material berat. Merupakan salah satu pesawat angkat-angkut paling umum digunakan di gudang dan pabrik.
+
+### Prinsip Kerja
+
+Forklift menggunakan **sistem hidrolik** untuk mengangkat garpu. Mast (tiang) bergerak vertikal dengan bantuan silinder hidrolik, sementara garpu yang terpasang pada carriage dapat diatur jaraknya sesuai ukuran pallet.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Mast | Tiang angkat (2-stage/3-stage) |
+| Fork (Garpu) | Pengangkat material |
+| Carriage | Penopang garpu pada mast |
+| Counterweight | Penyeimbang beban |
+| Mesin/Motor | Sumber tenaga (diesel/baterai/LPG) |
+| Hydraulic System | Penggerak mast & tilt |
+| Overhead Guard | Pelindung operator |
+
+### Jenis Forklift
+
+- **Counterbalance** — standar, beban di depan
+- **Reach Truck** — untuk gudang tinggi
+- **Order Picker** — picking manual
+- **Pallet Jack** — ringan, manual/elektrik
+
+> Forklift tersedia dalam kapasitas 1-50 ton dengan tinggi angkat hingga 12+ meter.
+MD,
+            ],
             ['description' => 'Reach Stacker',         'category' => 'Fork'],
             ['description' => 'Electric Stacker',      'category' => 'Fork'],
             ['description' => 'Hand Stacker',          'category' => 'Fork'],
@@ -47,7 +107,37 @@ class EquipmentsSeeder extends EquipmentsBaseSeeder
             ['description' => 'Motor Diesel',    'category' => null],
             ['description' => 'Motor Bakar',     'category' => null],
             ['description' => 'Kompresor Udara', 'category' => null],
-            ['description' => 'Generator Set',   'category' => null],
+            ['description' => 'Generator Set',   'category' => null, 'long_description' => <<<'MD'
+## Generator Set
+
+Generator Set (Genset) adalah peralatan yang mengubah **energi mekanik** dari mesin penggerak menjadi **energi listrik**. Terdiri dari engine (motor diesel/bensin/gas) yang dikopel langsung dengan generator (alternator).
+
+### Prinsip Kerja
+
+Engine menggerakkan rotor generator yang berputar di dalam medan magnet stator. Perputaran rotor menghasilkan **induksi elektromagnetik** pada kumparan stator, menghasilkan arus listrik AC.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Engine | Sumber tenaga mekanik |
+| Alternator | Konversi energi mekanik ke listrik |
+| AVR (Auto Voltage Regulator) | Pengatur tegangan |
+| Panel Kontrol | Monitoring & kontrol operasi |
+| Radiator | Sistem pendingin engine |
+| Aki | Starting baterai |
+| Tangki Bahan Bakar | Suplai fuel |
+
+### Aplikasi
+
+1. **Standby power** — gedung, rumah sakit, hotel
+2. **Prime power** — daerah tanpa grid listrik
+3. **Peak shaving** — pengurangan beban puncak
+4. **Base load** — industri terpencil
+
+> Genset tersedia dari 5 kVA hingga 5.000+ kVA dengan berbagai jenis bahan bakar (diesel, gas, dual fuel).
+MD,
+            ],
             ['description' => 'Pompa Industri',  'category' => null],
         ],
 
@@ -128,7 +218,36 @@ Turbin uap digunakan pada:
 > Turbin uap merupakan salah satu penggerak utama dalam industri tenaga dan manufaktur modern.
 MD,
             ],
-            ['description' => 'Turbin Gas', 'category' => null],
+            ['description' => 'Turbin Gas', 'category' => null, 'long_description' => <<<'MD'
+## Turbin Gas
+
+Turbin Gas adalah mesin panas yang mengubah energi kinetik gas bertekanan tinggi menjadi energi mekanik melalui nozzle dan baling-baling (blade). Berbeda dari turbin uap, turbin gas menggunakan **gas pembakaran** (bukan uap) sebagai fluida kerja.
+
+### Prinsip Kerja
+
+Udara masuk melalui kompresor, dikompresi hingga tekanan tinggi, kemudian dicampur dengan bahan bakar di ruang pembakaran (combustor). Gas panas bertekanan tinggi mengembang melalui turbin, menghasilkan daya putar untuk poros utama.
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Kompresor | Memampatkan udara masuk |
+| Combustor | Ruang pembakaran (udara + bahan bakar) |
+| Turbin | Mengubah energi gas menjadi rotasi |
+| Poros | Meneruskan daya ke generator/load |
+| Sistem Bahan Bakar | Suplai & kontrol bahan bakar |
+| Sistem Kontrol | Pengaturan operasi & proteksi |
+
+### Aplikasi Industri
+
+1. Pembangkit Listrik Tenaga Gas (PLTG)
+2. Instalasi cogeneration
+3. Kompresor gas pipeline
+4. Propulsi pesawat jet (turbojet/turbofan)
+
+> Turbin gas memiliki rasio daya-terhadap-berat yang sangat tinggi, menjadikannya ideal untuk aplikasi yang membutuhkan daya besar dengan bobot ringan.
+MD,
+            ],
         ],
 
         // ── Subgroup: Kincir Angin ────────────────────────────────────────────
@@ -144,8 +263,68 @@ MD,
 
         // ── Subgroup: Pesawat Uap ─────────────────────────────────────────────
         'Pesawat Uap' => [
-            ['description' => 'Boiler Fire Tube', 'category' => 'Fire Tube Boiler'],
-            ['description' => 'Boiler Water Tube','category' => 'Water Tube Boiler'],
+            ['description' => 'Boiler Fire Tube', 'category' => 'Fire Tube Boiler', 'long_description' => <<<'MD'
+## Boiler Fire Tube
+
+Boiler Fire Tube (Ketel Pipa Api) adalah jenis ketel uap di mana **gas panas mengalir di dalam pipa** yang dikelilingi air. Merupakan salah satu tipe boiler paling umum digunakan pada industri skala kecil hingga menengah.
+
+### Prinsip Kerja
+
+Pembakaran terjadi di dalam ruang bakar (furnace), menghasilkan gas panas yang mengalir melalui pipa-pipa (fire tubes) yang terendam dalam air. Panas dari gas berpindah ke air melalui dinding pipa, menghasilkan uap bertekanan di ruang uap (steam dome).
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Shell | Badan boiler berisi air |
+| Fire Tubes | Pipa gas panas |
+| Furnace | Ruang pembakaran |
+| Steam Dome | Pengumpul uap |
+| Safety Valve | Pelepas tekanan berlebih |
+| Water Level Gauge | Indikator muka air |
+| Blowdown Valve | Pembuangan lumpur |
+
+### Aplikasi
+
+1. Industri makanan & minuman
+2. Rumah sakit (sterilisasi)
+3. Laundry industri
+4. Proses pemanasan pabrik tekstil
+
+> Boiler fire tube cocok untuk tekanan rendah hingga menengah (≤ 20 bar) dan kapasitas uap hingga 20 ton/jam.
+MD,
+            ],
+            ['description' => 'Boiler Water Tube','category' => 'Water Tube Boiler', 'long_description' => <<<'MD'
+## Boiler Water Tube
+
+Boiler Water Tube (Ketel Pipa Air) adalah jenis ketel uap di mana **air mengalir di dalam pipa** dan gas panas berada di luar pipa. Digunakan untuk aplikasi tekanan tinggi dan kapasitas besar.
+
+### Prinsip Kerja
+
+Air dipompa ke dalam pipa-pipa kecil yang tersusun dalam panel (water walls, superheater, economizer). Gas panas dari pembakaran memanaskan pipa dari luar, mengubah air menjadi uap. Uap terkumpul di drum uap (steam drum).
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Steam Drum | Pemisah uap dari air |
+| Mud Drum | Pengumpul endapan |
+| Water Walls | Panel pipa pemanas |
+| Superheater | Pemanasan lanjutan uap |
+| Economizer | Pemanasan awal air umpan |
+| Air Heater | Pemanasan udara pembakaran |
+| Soot Blower | Pembersih jelaga |
+
+### Aplikasi
+
+1. Pembangkit Listrik Tenaga Uap (PLTU)
+2. Industri petrokimia
+3. Pabrik gula
+4. Refinery & kilang minyak
+
+> Boiler water tube mampu beroperasi pada tekanan hingga 200+ bar dan kapasitas ratusan ton uap per jam.
+MD,
+            ],
             ['description' => 'Steam Drum',       'category' => 'Water Tube Boiler'],
             ['description' => 'Mud Drum',         'category' => 'Water Tube Boiler'],
             ['description' => 'HRSG',             'category' => 'Water Tube Boiler'],
@@ -159,7 +338,44 @@ MD,
             ['description' => 'Air Receiver',  'category' => 'Pressure Vessel'],
             ['description' => 'Separator',     'category' => 'Pressure Vessel'],
             ['description' => 'Accumulator',   'category' => 'Pressure Vessel'],
-            ['description' => 'Heat Exchanger','category' => 'Heat Exchanger'],
+            ['description' => 'Heat Exchanger','category' => 'Heat Exchanger', 'long_description' => <<<'MD'
+## Heat Exchanger
+
+Heat Exchanger (Penukar Panas) adalah peralatan yang digunakan untuk **mentransfer energi panas** dari satu fluida ke fluida lainnya tanpa mencampurkannya. Sangat penting dalam proses industri yang membutuhkan pemanasan atau pendinginan.
+
+### Prinsip Kerja
+
+Dua fluida dengan suhu berbeda mengalir secara berseberangan (counter-current) atau sejajar (parallel) melalui jalur terpisah. Panas berpindah dari fluida panas ke fluida dingin melalui **media pengantar** (pipa/lempengan).
+
+### Tipe Utama
+
+| Tipe | Kelebihan | Kekurangan |
+|------|-----------|------------|
+| **Shell & Tube** | Tahan tekanan tinggi | Mahal, berat |
+| **Plate** | Efisiensi tinggi, ringan | Tidak untuk tekanan sangat tinggi |
+| **Double Pipe** | Sederhana, murah | Kapasitas kecil |
+| **Air Cooled** | Tidak butuh air pendingin | Efisiensi lebih rendah |
+
+### Komponen Utama
+
+| Komponen | Fungsi |
+|----------|--------|
+| Shell | Badan luar (shell & tube) |
+| Tube Bundle | Pipa pengantar panas |
+| Tubesheet | Penyambung pipa ke shell |
+| Baffle | Pengatur aliran shell side |
+| Nozzle | Titik masuk/keluar fluida |
+
+### Aplikasi
+
+1. Pemakaian panas limbah (waste heat recovery)
+2. Pendingin oli mesin
+3. Kondenser pada sistem HVAC
+4. Pemanas/pendingin proses kimia
+
+> Pemilihan tipe heat exchanger tergantung pada suhu, tekanan, jenis fluida, dan kapasitas panas yang dibutuhkan.
+MD,
+            ],
             ['description' => 'Superheater',   'category' => 'Heat Exchanger'],
             ['description' => 'Economizer',    'category' => 'Heat Exchanger'],
             ['description' => 'Deaerator',     'category' => 'Heat Exchanger'],
