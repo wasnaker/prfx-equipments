@@ -2,10 +2,7 @@
 
 $table_data = [
     _l('subgroup_name'),
-    _l('group_code'),
     _l('equipment_group'),
-    _l('color'),
-    _l('sort_order'),
     _l('equipments'),
 ];
 
