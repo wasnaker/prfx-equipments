@@ -2,7 +2,7 @@
 
 ## Overview
 
-Module ini mengikuti pattern Perfex CRM standar:
+Module ini mengikuti pattern aplikasi standar:
 
 - **Controllers** — `modules/equipments/controllers/`
 - **Models** — `modules/equipments/models/`

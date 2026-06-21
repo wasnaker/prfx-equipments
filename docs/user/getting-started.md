@@ -2,7 +2,7 @@
 
 ## Apa ini?
 
-Module **Equipments** mengatur katalog peralatan di Perfex CRM. Kamu bisa mengelompokkan peralatan berdasarkan **Group → Subgroup → Category**, lalu menambahkan item peralatan di dalamnya.
+Module **Equipments** mengatur katalog peralatan dalam aplikasi ini. Kamu bisa mengelompokkan peralatan berdasarkan **Group → Subgroup → Category**, lalu menambahkan item peralatan di dalamnya.
 
 ## Struktur Data
 
