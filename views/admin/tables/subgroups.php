@@ -8,10 +8,7 @@ return App_table::find('subgroups')
 
         $aColumns = [
             db_prefix() . 'items_subgroups.name',
-            db_prefix() . 'items_subgroups.code',
             'grp.code as group_code',
-            db_prefix() . 'items_subgroups.color',
-            db_prefix() . 'items_subgroups.sort_order',
             '(SELECT COUNT(*) FROM ' . db_prefix() . 'items WHERE subgroup_id=' . db_prefix() . 'items_subgroups.id) as total_items',
         ];
 
@@ -57,17 +54,12 @@ return App_table::find('subgroups')
             }
             $nameOutput .= '</div>';
 
-            $color = e($aRow[db_prefix() . 'items_subgroups.color'] ?? '#3b82f6');
-
-            $row[] = $nameOutput;
-            $row[] = '<span class="tw-font-mono tw-text-sm tw-text-neutral-500">' . e($aRow[db_prefix() . 'items_subgroups.code'] ?? '—') . '</span>';
             $grp_id   = (int) ($aRow['group_id'] ?? 0);
             $grp_code = $aRow['group_code'] ?? '';
+            $row[] = $nameOutput;
             $row[] = $grp_code !== ''
-                            ? '<a href="' . admin_url('equipments/groups/list_groups/' . $grp_id) . '" class="label label-default">' . e($grp_code) . '</a>'
-                            : '—';
-            $row[] = '<span class="tw-inline-block tw-w-5 tw-h-5 tw-rounded tw-border" style="background:' . $color . '"></span>';
-            $row[] = e($aRow[db_prefix() . 'items_subgroups.sort_order']);
+                ? '<a href="' . admin_url('equipments/groups/list_groups/' . $grp_id) . '" class="label label-default">' . e($grp_code) . '</a>'
+                : '—';
             $row[] = '<span class="badge">' . (int)$aRow['total_items'] . '</span>';
 
             $row['DT_RowClass'] = 'has-row-options';
@@ -82,7 +74,6 @@ return App_table::find('subgroups')
     })
     ->setRules([
         App_table_filter::new('name', 'TextRule')->label(_l('subgroup_name')),
-        App_table_filter::new('code', 'TextRule')->label(_l('group_code')),
         App_table_filter::new('group_id', 'MultiSelectRule')
             ->label(_l('equipment_group'))
             ->column(db_prefix() . 'items_subgroups.group_id')
