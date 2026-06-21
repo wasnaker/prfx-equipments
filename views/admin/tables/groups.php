@@ -38,7 +38,8 @@ return App_table::find('groups')
         foreach ($rResult as $aRow) {
             $row = [];
 
-            $nameOutput = '<a href="#" onclick="init_group(' . $aRow['id'] . '); return false;" class="tw-font-medium">'
+            $nameOutput = '<a href="' . admin_url('equipments/groups/list_groups/' . $aRow['id']) . '"'
+                . ' onclick="init_group(' . $aRow['id'] . '); return false;" class="tw-font-medium">'
                 . e($aRow[db_prefix() . 'items_groups.name'])
                 . '</a>'
                 . '<div class="row-options">';

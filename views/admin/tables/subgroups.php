@@ -41,7 +41,8 @@ return App_table::find('subgroups')
         foreach ($rResult as $aRow) {
             $row = [];
 
-            $nameOutput = '<a href="#" onclick="init_subgroup(' . $aRow['id'] . '); return false;" class="tw-font-medium">'
+            $nameOutput = '<a href="' . admin_url('equipments/subgroups/list_subgroups/' . $aRow['id']) . '"'
+                . ' onclick="init_subgroup(' . $aRow['id'] . '); return false;" class="tw-font-medium">'
                 . e($aRow[db_prefix() . 'items_subgroups.name'])
                 . '</a>'
                 . '<div class="row-options">';

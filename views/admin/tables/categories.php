@@ -38,7 +38,8 @@ return App_table::find('categories')
         foreach ($rResult as $aRow) {
             $row = [];
 
-            $nameOutput = '<a href="#" onclick="init_category(' . $aRow['id'] . '); return false;" class="tw-font-medium">'
+            $nameOutput = '<a href="' . admin_url('equipments/categories/list_categories/' . $aRow['id']) . '"'
+                . ' onclick="init_category(' . $aRow['id'] . '); return false;" class="tw-font-medium">'
                 . e($aRow[db_prefix() . 'items_categories.name']) . '</a>'
                 . '<div class="row-options">';
             if (staff_can('edit', 'equipments')) {
