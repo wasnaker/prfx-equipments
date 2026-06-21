@@ -1366,99 +1366,27 @@ MD,
 
         // ── Subgroup: Kincir Angin ────────────────────────────────────────────
         'Kincir Angin' => [
-            ['description' => 'Kincir Angin','category' => null, 'long_description' => <<<'MD'
+            ['description' => 'Kincir Angin','category' => null, 'long_description' => <<< 'MD'
 ## Kincir Angin
 
-Kincir angin (wind turbine) adalah peralatan yang mengubah energi kinetik angin menjadi energi mekanik untuk menggerakkan generator listrik atau pompa air. Kincir angin terdiri dari sudu-sudu (blade) yang berputar akibat hembusan angin, memutar rotor yang terhubung ke poros dan gearbox.
-
-### Prinsip Kerja
-
-Angin mengalir melalui sudu-sudu kincir, menciptakan gaya aerodinamis yang memutar rotor. Putaran rotor dipercepat oleh gearbox (jika ada) untuk mencapai kecepatan yang diperlukan generator. Generator mengubah energi mekanik putaran menjadi energi listrik yang dapat disalurkan ke jaringan atau beban. Sistem kontrol mengatur sudut sudu (pitch) dan arah hadap (yaw) untuk mengoptimalkan penangkapan energi angin.
-
-### Komponen Utama
-
-| Komponen | Fungsi |
-|----------|--------|
-| Sudu (Blade) | Menangkap energi kinetik angin dan mengubahnya menjadi putaran rotor |
-| Rotor/Hub | Tempat sudu dipasang dan menyalurkan putaran ke poros |
-| Gearbox | Meningkatkan kecepatan putaran dari rotor ke generator |
-| Generator | Mengubah energi mekanik menjadi energi listrik |
-| Nacelle | Rumah mesin yang menampung gearbox, generator, dan komponen lainnya |
-| Tower | Struktur vertikal penyangga nacelle dan rotor pada ketinggian optimal |
-| Sistem Yaw | Memutar nacelle menghadap arah angin untuk penangkapan maksimal |
-
-### Aplikasi
-
-1. Pembangkit listrik tenaga bayu (PLTB) skala besar dengan kapasitas MW
-2. Turbin angin skala kecil untuk rumah tangga dan aplikasi off-grid
-3. Penggerak pompa air untuk irigasi pertanian di daerah terpencil
-
-> Kincir angin merupakan sumber energi terbarukan yang ramah lingkungan dengan biaya operasional rendah setelah instalasi.
-MD,
+Kincir angin (wind turbine) adalah peralatan yang mengubah energi kinetik angin menjadi energi mekanik untuk menggerakkan generator listrik atau pompa air.
+MD
             ],
         ],
 
         // ── Subgroup: Motor Listrik ───────────────────────────────────────────
         'Motor Listrik' => [
-            ['description' => 'Motor Listrik AC','category' => null, 'long_description' => <<<'MD'
+            ['description' => 'Motor Listrik AC','category' => null, 'long_description' => <<< 'MD'
 ## Motor Listrik AC
 
-Motor listrik AC (Alternating Current) adalah mesin elektromekanik yang mengubah energi listrik AC menjadi energi mekanik berupa putaran poros. Motor ini banyak digunakan di berbagai industri karena keandalan, efisiensi, dan kemudahan pemeliharaannya.
-
-### Prinsip Kerja
-
-Arus AC yang mengalir pada stator menghasilkan medan magnet berputar (rotating magnetic field) yang memotong rotor dan menginduksi arus eddy pada rotor. Interaksi antara medan magnet stator dan rotor menghasilkan torsi yang memutar poros motor. Kecepatan putaran tergantung pada jumlah pasang kutub dan frekuensi suplai arus listrik.
-
-### Komponen Utama
-
-| Komponen | Fungsi |
-|----------|--------|
-| Stator | Kumparan statis yang menghasilkan medan magnet berputar |
-| Rotor | Bagian berputar yang mengubah energi magnet menjadi putaran mekanik |
-| Poros (Shaft) | Menyalurkan putaran rotor ke beban yang digerakkan |
-| Bantalan (Bearing) | Menopang poros agar berputar dengan halus |
-| End Shield | Pelindung bagian ujung motor dan rumah bantalan |
-| Cooling Fan | Pendingin untuk menjaga suhu operasi motor tetap aman |
-| Terminal Box | Kotak sambungan kabel suplai listrik ke motor |
-
-### Aplikasi
-
-1. Penggerak pompa sentrifugal, kipas, dan kompresor di industri
-2. Mesin manufaktur seperti bubut, milling, dan conveyor
-3. Sistem HVAC (Heating, Ventilation, and Air Conditioning) pada gedung
-
-> Motor listrik AC tersedia dalam berbagai tipe (induksi, sinkron) dan merupakan penggerak utama di hampir semua fasilitas industri modern.
-MD,
+Motor listrik AC (Alternating Current) adalah mesin elektromekanik yang mengubah energi listrik AC menjadi energi mekanik berupa putaran poros.
+MD
             ],
-            ['description' => 'Motor Listrik DC','category' => null, 'long_description' => <<<'MD'
+            ['description' => 'Motor Listrik DC','category' => null, 'long_description' => <<< 'MD'
 ## Motor Listrik DC
 
-Motor listrik DC (Direct Current) adalah mesin elektromekanik yang mengubah energi listrik DC menjadi energi mekanik berupa putaran poros. Motor ini dikenal memiliki karakteristik torsi tinggi pada kecepatan rendah dan kemampuan kontrol kecepatan yang mudah.
-
-### Prinsip Kerja
-
-Arus DC yang mengalir pada kumparan armature (rotor) berada dalam medan magnet yang dihasilkan oleh magnet permanen atau kumparan medan (stator). Gaya Lorentz yang terjadi pada kumparan yang dialiri arus dalam medan magnet menghasilkan torsi yang memutar poros. Komutator dan sikat (brush) berfungsi untuk membalik arus pada kumparan rotor secara periodik agar putaran berlanjut.
-
-### Komponen Utama
-
-| Komponen | Fungsi |
-|----------|--------|
-| Armature (Rotor) | Kumparan berputar yang menghasilkan torsi |
-| Kumparan Medan (Stator) | Menghasilkan medan magnet statis untuk interaksi dengan armature |
-| Komutator | Membalik arus pada armature secara periodik untuk menjaga putaran |
-| Sikat (Brush) | Media kontak listrik yang mengalirkan arus ke komutator |
-| Poros (Shaft) | Menyalurkan putaran motor ke beban |
-| Bantalan (Bearing) | Menopang poros agar berputar dengan stabil |
-| Housing | Rumah motor yang melindungi komponen internal |
-
-### Aplikasi
-
-1. Sistem traksi pada kendaraan listrik dan forklift
-2. Penggerak lift dan crane dengan kontrol kecepatan presisi
-3. Mesin industri yang membutuhkan regulasi torsi dan kecepatan akurat
-
-> Motor listrik DC memberikan kontrol kecepatan yang fleksibel dan torsi tinggi pada putaran rendah, sehingga cocok untuk aplikasi yang membutuhkan akselerasi cepat dan beban berat.
-MD,
+Motor listrik DC (Direct Current) adalah mesin elektromekanik yang mengubah energi listrik DC menjadi energi mekanik berupa putaran poros.
+MD
             ],
         ],
 
@@ -1526,201 +1454,88 @@ Air dipompa ke dalam pipa-pipa kecil yang tersusun dalam panel (water walls, sup
 > Boiler water tube mampu beroperasi pada tekanan hingga 200+ bar dan kapasitas ratusan ton uap per jam.
 MD,
             ],
-            ['description' => 'Steam Drum',       'category' => 'Water Tube Boiler', 'long_description' => <<<'MD'
+            ['description' => 'Steam Drum',       'category' => 'Water Tube Boiler', 'long_description' => <<< 'MD'
 ## Steam Drum
 
-Steam Drum adalah bejana bertekanan yang terpasang di bagian atas boiler air tube (water tube boiler) dan berfungsi sebagai pemisah uap-air serta penampung uap jenuh yang dihasilkan dari proses penguapan air.
-
-### Prinsip Kerja
-
-Air dari feedwater masuk ke steam drum, lalu dialirkan ke mud drum melalui downcomer, dan panas ke riser tube di dinding furnace. Campuran uap dan air keluar dari riser tube kembali ke steam drum, di mana uap dipisahkan dari air menggunakan cyclone separator atau chevron separator. Uap jenuh yang kering keluar ke superheater, sedangkan air kembali turun ke mud drum melalui siklus sirkulasi alami (natural circulation) atau dipaksa (forced circulation).
-
-### Komponen Utama
-
-| Komponen | Fungsi |
-|----------|--------|
-| Shell Drum | Badan silindris yang menahan tekanan operasional boiler |
-| Separator Uap | Memisahkan tetesan air dari uap agar uap kering (dry steam) |
-| Downcomer | Pipa turun yang mengalirkan air dari steam drum ke mud drum |
-| Riser Tube | Pipa naik di dinding furnace tempat air menguap |
-| Level Gauge Glass | Indikator visual muka air dalam drum |
-| Safety Valve | Pengaman pelepasan tekanan berlebih |
-
-### Aplikasi
-
-1. Komponen utama boiler air tube (water tube boiler) industri
-2. Sistem sirkulasi alami pada boiler tegangan tinggi
-3. Tempat pengukuran level air dan penampungan uap sebelum ke superheater
-
-> Steam drum merupakan komponen kritis boiler water tube; kerusakan pada drum dapat mengakibatkan ledakan berbahaya.
-MD,
+Steam Drum adalah bejana bertekanan yang terpasang di bagian atas boiler air tube dan berfungsi sebagai pemisah uap-air serta penampung uap jenuh.
+MD
             ],
-            ['description' => 'Mud Drum',         'category' => 'Water Tube Boiler', 'long_description' => <<<'MD'
+            ['description' => 'Mud Drum',         'category' => 'Water Tube Boiler', 'long_description' => <<< 'MD'
 ## Mud Drum
 
-Mud Drum (drum lumpur) adalah bejana bertekanan yang terpasang di bagian bawah boiler air tube (water tube boiler) dan berfungsi sebagai penampung air kotor (blowdown) serta mengumpulkan sedimen yang terbawa aliran air sirkulasi.
-
-### Prinsip Kerja
-
-Air dari steam drum mengalir turun melalui downcomer ke mud drum, lalu didistribusikan ke riser tube. Selama sirkulasi, partikel padat, oksida, dan kotoran lain yang larut dalam air akan mengendap di mud drum karena gravitasi. Secara periodik, blowdown valve dibuka untuk mengeluarkan kotoran dan air kotor ini keluar sistem, menjaga kualitas air boiler tetap bersih.
-
-### Komponen Utama
-
-| Komponen | Fungsi |
-|----------|--------|
-| Shell Drum | Badan silindris penyangga tekanan di bagian bawah boiler |
-| Blowdown Valve | Klep pengeluaran air kotor dan sedimen secara berkala |
-| Downcomer Connection | Sambungan pipa turun dari steam drum |
-| Riser Tube Connection | Sambungan pipa naik ke dinding furnace |
-| Level Sensor | Sensor pemonitor ketinggian air dan sedimen |
-| Manhole | Akses untuk inspeksi dan pembersihan internal drum |
-
-### Aplikasi
-
-1. Penampung sedimen dan kotoran dalam sistem boiler water tube
-2. Lokasi pengeluaran blowdown untuk menjaga kualitas air boiler
-3. Akses inspeksi internal sistem sirkulasi boiler
-
-> Blowdown berkala pada mud drum sangat penting untuk mencegah penumpukan skala dan korosi yang merusak pipa boiler.
-MD,
+Mud Drum (drum lumpur) adalah bejana bertekanan yang terpasang di bagian bawah boiler air tube dan berfungsi sebagai penampung air kotor (blowdown).
+MD
             ],
-            ['description' => 'HRSG',             'category' => 'Water Tube Boiler', 'long_description' => <<<'MD'
+            ['description' => 'HRSG',             'category' => 'Water Tube Boiler', 'long_description' => <<< 'MD'
 ## HRSG (Heat Recovery Steam Generator)
 
-HRSG adalah boiler yang menghasilkan uap dengan memanfaatkan panas sisa (waste heat) dari gas buang turbin gas atau mesin diesel, tanpa menggunakan bahan bakar tambahan. Merupakan komponen kunci dalam sistem pembangkitan gabungan (combined cycle power plant).
-
-### Prinsip Kerja
-
-Gas buang bertekanan tinggi dan suhu tinggi dari turbin gas dialirkan melewati bank-tabung boiler (economizer, evaporator, superheater). Panas gas buang ditransfer ke air yang mengalir di dalam tabung, menghasilkan uap tekanan tinggi yang digunakan untuk menggerakkan turbin uap. HRSG biasanya memiliki beberapa tekanan (HP, IP, LP) untuk memaksimalkan ekstraksi energi panas.
-
-### Komponen Utama
-
-| Komponen | Fungsi |
-|----------|--------|
-| Superheater | Memanaskan uap jenuh menjadi uap superheat |
-| Evaporator | Mengubah air menjadi uap jenuh |
-| Economizer | Memanaskan air feedwater sebelum masuk evaporator |
-| Drum (HP/IP/LP) | Pemisah uap-air pada masing-masing tekanan |
-| Bypass Stack | Mengalirkan gas buang melewati HRSG saat turbin uap tidak operasi |
-| SCR/CO Catalyst | Mengurangi emisi NOx dan CO pada gas buang |
-
-### Aplikasi
-
-1. Pembangkit listrik siklus gabungan (combined cycle power plant)
-2. Sistem kogenerasi industri (listrik + uap proses)
-3. Pemanfaatan panas buang dari kilang minyak dan pabrik petrokimia
-
-> HRSG memungkinkan efisiensi pembangkitan listrik mencapai >60% dengan memanfaatkan panas limbah yang sebelumnya dibuang.
-MD,
+HRSG adalah boiler yang menghasilkan uap dengan memanfaatkan panas sisa (waste heat) dari gas buang turbin gas atau mesin diesel.
+MD
             ],
-            ['description' => 'Reboiler',         'category' => 'Shell & Tube HX', 'long_description' => <<<'MD'
+            ['description' => 'Reboiler',         'category' => 'Shell & Tube HX', 'long_description' => <<< 'MD'
 ## Reboiler
 
-Reboiler adalah heat exchanger yang digunakan untuk menyediakan panas pada kolom distilasi dengan cara menguapkan sebagian cairan dari dasar kolom (bottom product) dan mengembalikan uapnya kembali ke kolom. Merupakan komponen vital dalam pemisahan fraksi pada industri kimia dan minyak.
-
-### Prinsip Kerja
-
-Cairan panas dari dasar kolom distilasi dipompa ke reboiler, dipanaskan oleh media panas (uap, minyak termal, atau fluida panas lainnya) hingga mendidih. Uap yang dihasilkan kembali dialirkan ke bagian bawah kolom distilasi untuk menyediakan reboil ratio yang diperlukan pemisahan fraksi. Jenis reboiler umum meliputi kettle reboiler, thermosiphon reboiler, dan forced circulation reboiler.
-
-### Komponen Utama
-
-| Komponen | Fungsi |
-|----------|--------|
-| Shell | Badan tekanan yang menampung media panas |
-| Tube Bundle | Sekumpulan pipa tempat cairan kolom mengalir dan dipanaskan |
-| Tube Sheet | Pelat yang menahan ujung pipa dan memisahkan shell-side dan tube-side |
-| Baffle | Pelat pengarah aliran media panas di shell-side untuk efisiensi maksimal |
-| Inlet/Outlet Nozzle | Sambungan masuk/keluar cairan kolom dan media panas |
-| Level Controller | Mengontrol level cairan di dalam reboiler (khusus kettle type) |
-
-### Aplikasi
-
-1. Kolom distilasi fraksi minyak bumi di kilang
-2. Pemisahan komponen kimia pada pabrik petrokimia
-3. Proses pemurnian gas dan cairan di industri kimia
-
-> Reboiler menentukan efisiensi dan biaya operasional kolom distilasi karena menjadi konsumen energi terbesar di unit pemisahan.
-MD,
+Reboiler adalah heat exchanger yang digunakan untuk menyediakan panas pada kolom distilasi dengan cara menguapkan sebagian cairan dari dasar kolom.
+MD
             ],
-            ['description' => 'Condenser',        'category' => 'Shell & Tube HX', 'long_description' => <<<'MD'
+            ['description' => 'Condenser',        'category' => 'Shell & Tube HX', 'long_description' => <<< 'MD'
 ## Condenser
 
-Condenser adalah heat exchanger yang berfungsi mengembalikan uap menjadi cairan (condensate) dengan mentransferkan panas laten uap ke media pendingin (air, udara, atau fluida lain). Digunakan secara luas di sistem uap, kinerja pembangkit, dan industri kimia.
-
-### Prinsip Kerja
-
-Uap dari turbin uap atau bagian atas kolom distilasi dialirkan ke condenser. Uap mengalir di shell-side (untuk surface condenser) atau tube-side, dan mengeluarkan panas laten ke media pendingin yang mengalir berlawanan (counter-flow). Uap mengembun menjadi air (condensate) yang dikumpulkan di hotwell dan dipompa kembali sebagai feedwater atau reflux.
-
-### Komponen Utama
-
-| Komponen | Fungsi |
-|----------|--------|
-| Shell | Rumah tekanan yang menampung uap dan media pendingin |
-| Tube Bundle | Pipa-pipa pendingin tempat air/udara mengalir menyerap panas |
-| Tube Sheet | Pelat penahan ujung pipa dan pemisah sisi uap dan pendingin |
-| Hotwell | Tangki penampung kondensat di bagian bawah condenser |
-| Air Extraction System | Sistem vacuum (ejector/vacuum pump) menghilangkan gas tak terkondensasi |
-| Water Box | Kotak air di ujung pipa untuk distribusi dan pengumpulan air pendingin |
-
-### Aplikasi
-
-1. Kondensasi uap turbin di pembangkit listrik uap (rankine cycle)
-2. Kondensasi reflux pada kolom distilasi industri kimia
-3. Sistem pendingin uap proses di pabrik petrokimia dan pupuk
-
-> Efisiensi condenser memengaruhi vacuum turbin uap dan secara langsung menentukan efisiensi termal pembangkit listrik.
-MD,
+Condenser adalah heat exchanger yang berfungsi mengembalikan uap menjadi cairan (condensate) dengan mentransferkan panas laten uap ke media pendingin.
+MD
             ],
         ],
 
         // ── Subgroup: Bejana Bertekanan ───────────────────────────────────────
         'Bejana Bertekanan' => [
-            ['description' => 'Bejana Tekan',  'category' => 'Pressure Vessel'],
-            ['description' => 'Air Receiver',  'category' => 'Pressure Vessel'],
-            ['description' => 'Separator',     'category' => 'Pressure Vessel'],
-            ['description' => 'Accumulator',   'category' => 'Pressure Vessel'],
-            ['description' => 'Heat Exchanger','category' => 'Heat Exchanger', 'long_description' => <<<'MD'
-## Heat Exchanger
+            ['description' => 'Bejana Tekan',  'category' => 'Pressure Vessel', 'long_description' => <<< 'MD'
+## Bejana Tekan (Pressure Vessel)
 
-Heat Exchanger (Penukar Panas) adalah peralatan yang digunakan untuk **mentransfer energi panas** dari satu fluida ke fluida lainnya tanpa mencampurkannya. Sangat penting dalam proses industri yang membutuhkan pemanasan atau pendinginan.
-
-### Prinsip Kerja
-
-Dua fluida dengan suhu berbeda mengalir secara berseberangan (counter-current) atau sejajar (parallel) melalui jalur terpisah. Panas berpindah dari fluida panas ke fluida dingin melalui **media pengantar** (pipa/lempengan).
-
-### Tipe Utama
-
-| Tipe | Kelebihan | Kekurangan |
-|------|-----------|------------|
-| **Shell & Tube** | Tahan tekanan tinggi | Mahal, berat |
-| **Plate** | Efisiensi tinggi, ringan | Tidak untuk tekanan sangat tinggi |
-| **Double Pipe** | Sederhana, murah | Kapasitas kecil |
-| **Air Cooled** | Tidak butuh air pendingin | Efisiensi lebih rendah |
-
-### Komponen Utama
-
-| Komponen | Fungsi |
-|----------|--------|
-| Shell | Badan luar (shell & tube) |
-| Tube Bundle | Pipa pengantar panas |
-| Tubesheet | Penyambung pipa ke shell |
-| Baffle | Pengatur aliran shell side |
-| Nozzle | Titik masuk/keluar fluida |
-
-### Aplikasi
-
-1. Pemakaian panas limbah (waste heat recovery)
-2. Pendingin oli mesin
-3. Kondenser pada sistem HVAC
-4. Pemanas/pendingin proses kimia
-
-> Pemilihan tipe heat exchanger tergantung pada suhu, tekanan, jenis fluida, dan kapasitas panas yang dibutuhkan.
-MD,
+Bejana Tekan adalah wadah tertutup yang dirancang untuk menampung fluida (gas atau cair) pada tekanan yang berbeda dari tekanan atmosfer.
+MD
             ],
-            ['description' => 'Superheater',   'category' => 'Heat Exchanger'],
-            ['description' => 'Economizer',    'category' => 'Heat Exchanger'],
-            ['description' => 'Deaerator',     'category' => 'Heat Exchanger'],
-            ['description' => 'Autoclave',     'category' => 'Autoclave'],
+            ['description' => 'Air Receiver',  'category' => 'Pressure Vessel', 'long_description' => <<< 'MD'
+## Air Receiver
+
+Air Receiver (Tangki Udara Tekan) adalah bejana bertekanan yang berfungsi sebagai penampung sementara udara tekan dari kompresor.
+MD
+            ],
+            ['description' => 'Separator',     'category' => 'Pressure Vessel', 'long_description' => <<< 'MD'
+## Separator
+
+Separator adalah bejana bertekanan yang digunakan untuk memisahkan campuran fluida (minyak, gas, air, dan padatan) berdasarkan perbedaan densitas.
+MD
+            ],
+            ['description' => 'Accumulator',   'category' => 'Pressure Vessel', 'long_description' => <<< 'MD'
+## Accumulator
+
+Accumulator adalah bejana bertekanan yang menyimpan energi fluida (cairan hidrolik atau gas) di bawah tekanan untuk digunakan saat dibutuhkan.
+MD
+            ],
+            ['description' => 'Superheater',   'category' => 'Heat Exchanger', 'long_description' => <<< 'MD'
+## Superheater
+
+Superheater adalah heat exchanger yang memanaskan uap jenuh menjadi uap superheat dengan menaikkan temperatur di atas titik jenuhnya.
+MD
+            ],
+            ['description' => 'Economizer',    'category' => 'Heat Exchanger', 'long_description' => <<< 'MD'
+## Economizer
+
+Economizer adalah heat exchanger yang memanaskan air feedwater boiler dengan memanfaatkan panas sisa dari gas buang.
+MD
+            ],
+            ['description' => 'Deaerator',     'category' => 'Heat Exchanger', 'long_description' => <<< 'MD'
+## Deaerator
+
+Deaerator adalah peralatan yang berfungsi menghilangkan gas terlarut (terutama oksigen dan karbon dioksida) dari air feedwater boiler.
+MD
+            ],
+            ['description' => 'Autoclave',     'category' => 'Autoclave', 'long_description' => <<< 'MD'
+## Autoclave
+
+Autoclave adalah bejana bertekanan yang dirancang untuk melakukan proses sterilisasi, curing, atau reaksi kimia pada temperatur dan tekanan tinggi.
+MD
+            ],
         ],
 
         // ── Subgroup: Tangki Timbun ───────────────────────────────────────────
