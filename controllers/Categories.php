@@ -128,15 +128,18 @@ class Categories extends AdminController
         $category = $this->categories_model->get($id);
         if (!$category) { echo _l('category_not_found'); die; }
 
-        $rows = $this->db
-            ->where('category_id', $id)
-            ->order_by('section_order', 'ASC')
-            ->order_by('item_order', 'ASC')
-            ->get(db_prefix() . 'inspection_checklist_items')->result_array();
-
         $checklist_tabs = [];
-        foreach ($rows as $row) {
-            $checklist_tabs[$row['tab_key']][] = $row;
+
+        if (is_module_active('inspections')) {
+            $rows = $this->db
+                ->where('category_id', $id)
+                ->order_by('section_order', 'ASC')
+                ->order_by('item_order', 'ASC')
+                ->get(db_prefix() . 'inspection_checklist_items')->result_array();
+
+            foreach ($rows as $row) {
+                $checklist_tabs[$row['tab_key']][] = $row;
+            }
         }
 
         $data['category']       = $category;

@@ -127,23 +127,27 @@ class Subgroups extends AdminController
         $data['subgroup']   = $subgroup;
         $data['totalItems'] = total_rows(db_prefix() . 'items', ['subgroup_id' => $id]);
 
-        // Data Teknis tab
-        $data['subgroup_fields'] = $this->db
-            ->where('subgroup_id', $id)
-            ->order_by('sort_order', 'ASC')
-            ->get(db_prefix() . 'inspection_subgroup_fields')->result_array();
+        // Data Teknis tab & Checklist template (only if inspections module active)
+        $data['subgroup_fields'] = [];
+        $data['checklist_tabs']  = [];
 
-        // Checklist template tabs grouped by tab_key
-        $rows = $this->db
-            ->where('subgroup_id', $id)
-            ->order_by('section_order, item_order', 'ASC')
-            ->get(db_prefix() . 'inspection_checklist_items')->result_array();
+        if (is_module_active('inspections')) {
+            $data['subgroup_fields'] = $this->db
+                ->where('subgroup_id', $id)
+                ->order_by('sort_order', 'ASC')
+                ->get(db_prefix() . 'inspection_subgroup_fields')->result_array();
 
-        $checklist_tabs = [];
-        foreach ($rows as $row) {
-            $checklist_tabs[$row['tab_key']][] = $row;
+            $rows = $this->db
+                ->where('subgroup_id', $id)
+                ->order_by('section_order, item_order', 'ASC')
+                ->get(db_prefix() . 'inspection_checklist_items')->result_array();
+
+            $checklist_tabs = [];
+            foreach ($rows as $row) {
+                $checklist_tabs[$row['tab_key']][] = $row;
+            }
+            $data['checklist_tabs'] = $checklist_tabs;
         }
-        $data['checklist_tabs'] = $checklist_tabs;
 
         if ($to_return == false) {
             $this->load->view('admin/subgroups/subgroup_preview_template', $data);
