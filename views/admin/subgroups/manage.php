@@ -35,12 +35,10 @@ $(function() {
         Subgroups_ServerParams,
         [0, 'asc']
     );
-    var subgroupid = $('input[name="subgroupid"]').val();
-    if (subgroupid) { init_subgroup(subgroupid); }
+    init_subgroup();
 });
 
 function init_subgroup(id) {
-    if (!id) { return; }
     load_small_table_item(id, '#subgroup', 'subgroupid', 'equipments/subgroups/get_subgroup_data_ajax', '.table-subgroups');
 }
 </script>

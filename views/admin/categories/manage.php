@@ -35,12 +35,10 @@ $(function() {
         Categories_ServerParams,
         [0, 'asc']
     );
-    var categoryid = $('input[name="categoryid"]').val();
-    if (categoryid) { init_category(categoryid); }
+    init_category();
 });
 
 function init_category(id) {
-    if (!id) { return; }
     load_small_table_item(id, '#category', 'categoryid', 'equipments/categories/get_category_data_ajax', '.table-categories');
 }
 </script>

@@ -41,12 +41,10 @@ $(function() {
         Groups_ServerParams,
         [[3, 'desc'], [0, 'desc']]
     );
-    var groupid = $('input[name="groupid"]').val();
-    if (groupid) { init_group(groupid); }
+    init_group();
 });
 
 function init_group(id) {
-    if (!id) { return; }
     load_small_table_item(id, '#group', 'groupid', 'equipments/groups/get_group_data_ajax', '.table-groups');
 }
 </script>
