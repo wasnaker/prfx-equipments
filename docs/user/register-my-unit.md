@@ -10,13 +10,35 @@ Satu unit peralatan punya detail lengkap seperti kode unit, nomor seri, lokasi, 
 
 ## Siapa yang Bisa Akses?
 
-| Role | Bisa |
-|---|---|
-| **Admin / Staff** | Lihat semua unit, tambah, edit, hapus |
-| **Customer** | Lihat unit milik sendiri saja |
-| **Surveyor** | Lihat unit milik customer yang sudah terhubung via Connections module |
+### Admin / Staff
 
-> Permission diatur via **Setup → Staff → Roles → My Equipments**.
+Staff internal aplikasi bisa melihat, menambah, mengedit, dan menghapus semua unit. Ini wajar karena mereka pengelola system.
+
+### Customer
+
+Customer hanya bisa melihat unit milik sendiri. Customer tidak bisa melihat unit milik customer lain.
+
+### Surveyor / Pihak Ketiga
+
+**Surveyor tidak bisa melihat data customer sama sekali** — kecuali customer itu sendiri yang mengundang dan menyetujui koneksi lewat **Connections** module.
+
+Mekanismenya:
+
+1. Customer mengirim **undangan** (invite) ke surveyor lewat menu Connections.
+2. Surveyor menerima undangan → koneksi **active**.
+3. Surveyor baru bisa melihat unit customer tersebut — dan hanya customer itu saja, tidak semua.
+
+> 🔒 Jadi data customer benar-benar terproteksi. Tidak ada pihak luar yang bisa mengakses data customer tanpa izin eksplisit dari customer yang bersangkutan. Izin ini dikelola sepenuhnya oleh customer lewat menu **Connections**.
+
+### Cara Setting Permission
+
+1. Buka **Setup → Staff → Roles**.
+2. Pilih role yang ingin diedit (atau buat baru).
+3. Cari bagian **My Equipments**.
+4. Centang permission yang sesuai.
+5. Klik **Save**.
+
+**Catatan:** Tombol Create, Edit, Delete di halaman akan otomatis muncul/sembunyi sesuai hak akses kamu.
 
 ## Cara Daftarkan Unit Baru
 
