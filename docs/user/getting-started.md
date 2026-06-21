@@ -83,11 +83,23 @@ Module ini menggunakan 4 permission utama yang diatur lewat **Setup → Staff �
 
 **Catatan:** Tombol Create, Edit, Delete di halaman akan otomatis muncul/sembunyi sesuai hak akses kamu. Tidak perlu setting manual di setiap halaman.
 
-## Tips
+## Halaman Manage — Tabel & Panel Kanan
+
+Setiap menu (Groups, Subgroups, Categories, Equipment) punya halaman yang menampilkan tabel. Klik salah satu baris tabel, dan panel detail akan muncul di sebelah kanan.
+
+**Caranya:**
+
+1. Buka menu, misalnya **Equipments → Groups**.
+2. Tabel menampilkan semua data.
+3. Klik nama item di tabel → panel kanan langsung terbuka menampilkan detail.
+4. URL otomatis berubah jadi `.../groups#12` (angka adalah ID item).
+5. **Reload halaman** (F5) — panel kanan tetap terbuka di item yang sama.
+6. **Klik kanan → Open in new tab** — tetap bisa, nama item pakai link biasa.
+
+**Tips:**
 
 - **Quick Stats** — di halaman Subgroups dan Categories ada tombol statistik di atas tabel. Klik untuk filter cepat per grup.
-- **Panel kanan** — klik baris di tabel untuk melihat detail di panel kanan tanpa pindah halaman.
-- **Edit cepat** — klik link **Edit** di bawah nama item untuk langsung edit.
+- **Edit cepat** — di bawah nama item ada link **Edit** untuk langsung ubah data tanpa perlu klik baris dulu.
 
 ---
 
