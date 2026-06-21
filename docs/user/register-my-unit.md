@@ -157,7 +157,7 @@ Klik **Save** di bawah form. Setelah sukses:
 ## Tips
 
 - **Quick Stats** — di halaman My Equipments ada tombol statistik di atas tabel. Klik untuk filter cepat per status.
-- **Bulk Create RFQ** — centang beberapa unit, lalu klik **Create RFQ** untuk buat permintaan harga sekaligus. (Hanya tersedia bagi yang memiliki akses ke module RFQ.)
+- **Bulk Create RFQ** — centang beberapa unit, lalu klik **Create RFQ** untuk buat permintaan harga sekaligus. (Hanya tersedia bagi yang memiliki akses ke Bulk Create RFQ.)
 - **Reload halaman** — panel kanan tetap terbuka di unit yang sama setelah reload (F5).
 
 ---
