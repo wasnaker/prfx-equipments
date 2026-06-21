@@ -13,13 +13,13 @@ Group (Grup)
            └── Equipment (Peralatan)
 ```
 
-**Contoh nyata:**
+**Contoh nyata (data dari database):**
 
 ```
-Group:     Lab & Testing
-Subgroup:  Microscopes
-Category:  Digital Microscope
-Equipment: Olympus CX23
+Group:     Pesawat Angkat dan Angkut (PAA)
+Subgroup:  Pesawat Angkat
+Category:  Crane
+Equipment: Overhead Crane, Gantry Crane, Tower Crane
 ```
 
 ## Langkah Pertama
