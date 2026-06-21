@@ -62,6 +62,27 @@ Equipment: Olympus CX23
    - **Description** — nama peralatan (contoh: `Olympus CX23`)
 4. Klik **Save**.
 
+## Hak Akses (Permissions)
+
+Module ini menggunakan 4 permission utama yang diatur lewat **Setup → Staff → Roles → Equipments**:
+
+| Permission | Fungsinya |
+|---|---|
+| **View** | Lihat data equipment, group, subgroup, category |
+| **Create** | Buat data baru (New Group, New Subgroup, dll) |
+| **Edit** | Ubah data yang sudah ada |
+| **Delete** | Hapus data |
+
+### Cara Setting
+
+1. Buka **Setup → Staff → Roles**.
+2. Pilih role yang ingin diedit (atau buat baru).
+3. Cari bagian **Equipments**.
+4. Centang permission yang sesuai.
+5. Klik **Save**.
+
+**Catatan:** Tombol Create, Edit, Delete di halaman akan otomatis muncul/sembunyi sesuai hak akses kamu. Tidak perlu setting manual di setiap halaman.
+
 ## Tips
 
 - **Quick Stats** — di halaman Subgroups dan Categories ada tombol statistik di atas tabel. Klik untuk filter cepat per grup.

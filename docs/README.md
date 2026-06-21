@@ -37,6 +37,7 @@ docs/
 - Nama fitur selalu sama. Kalau di UI tertulis "Equipment Group", jangan tulis "Grup Peralatan" di docs.
 - Link antar docs pakai relative path: `[Getting Started](user/getting-started.md)`.
 - Setiap file punya "Last updated" di bagian bawah.
+- **Permission/CRUD** — tiap fitur baru wajib didokumentasikan hak aksesnya di user docs (langkah setting) dan developer docs (pattern implementasi).
 
 ### Review
 
