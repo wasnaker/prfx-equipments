@@ -2,15 +2,17 @@
 
 ## Apa ini?
 
-Module **Equipments** mengatur katalog peralatan dalam aplikasi ini. Kamu bisa mengelompokkan peralatan berdasarkan **Group → Subgroup → Category**, lalu menambahkan item peralatan di dalamnya.
+Module **Equipments** mengelola katalog/pengelompokan peralatan dalam aplikasi ini. Katalog ini disediakan oleh **system** — ada role khusus yang diberi akses untuk mengelolanya — bukan dibuat oleh customer.
 
-## Struktur Data
+Tujuannya agar semua alat yang didaftarkan oleh customer nantinya menggunakan pengelompokan yang seragam dan konsisten.
+
+**Struktur katalog:**
 
 ```
 Group (Grup)
  └── Subgroup (Sub-grup)
       └── Category (Kategori)
-           └── Equipment (Peralatan)
+           └── Equipment (Item Peralatan)
 ```
 
 **Contoh nyata (data dari database):**
@@ -22,6 +24,8 @@ Category:  Crane
 Equipment: Overhead Crane, Gantry Crane, Tower Crane
 ```
 
+> ℹ️ Perbedaan penting: Katalog Equipment di sini adalah **kelompok/template**, bukan alat fisik. Alat fisik yang sesungguhnya didaftarkan oleh customer lewat menu **My Equipments → Register My Unit**.
+
 ## Langkah Pertama
 
 ### 1. Buat Group
@@ -29,8 +33,8 @@ Equipment: Overhead Crane, Gantry Crane, Tower Crane
 1. Masuk ke menu **Equipments → Groups**.
 2. Klik tombol **+ New Group**.
 3. Isi kolom:
-   - **Code** — kode singkat (contoh: `LAB`)
-   - **Name** — nama grup (contoh: `Lab & Testing`)
+   - **Code** — kode singkat (contoh: `PAA`)
+   - **Name** — nama grup (contoh: `Pesawat Angkat dan Angkut`)
 4. Klik **Save**.
 
 ### 2. Buat Subgroup
@@ -39,8 +43,8 @@ Equipment: Overhead Crane, Gantry Crane, Tower Crane
 2. Klik **+ New Subgroup**.
 3. Isi kolom:
    - **Group** — pilih grup yang sudah dibuat
-   - **Code** — kode singkat (contoh: `MIC`)
-   - **Name** — nama subgroup (contoh: `Microscopes`)
+   - **Code** — kode singkat (contoh: `ANGKAT`)
+   - **Name** — nama subgroup (contoh: `Pesawat Angkat`)
 4. Klik **Save**.
 
 ### 3. Buat Category
@@ -50,16 +54,16 @@ Equipment: Overhead Crane, Gantry Crane, Tower Crane
 3. Isi kolom:
    - **Group** — pilih grup
    - **Subgroup** — pilih subgroup (sesuai grup)
-   - **Name** — nama kategori (contoh: `Digital Microscope`)
+   - **Name** — nama kategori (contoh: `Crane`)
 4. Klik **Save**.
 
-### 4. Tambah Equipment
+### 4. Tambah Equipment (Item)
 
 1. Masuk ke menu **Equipments** (halaman utama).
 2. Klik **+ New Equipment**.
 3. Isi kolom:
    - **Category** — pilih kategori
-   - **Description** — nama peralatan (contoh: `Olympus CX23`)
+   - **Description** — nama item peralatan (contoh: `Overhead Crane`)
 4. Klik **Save**.
 
 ## Hak Akses (Permissions)

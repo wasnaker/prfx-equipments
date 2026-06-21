@@ -2,9 +2,11 @@
 
 ## Apa itu "My Unit"?
 
-**My Unit** (Equipment Unit) adalah data peralatan milik customer yang akan didaftarkan oleh customer sebagai pemilik alat. Satu unit peralatan punya detail lengkap seperti kode unit, nomor seri, lokasi, sertifikat, dan status.
+**My Unit** (Equipment Unit) adalah data peralatan milik customer yang didaftarkan oleh customer sebagai pemilik alat. Di sini customer mendaftarkan alat fisik yang dimiliki, dengan memilih item dari katalog yang sudah disediakan system.
 
-**Contoh:** PT. ABC punya 3 unit Crane di lokasi Jakarta. Masing-masing unit punya kode, nomor seri, dan tanggal expired sertifikat yang berbeda.
+Satu unit peralatan punya detail lengkap seperti kode unit, nomor seri, lokasi, sertifikat, dan status.
+
+**Contoh:** PT. ABC punya 3 unit Crane di lokasi Jakarta. Saat mendaftarkan, mereka memilih item "Overhead Crane" dari katalog (yang sudah dibuat oleh admin), lalu mengisi detail masing-masing unit.
 
 ## Siapa yang Bisa Akses?
 
