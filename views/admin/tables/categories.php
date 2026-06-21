@@ -7,7 +7,7 @@ return App_table::find('categories')
 
         $aColumns = [
             db_prefix() . 'items_categories.name',
-            'grp.name as group_name',
+            'grp.code as group_code',
             'sg.name as subgroup_name',
             db_prefix() . 'items_categories.sort_order',
             '(SELECT COUNT(*) FROM ' . db_prefix() . 'items WHERE category_id=' . db_prefix() . 'items_categories.id) as total_items',
@@ -56,11 +56,11 @@ return App_table::find('categories')
             $sg_id  = (int) ($aRow['subgroup_id'] ?? 0);
             $grp_id = (int) ($aRow['group_id'] ?? 0);
             $sg_name  = $aRow['subgroup_name'] ?? '';
-            $grp_name = $aRow['group_name'] ?? '';
+            $grp_code = $aRow['group_code'] ?? '';
 
             $row[] = $nameOutput;
-            $row[] = $grp_name !== ''
-                ? '<a href="' . admin_url('equipments/groups/list_groups/' . $grp_id) . '" class="label label-default">' . e($grp_name) . '</a>'
+            $row[] = $grp_code !== ''
+                ? '<a href="' . admin_url('equipments/groups/list_groups/' . $grp_id) . '" class="label label-default">' . e($grp_code) . '</a>'
                 : '—';
             $row[] = $sg_name !== ''
                 ? '<a href="' . admin_url('equipments/subgroups/list_subgroups/' . $sg_id) . '" class="label label-info">' . e($sg_name) . '</a>'

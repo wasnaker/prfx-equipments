@@ -16,7 +16,7 @@ return App_table::find('equipments')
             db_prefix() . 'items.description',
             'cat.name as category_name',
             'sg.name as subgroup_name',
-            'grp.name as group_name',
+            'grp.code as group_code',
             db_prefix() . 'items.status',
         ];
 
@@ -94,7 +94,7 @@ return App_table::find('equipments')
             $grp_id   = (int) ($aRow['group_id'] ?? 0);
             $cat_name = $aRow['category_name'] ?? '';
             $sg_name  = $aRow['subgroup_name'] ?? '';
-            $grp_name = $aRow['group_name'] ?? '';
+            $grp_code = $aRow['group_code'] ?? '';
 
             $row[] = $codeOutput;
             $row[] = $descOutput;
@@ -104,8 +104,8 @@ return App_table::find('equipments')
             $row[] = $sg_name !== ''
                 ? '<a href="' . admin_url('equipments/subgroups/list_subgroups/' . $sg_id) . '" class="label label-info">' . e($sg_name) . '</a>'
                 : '—';
-            $row[] = $grp_name !== ''
-                ? '<a href="' . admin_url('equipments/groups/list_groups/' . $grp_id) . '" class="label label-default">' . e($grp_name) . '</a>'
+            $row[] = $grp_code !== ''
+                ? '<a href="' . admin_url('equipments/groups/list_groups/' . $grp_id) . '" class="label label-default">' . e($grp_code) . '</a>'
                 : '—';
             $row[] = format_equipment_status($aRow[db_prefix() . 'items.status'] ?? EQUIPMENT_STATUS_ACTIVE);
 
