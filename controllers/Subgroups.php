@@ -124,30 +124,10 @@ class Subgroups extends AdminController
         $subgroup = $this->subgroups_model->get($id);
         if (!$subgroup) { echo _l('subgroup_not_found'); die; }
 
-        $data['subgroup']   = $subgroup;
-        $data['totalItems'] = total_rows(db_prefix() . 'items', ['subgroup_id' => $id]);
-
-        // Data Teknis tab & Checklist template (only if inspections module active)
+        $data['subgroup']       = $subgroup;
+        $data['totalItems']     = total_rows(db_prefix() . 'items', ['subgroup_id' => $id]);
         $data['subgroup_fields'] = [];
         $data['checklist_tabs']  = [];
-
-        if (is_module_active('inspections')) {
-            $data['subgroup_fields'] = $this->db
-                ->where('subgroup_id', $id)
-                ->order_by('sort_order', 'ASC')
-                ->get(db_prefix() . 'inspection_subgroup_fields')->result_array();
-
-            $rows = $this->db
-                ->where('subgroup_id', $id)
-                ->order_by('section_order, item_order', 'ASC')
-                ->get(db_prefix() . 'inspection_checklist_items')->result_array();
-
-            $checklist_tabs = [];
-            foreach ($rows as $row) {
-                $checklist_tabs[$row['tab_key']][] = $row;
-            }
-            $data['checklist_tabs'] = $checklist_tabs;
-        }
 
         if ($to_return == false) {
             $this->load->view('admin/subgroups/subgroup_preview_template', $data);
