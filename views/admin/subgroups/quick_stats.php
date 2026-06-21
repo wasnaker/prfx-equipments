@@ -8,7 +8,7 @@ $_group_counts = $CI->db->select('group_id, COUNT(*) as total')
 $_group_map = array_column($_group_counts, 'total', 'group_id');
 ?>
 <div class="quick-top-stats tw-mb-6">
-    <div class="tw-grid tw-grid-cols-2 md:tw-grid-cols-4 lg:tw-grid-cols-7 tw-mb-0 tw-gap-2">
+    <div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 md:tw-grid-cols-3 tw-mb-0 tw-gap-2">
 
         <button type="button"
             @click="extra.subgroupsRules = []"
