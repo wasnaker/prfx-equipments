@@ -14,7 +14,7 @@ Satu unit peralatan punya detail lengkap seperti kode unit, nomor seri, lokasi, 
 |---|---|
 | **Admin / Staff** | Lihat semua unit, tambah, edit, hapus |
 | **Customer** | Lihat unit milik sendiri saja |
-| **Surveyor** | Lihat + edit (terbatas) |
+| **Surveyor** | Lihat unit milik customer yang sudah terhubung via Connections module |
 
 > Permission diatur via **Setup → Staff → Roles → My Equipments**.
 
