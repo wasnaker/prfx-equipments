@@ -6,7 +6,8 @@
 docs/
 ├── README.md          ← Indeks + rules penulisan (file ini)
 ├── user/              ← Dokumentasi untuk pengguna akhir
-│   └── getting-started.md
+│   ├── getting-started.md
+│   └── register-my-unit.md
 └── developer/         ← Dokumentasi untuk developer / kontributor
     └── architecture.md
 ```

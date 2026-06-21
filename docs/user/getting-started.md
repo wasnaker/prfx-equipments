@@ -96,10 +96,11 @@ Setiap menu (Groups, Subgroups, Categories, Equipment) punya halaman yang menamp
 5. **Reload halaman** (F5) — panel kanan tetap terbuka di item yang sama.
 6. **Klik kanan → Open in new tab** — tetap bisa, nama item pakai link biasa.
 
-**Tips:**
+## Tips
 
-- **Quick Stats** — di halaman Subgroups dan Categories ada tombol statistik di atas tabel. Klik untuk filter cepat per grup.
+- **Quick Stats** — di halaman Subgroups, Categories, dan My Equipments ada tombol statistik di atas tabel. Klik untuk filter cepat.
 - **Edit cepat** — di bawah nama item ada link **Edit** untuk langsung ubah data tanpa perlu klik baris dulu.
+- **Register My Unit** — untuk mendaftarkan peralatan milik customer, lihat [Register My Unit](register-my-unit.md).
 
 ---
 
