@@ -134,14 +134,6 @@ if ($total_reminders > 0) {
                             title="<?= _l('edit_equipment_tooltip'); ?>"
                             data-placement="bottom"><i class="fa-regular fa-pen-to-square"></i></a>
                         <?php } ?>
-                        <?php if (staff_can('create', 'inspections') || staff_can('convert_to_inspection', 'equipments')) { ?>
-                        <a href="<?= admin_url('inspections/inspection?equipment_id=' . $equipment->id . '&customer_id=' . $equipment->client_id); ?>"
-                            class="btn btn-default btn-with-tooltip sm:!tw-px-3"
-                            data-toggle="tooltip" data-placement="bottom"
-                            title="<?= _l('convert_equipment_to_inspection'); ?>">
-                            <i class="fa-regular fa-clipboard-check"></i>
-                        </a>
-                        <?php } ?>
                         <?php if (staff_can('create', 'myequipments')) { ?>
                         <a href="<?= admin_url('equipments/myequipments/myequipment?item_id=' . $equipment->id); ?>"
                             class="btn btn-primary btn-with-tooltip sm:!tw-px-3"
