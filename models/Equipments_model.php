@@ -168,4 +168,20 @@ class Equipments_model extends App_Model
     {
         return [];
     }
+
+    public function mark_action_status($status, $id, $is_customer = false)
+    {
+        $id     = (int) $id;
+        $status = (int) $status;
+
+        $this->db->where('id', $id);
+        $this->db->update(db_prefix() . 'items', ['status' => $status]);
+
+        $affected = $this->db->affected_rows();
+        if ($affected > 0) {
+            $this->_log_equipment_activity($id, 'equipment_activity_status_changed_to_' . $status);
+        }
+
+        return $affected > 0;
+    }
 }

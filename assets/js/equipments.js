@@ -52,6 +52,12 @@ function equipment_mark_status(e, id, status) {
             if ($.fn.DataTable.isDataTable('#equipments')) {
                 $('#equipments').DataTable().ajax.reload(null, false);
             }
+            // Reload quick stats counters
+            $.get(admin_url + 'equipments/quick_stats', function(qs) {
+                if (qs.success) {
+                    $('.quick-top-stats .tw-grid').html(qs.html);
+                }
+            }, 'json');
         } else {
             alert_float('danger', resp.message);
         }

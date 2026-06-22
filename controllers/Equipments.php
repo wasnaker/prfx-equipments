@@ -481,6 +481,45 @@ class Equipments extends AdminController
         }
     }
 
+    public function quick_stats()
+    {
+        if (!$this->input->is_ajax_request()) { show_404(); }
+
+        $CI     = &get_instance();
+        $_total = (int) $CI->db->count_all(db_prefix() . 'items');
+
+        $_status_counts = $CI->db->select('status, COUNT(*) as total')
+            ->group_by('status')
+            ->get(db_prefix() . 'items')->result_array();
+        $_status_map = array_column($_status_counts, 'total', 'status');
+
+        $statuses = $this->equipments_model->get_statuses();
+        $html     = '';
+
+        foreach ($statuses as $status) {
+            $status_total = (int) ($_status_map[$status] ?? 0);
+            $percent      = $_total > 0 ? round($status_total / $_total * 100) : 0;
+            $status_class = equipment_status_color_class($status);
+            $status_label = format_equipment_status($status, '', false);
+
+            $html .= '<button type="button" class="tw-bg-white tw-border tw-border-solid tw-border-neutral-300/80 tw-shadow-sm tw-py-2 tw-px-3.5 tw-rounded-lg tw-text-sm hover:tw-bg-neutral-100 tw-text-neutral-600 focus:tw-text-neutral-600 text-left odd:last:tw-col-span-2 md:odd:last:tw-col-auto">';
+            $html .= '<div class="tw-flex tw-items-center">';
+            $html .= '<span class="tw-font-normal tw-text-base tw-inline-flex tw-items-center text-' . $status_class . '">' . $status_label . '</span>';
+            $html .= '<span class="tw-ml-2 tw-text-xs tw-text-neutral-500 tw-mt-px">(' . $percent . '%)</span>';
+            $html .= '</div>';
+            $html .= '<div class="tw-mt-0.5 tw-text-neutral-600">';
+            $html .= '<span class="tw-font-semibold">' . $status_total . ' / ' . $_total . '</span>';
+            $html .= '</div>';
+            $html .= '</button>';
+        }
+
+        echo json_encode([
+            'success' => true,
+            'total'   => $_total,
+            'html'    => $html,
+        ]);
+    }
+
     public function send_expiry_reminder($id)
     {
         $canView = user_can_view_equipment($id);
