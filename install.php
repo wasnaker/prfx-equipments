@@ -116,3 +116,10 @@ if ($CI->db->table_exists(db_prefix() . 'customer_equipment')) {
         $CI->db->query('ALTER TABLE `' . db_prefix() . 'customer_equipment` ADD COLUMN `status` TINYINT(1) NOT NULL DEFAULT ' . EQUIPMENT_STATUS_ACTIVE . ' AFTER `cert_expired_date`');
     }
 }
+
+// Add customer_equipment_id column to tbltasks
+if ($CI->db->table_exists(db_prefix() . 'tasks')) {
+    if (!$CI->db->field_exists('customer_equipment_id', db_prefix() . 'tasks')) {
+        $CI->db->query('ALTER TABLE `' . db_prefix() . 'tasks` ADD COLUMN `customer_equipment_id` BIGINT DEFAULT NULL');
+    }
+}
