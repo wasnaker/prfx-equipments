@@ -12,7 +12,6 @@ $CI->db->query("CREATE TABLE IF NOT EXISTS `" . db_prefix() . "equipments` (
   `datecreated` datetime NOT NULL,
   `client_id` BIGINT NOT NULL,
   `deleted_customer_name` varchar(200) DEFAULT NULL,
-  `project_id` BIGINT NOT NULL DEFAULT 0,
   `number` BIGINT NOT NULL,
   `prefix` varchar(50) NOT NULL,
   `number_format` tinyint(1) NOT NULL DEFAULT 1,
