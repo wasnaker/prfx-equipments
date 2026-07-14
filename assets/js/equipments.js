@@ -265,21 +265,21 @@ function init_equipment_equipment_select() {
     });
 }
 
-function init_ajax_equipment_job_search_by_program_id() {
-    init_ajax_search('equipment_job', '#equipment_job_select.ajax-search', {
-        program_id: function() { return $('#program_id').val(); }
+function init_ajax_equipment_task_search_by_project_id() {
+    init_ajax_search('equipment_task', '#equipment_task_select.ajax-search', {
+        project_id: function() { return $('#project_id').val(); }
     });
 
-    $('body').off('change.equipment_job', '#program_id')
-             .on('change.equipment_job', '#program_id', function() {
-        $('#equipment_job_select').selectpicker('val', '');
+    $('body').off('change.equipment_task', '#project_id')
+             .on('change.equipment_task', '#project_id', function() {
+        $('#equipment_task_select').selectpicker('val', '');
     });
 
-    init_equipment_job_select();
+    init_equipment_task_select();
 }
 
-function init_equipment_job_select() {
-    var $sel = $('#equipment_job_select');
+function init_equipment_task_select() {
+    var $sel = $('#equipment_task_select');
     if (!$sel.length) { return; }
 
     $sel.on('changed.bs.select', function(e, clickedIndex) {
@@ -287,36 +287,36 @@ function init_equipment_job_select() {
         var id = $(this).val();
         if (!id) { return; }
 
-        if ($('#equipment-jobs-tbody tr[data-id="' + id + '"]').length) {
-            alert_float('warning', 'Job already added.');
+        if ($('#equipment-tasks-tbody tr[data-id="' + id + '"]').length) {
+            alert_float('warning', 'Task already added.');
             $sel.selectpicker('val', '');
             return;
         }
 
-        $.getJSON(admin_url + 'equipments/get_job_data/' + id, function(job) {
-            if (!job || !job.id) { return; }
+        $.getJSON(admin_url + 'equipments/get_task_data/' + id, function(task) {
+            if (!task || !task.id) { return; }
 
-            var idx      = $('#equipment-jobs-tbody tr').length;
-            var jobName  = $('<span>').text(job.description).html();
+            var idx      = $('#equipment-tasks-tbody tr').length;
+            var taskName  = $('<span>').text(task.description).html();
 
             function buildAndAppend(itemName, unitCode, serialNo, location, certExpired) {
-                var row = '<tr class="equipment-job-row" data-id="' + job.id + '">'
-                    + '<td>' + jobName
-                    + '<input type="hidden" name="jobs[' + idx + '][job_id]" value="' + job.id + '"></td>'
+                var row = '<tr class="equipment-task-row" data-id="' + task.id + '">'
+                    + '<td>' + taskName
+                    + '<input type="hidden" name="tasks[' + idx + '][task_id]" value="' + task.id + '"></td>'
                     + '<td>' + itemName   + '</td>'
                     + '<td>' + unitCode   + '</td>'
                     + '<td>' + serialNo   + '</td>'
                     + '<td>' + location   + '</td>'
                     + '<td>' + certExpired + '</td>'
-                    + '<td><a href="#" class="btn btn-danger btn-sm equipment-job-remove" data-id="' + job.id + '">'
+                    + '<td><a href="#" class="btn btn-danger btn-sm equipment-task-remove" data-id="' + task.id + '">'
                     + '<i class="fa fa-times"></i></a></td>'
                     + '</tr>';
-                $('#equipment-jobs-tbody').append(row);
+                $('#equipment-tasks-tbody').append(row);
                 $sel.selectpicker('val', '');
             }
 
-            if (job.customer_equipment_id) {
-                $.getJSON(admin_url + 'equipments/get_equipment_data/' + job.customer_equipment_id, function(eq) {
+            if (task.customer_equipment_id) {
+                $.getJSON(admin_url + 'equipments/get_equipment_data/' + task.customer_equipment_id, function(eq) {
                     buildAndAppend(
                         eq ? $('<span>').text(eq.item_name).html()            : '',
                         eq ? $('<span>').text(eq.unit_code).html()            : '',
@@ -331,36 +331,36 @@ function init_equipment_job_select() {
         });
     });
 
-    $(document).off('click', '.equipment-job-remove').on('click', '.equipment-job-remove', function(e) {
+    $(document).off('click', '.equipment-task-remove').on('click', '.equipment-task-remove', function(e) {
         e.preventDefault();
         $(this).closest('tr').remove();
-        $('#equipment-jobs-tbody tr').each(function(i) {
-            $(this).find('input[type="hidden"]').attr('name', 'jobs[' + i + '][job_id]');
+        $('#equipment-tasks-tbody tr').each(function(i) {
+            $(this).find('input[type="hidden"]').attr('name', 'tasks[' + i + '][task_id]');
         });
     });
 }
 
-function init_ajax_program_search_by_customer_id() {
-    init_ajax_search('equipment_program', '#program_id.ajax-search', {
+function init_ajax_project_search_by_customer_id() {
+    init_ajax_search('equipment_project', '#project_id.ajax-search', {
         customer_id: function() { return $('#clientid').val(); }
     });
 
-    $('body').off('change.equipment_program', '.f_client_id #clientid')
-             .on('change.equipment_program', '.f_client_id #clientid', function() {
+    $('body').off('change.equipment_project', '.f_client_id #clientid')
+             .on('change.equipment_project', '.f_client_id #clientid', function() {
         var clientid = $(this).val();
-        var $wrapper = $('.programs-wrapper');
+        var $wrapper = $('.projects-wrapper');
 
-        // Reset equipment and job selects when customer changes
+        // Reset equipment and task selects when customer changes
         $('#equipment_equipment_select').selectpicker('val', '');
-        $('#equipment_job_select').selectpicker('val', '');
+        $('#equipment_task_select').selectpicker('val', '');
 
         if (!clientid) {
             $wrapper.addClass('hide');
-            $('#program_id').selectpicker('val', '');
+            $('#project_id').selectpicker('val', '');
             return;
         }
         $.post(admin_url + 'misc/get_relation_data', {
-            type: 'equipment_program',
+            type: 'equipment_project',
             customer_id: clientid,
             q: ''
         }, function(data) {
@@ -368,7 +368,7 @@ function init_ajax_program_search_by_customer_id() {
                 $wrapper.removeClass('hide');
             } else {
                 $wrapper.addClass('hide');
-                $('#program_id').selectpicker('val', '');
+                $('#project_id').selectpicker('val', '');
             }
         }, 'json');
     });

@@ -163,10 +163,10 @@ class Equipments extends AdminController
         if ($this->input->get('customer_id')) {
             $data['customer_id'] = $this->input->get('customer_id');
         }
-        if ($this->input->get('program_id')) {
-            $data['prefill_program_id'] = (int)$this->input->get('program_id');
-            $data['preset_jobs']        = $this->equipments_model->get_program_jobs_for_preset(
-                $data['prefill_program_id']
+        if ($this->input->get('project_id')) {
+            $data['prefill_project_id'] = (int)$this->input->get('project_id');
+            $data['preset_tasks']        = $this->equipments_model->get_project_tasks_for_preset(
+                $data['prefill_project_id']
             );
         }
 
@@ -373,7 +373,7 @@ class Equipments extends AdminController
         }
     }
 
-    public function get_jobs_table($equipment_id)
+    public function get_tasks_table($equipment_id)
     {
         if (!$this->input->is_ajax_request() || !user_can_view_equipment((int)$equipment_id)) {
             ajax_access_denied();
@@ -383,8 +383,8 @@ class Equipments extends AdminController
 
         $aColumns = [
             '1',
-            'j.id as job_id',
-            'j.name as job_name',
+            'j.id as task_id',
+            'j.name as task_name',
             'i.description as item_name',
             'ce.unit_code',
             'ce.serial_number',
@@ -392,26 +392,26 @@ class Equipments extends AdminController
             'ce.cert_expired_date',
         ];
 
-        $sTable       = $pfx . 'equipment_jobs sj';
-        $sIndexColumn = 'sj.job_id';
+        $sTable       = $pfx . 'equipment_tasks sj';
+        $sIndexColumn = 'sj.task_id';
 
         $join = [
-            'LEFT JOIN ' . $pfx . 'jobs j ON j.id = sj.job_id',
+            'LEFT JOIN ' . $pfx . 'tasks j ON j.id = sj.task_id',
             'LEFT JOIN ' . $pfx . 'customer_equipment ce ON ce.id = j.customer_equipment_id',
             'LEFT JOIN ' . $pfx . 'items i ON i.id = ce.item_id',
         ];
 
         $where = ['AND sj.equipment_id = ' . (int)$equipment_id];
 
-        $result  = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, ['job_id']);
+        $result  = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, ['task_id']);
         $output  = $result['output'];
         $rResult = $result['rResult'];
 
         foreach ($rResult as $aRow) {
             $row   = [];
-            $row[] = '<div class="checkbox"><input type="checkbox" value="' . $aRow['job_id'] . '"><label></label></div>';
-            $row[] = '<a href="' . admin_url('jobs/list_jobs/' . $aRow['job_id']) . '" onclick="init_job(' . $aRow['job_id'] . '); return false;">' . $aRow['job_id'] . '</a>';
-            $row[] = e($aRow['job_name'] ?? '');
+            $row[] = '<div class="checkbox"><input type="checkbox" value="' . $aRow['task_id'] . '"><label></label></div>';
+            $row[] = '<a href="' . admin_url('tasks/list_tasks/' . $aRow['task_id']) . '" onclick="init_task(' . $aRow['task_id'] . '); return false;">' . $aRow['task_id'] . '</a>';
+            $row[] = e($aRow['task_name'] ?? '');
             $row[] = e($aRow['item_name'] ?? '');
             $row[] = e($aRow['unit_code'] ?? '');
             $row[] = e($aRow['serial_number'] ?? '');
@@ -908,15 +908,15 @@ class Equipments extends AdminController
         $this->load->view('equipments/admin/equipments/equipments_report', $data);
     }
 
-    public function get_job_data($id = '')
+    public function get_task_data($id = '')
     {
         if (!$id) { show_404(); }
-        $job = $this->db->get_where(db_prefix() . 'jobs', ['id' => (int) $id])->row();
-        if (!$job) { echo json_encode(null); return; }
+        $task = $this->db->get_where(db_prefix() . 'tasks', ['id' => (int) $id])->row();
+        if (!$task) { echo json_encode(null); return; }
         echo json_encode([
-            'id'                    => $job->id,
-            'description'           => $job->name,
-            'customer_equipment_id' => $job->customer_equipment_id ?? null,
+            'id'                    => $task->id,
+            'description'           => $task->name,
+            'customer_equipment_id' => $task->customer_equipment_id ?? null,
         ]);
     }
 

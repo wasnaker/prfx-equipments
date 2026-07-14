@@ -817,7 +817,7 @@ Mesin milling adalah peralatan pemotongan yang berfungsi menghilangkan material 
 
 ### Prinsip Kerja
 
-Pahat berputar pada spindle dan bergerak melintasi permukaan benda kerja yang biasanya tetap, menghasilkan profil, potongan, atau lubang sesuai program.
+Pahat berputar pada spindle dan bergerak melintasi permukaan benda kerja yang biasanya tetap, menghasilkan profil, potongan, atau lubang sesuai project.
 
 ### Komponen Utama
 
@@ -1254,7 +1254,7 @@ Oven industri memanaskan udara di dalam ruang tertutup menggunakan elemen pemana
 2. Pematangan (curing) resin, karet, atau komposit dalam proses produksi.
 3. Sterilisasi peralatan medis dan pengolahan makanan dengan panas kering.
 
-> Oven industri memberikan kontrol suhu yang presisi untuk proses thermal yang membutuhkan kondisi seragam dan terprogram.
+> Oven industri memberikan kontrol suhu yang presisi untuk proses thermal yang membutuhkan kondisi seragam dan terproject.
 MD,
             ],
             ['description' => 'Kiln',         'category' => null, 'long_description' => <<<'MD'

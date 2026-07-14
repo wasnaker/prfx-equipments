@@ -3,7 +3,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 // ─── Relation Data Hooks ─────────────────────────────────────────────────────
-// Custom relation types: equipment_program, equipment_equipment, equipment_job, equipment_member, equipment_item, equipment_subgroup, equipment_category
+// Custom relation types: equipment_project, equipment_equipment, equipment_task, equipment_member, equipment_item, equipment_subgroup, equipment_category
 
 hooks()->add_filter('get_relation_data',    'equipments_get_relation_data');
 hooks()->add_filter('relation_values',      'equipments_get_relation_values');
@@ -22,11 +22,11 @@ function equipments_get_relation_data($data)
     $type = $CI->input->post('type');
     $q    = trim((string) $CI->input->post('q'));
 
-    if ($type === 'equipment_program') {
+    if ($type === 'equipment_project') {
         $customer_id = $CI->input->post('customer_id');
 
         $CI->db->select('p.id, p.formatted_number as name')
-               ->from(db_prefix() . 'programs p')
+               ->from(db_prefix() . 'projects p')
                ->where('p.status !=', 99);
 
         if ($customer_id) {
@@ -56,15 +56,15 @@ function equipments_get_relation_data($data)
         return $CI->db->get()->result_array();
     }
 
-    if ($type === 'equipment_job') {
-        $program_id = (int) $CI->input->post('program_id');
+    if ($type === 'equipment_task') {
+        $project_id = (int) $CI->input->post('project_id');
 
-        if (!$program_id) { return []; }
+        if (!$project_id) { return []; }
 
         $CI->db->select('j.id, j.name')
-               ->from(db_prefix() . 'jobs j')
-               ->where('j.rel_type', 'program')
-               ->where('j.rel_id', $program_id);
+               ->from(db_prefix() . 'tasks j')
+               ->where('j.rel_type', 'project')
+               ->where('j.rel_id', $project_id);
 
         if ($q) {
             $CI->db->like('j.name', $q);
@@ -156,15 +156,15 @@ function equipments_get_relation_values($values)
 {
     $type = $values['type'] ?? '';
 
-    if ($type === 'equipment_program') {
+    if ($type === 'equipment_project') {
         $relation       = $values['relation'];
         $values['id']   = is_array($relation) ? ($relation['id']   ?? '') : ($relation->id   ?? '');
         $values['name'] = is_array($relation) ? ($relation['name'] ?? '') : ($relation->name ?? '');
-        $values['link'] = admin_url('programs/view/' . $values['id']);
+        $values['link'] = admin_url('projects/view/' . $values['id']);
         return $values;
     }
 
-    if (in_array($type, ['equipment_equipment', 'equipment_job', 'equipment_member', 'equipment_subgroup', 'equipment_category', 'equipment_item'])) {
+    if (in_array($type, ['equipment_equipment', 'equipment_task', 'equipment_member', 'equipment_subgroup', 'equipment_category', 'equipment_item'])) {
         $relation       = $values['relation'];
         $values['id']   = is_array($relation) ? ($relation['id']   ?? '') : ($relation->id   ?? '');
         $values['name'] = is_array($relation) ? ($relation['name'] ?? '') : ($relation->name ?? '');
@@ -187,7 +187,7 @@ function equipments_init_relation_options($data)
 {
     $CI   = &get_instance();
     $type = $CI->input->post('type');
-    if ($type === 'equipment_program' || $type === 'equipment_equipment' || $type === 'equipment_job' || $type === 'equipment_member') {
+    if ($type === 'equipment_project' || $type === 'equipment_equipment' || $type === 'equipment_task' || $type === 'equipment_member') {
         if (!staff_can('view', 'equipments') && !staff_can('view_own', 'equipments')) { return []; }
         return $data;
     }

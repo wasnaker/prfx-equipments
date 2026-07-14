@@ -60,7 +60,7 @@ require_once(__DIR__ . '/database/seeds/EquipmentsSeeder.php');
 (new EquipmentsSeeder($CI->db))->run();
 require_once(__DIR__ . '/install/equipment_equipment.php');
 require_once(__DIR__ . '/install/equipment_members.php');
-require_once(__DIR__ . '/install/equipment_jobs.php');
+require_once(__DIR__ . '/install/equipment_tasks.php');
 require_once(__DIR__ . '/install/equipment_items.php');
 require_once(__DIR__ . '/install/equipment_activity.php');
 

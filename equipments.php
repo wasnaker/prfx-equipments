@@ -56,11 +56,11 @@ hooks()->add_action('admin_init',          'equipments_settings_tab');
 hooks()->add_action('admin_init',          'equipments_register_app_table');
 hooks()->add_action('after_cron_run',        'equipments_notification');
 hooks()->add_action('staff_member_deleted',  'equipments_staff_member_deleted');
-hooks()->add_action('after_equipment_added',  'equipments_sync_program_on_save');
-hooks()->add_action('after_equipment_updated','equipments_sync_program_on_save');
-hooks()->add_action('after_equipment_deleted','equipments_clear_program_on_delete');
+hooks()->add_action('after_equipment_added',  'equipments_sync_project_on_save');
+hooks()->add_action('after_equipment_updated','equipments_sync_project_on_save');
+hooks()->add_action('after_equipment_deleted','equipments_clear_project_on_delete');
 
-hooks()->add_filter('get_job', 'equipments_inject_job_equipment_data');
+hooks()->add_filter('get_task', 'equipments_inject_task_equipment_data');
 
 hooks()->add_filter('migration_tables_to_replace_old_links',    'equipments_migration_tables_to_replace_old_links');
 hooks()->add_filter('other_merge_fields_available_for',          'equipments_other_merge_fields_available_for');
@@ -93,7 +93,7 @@ function equipments_module_deactivation_hook()
     $CI = &get_instance();
     $CI->db->query('DROP TABLE IF EXISTS ' . db_prefix() . 'equipment_activity');
     $CI->db->query('DROP TABLE IF EXISTS ' . db_prefix() . 'equipment_items');
-    $CI->db->query('DROP TABLE IF EXISTS ' . db_prefix() . 'equipment_jobs');
+    $CI->db->query('DROP TABLE IF EXISTS ' . db_prefix() . 'equipment_tasks');
     $CI->db->query('DROP TABLE IF EXISTS ' . db_prefix() . 'equipment_members');
     $CI->db->query('DROP TABLE IF EXISTS ' . db_prefix() . 'equipment_equipment');
     $CI->db->query('DROP TABLE IF EXISTS ' . db_prefix() . 'equipments');
@@ -206,31 +206,31 @@ function equipments_staff_member_deleted($data)
     $CI->db->update(db_prefix() . 'equipments', ['sale_agent' => $data['transfer_data_to']]);
 }
 
-// ─── Program Sync ─────────────────────────────────────────────────────────────
+// ─── Project Sync ─────────────────────────────────────────────────────────────
 
-function equipments_sync_program_on_save($equipment_id)
+function equipments_sync_project_on_save($equipment_id)
 {
     $CI = &get_instance();
-    $equipment = $CI->db->select('program_id, date')
+    $equipment = $CI->db->select('project_id, date')
         ->get_where(db_prefix() . 'equipments', ['id' => (int) $equipment_id])
         ->row();
 
-    if (!$equipment || !$equipment->program_id) {
+    if (!$equipment || !$equipment->project_id) {
         return;
     }
 
-    $CI->db->where('id', (int) $equipment->program_id);
-    $CI->db->update(db_prefix() . 'programs', [
+    $CI->db->where('id', (int) $equipment->project_id);
+    $CI->db->update(db_prefix() . 'projects', [
         'equipmentid'     => (int) $equipment_id,
         'equipmentd_date' => $equipment->date,
     ]);
 }
 
-function equipments_clear_program_on_delete($equipment_id)
+function equipments_clear_project_on_delete($equipment_id)
 {
     $CI = &get_instance();
     $CI->db->where('equipmentid', (int) $equipment_id);
-    $CI->db->update(db_prefix() . 'programs', [
+    $CI->db->update(db_prefix() . 'projects', [
         'equipmentid'     => null,
         'equipmentd_date' => null,
     ]);
@@ -314,9 +314,9 @@ if (
     );
 }
 
-function equipments_inject_job_equipment_data($job)
+function equipments_inject_task_equipment_data($task)
 {
-    if (!$job) { return $job; }
+    if (!$task) { return $task; }
     $CI  = &get_instance();
     $pfx = db_prefix();
 
@@ -327,7 +327,7 @@ function equipments_inject_job_equipment_data($job)
         ->from($pfx . 'equipment_items si')
         ->join($pfx . 'equipments s', 's.id = si.equipment_id')
         ->join($pfx . 'staff st', 'st.staffid = s.assign_to', 'left')
-        ->where('si.job_id', (int)$job->id)
+        ->where('si.task_id', (int)$task->id)
         ->order_by('s.date', 'DESC')
         ->limit(1)
         ->get()->row();
@@ -341,7 +341,7 @@ function equipments_inject_job_equipment_data($job)
             ->get()->result_array();
     }
 
-    $job->equipment = $equipment;
+    $task->equipment = $equipment;
 
-    return $job;
+    return $task;
 }

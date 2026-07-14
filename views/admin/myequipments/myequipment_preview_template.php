@@ -14,20 +14,21 @@
                                 <?= _l('equipment'); ?>
                             </a>
                         </li>
-                        <?php if (is_module_active('jobs')): ?>
+                        <?php if (is_module_active('tasks')): ?>
                         <li role="presentation" data-toggle="tooltip"
-                            title="<?= _l('jobs'); ?>">
-                            <a href="#tab_myequipment_jobs"
-                                onclick="initDataTable('.table-myequipment-jobs', admin_url + 'equipments/myequipments/get_jobs_table/' + <?= (int)$myequipment->id; ?>, [0], [0], undefined, [1,'asc']); return false;"
-                                aria-controls="tab_myequipment_jobs" role="tab" data-toggle="tab">
+                            title="<?= _l('tasks'); ?>">
+                            <a href="#tab_myequipment_tasks"
+                                onclick="initDataTable('.table-myequipment-tasks', admin_url + 'equipments/myequipments/get_tasks_table/' + <?= (int)$myequipment->id; ?>, [0], [0], undefined, [1,'asc']); return false;"
+                                aria-controls="tab_myequipment_tasks" role="tab" data-toggle="tab">
                                 <?php if (! is_mobile()) { ?>
                                 <i class="fa fa-briefcase" aria-hidden="true"></i>
                                 <?php } else { ?>
-                                <?= _l('jobs'); ?>
+                                <?= _l('tasks'); ?>
                                 <?php } ?>
                             </a>
                         </li>
                         <?php endif; ?>
+                        <?php if (is_module_active('tasks')): ?>
                         <li role="presentation" data-toggle="tooltip"
                             title="<?= _l('history'); ?>">
                             <a href="#tab_history"
@@ -40,6 +41,7 @@
                                 <?php } ?>
                             </a>
                         </li>
+                        <?php endif; ?>
                         <li role="presentation" data-toggle="tooltip"
                             title="<?= _l('equipment_view_activity_tooltip'); ?>">
                             <a href="#tab_activity" aria-controls="tab_activity" role="tab" data-toggle="tab">
@@ -352,18 +354,18 @@ if (!empty($myequipment->sent)) {
                 
 
                 </div>
-                <div role="tabpanel" class="tab-pane" id="tab_myequipment_jobs">
+                <div role="tabpanel" class="tab-pane" id="tab_myequipment_tasks">
                     <hr />
                     <?php render_datatable([
                         ['name' => '<span class="hide">-</span>', 'th_attrs' => ['class' => '']],
                         _l('the_number_sign'),
-                        _l('equipment_job_name'),
+                        _l('equipment_task_name'),
                         _l('equipment_equipment_item_name'),
                         _l('equipment_equipment_unit_code'),
                         _l('equipment_equipment_serial_number'),
                         _l('equipment_equipment_location'),
                         _l('equipment_equipment_cert_expired'),
-                    ], 'myequipment-jobs'); ?>
+                    ], 'myequipment-tasks'); ?>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="tab_history">
                     <hr />
@@ -373,7 +375,7 @@ if (!empty($myequipment->sent)) {
                         _l('surveyor'),
                         _l('quotation'),
                         _l('order'),
-                        _l('program'),
+                        _l('project'),
                         _l('inspection'),
                         _l('date'),
                     ], 'myequipment-history'); ?>

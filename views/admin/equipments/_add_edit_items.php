@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group mbot25 select-placeholder">
-                <select id="equipment_job_select" class="ajax-search selectpicker"
+                <select id="equipment_task_select" class="ajax-search selectpicker"
                     data-width="100%"
                     data-none-selected-text="<?= _l('add_item'); ?>"
                     data-live-search="true">

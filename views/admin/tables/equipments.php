@@ -9,7 +9,7 @@ return App_table::find('equipments')
         $client_id            = $params['client_id'];
         $customFieldsColumns = $params['customFieldsColumns'];
 
-        $program_id = $this->ci->input->post('program_id');
+        $project_id = $this->ci->input->post('project_id');
 
         $aColumns = [
             db_prefix() . 'items.code',

@@ -110,27 +110,27 @@ $meta_right .= '</div>';
 
 pdf_multi_row($meta_left, $meta_right, $pdf, ($dimensions['wk'] / 2) - $dimensions['lm']);
 
-// ── Jobs table ────────────────────────────────────────────────────────────────
+// ── Tasks table ────────────────────────────────────────────────────────────────
 $pdf->Ln(hooks()->apply_filters('pdf_info_and_table_separator', 6));
 
-$jobs     = $equipment->jobs ?? [];
+$tasks     = $equipment->tasks ?? [];
 $tblhtml  = '<table border="1" cellpadding="4" cellspacing="0" style="font-size:' . $font_size . 'px;width:100%;">';
 $tblhtml .= '<tr style="background-color:#f0f0f0;">';
-$tblhtml .= '<th>' . _l('equipment_job_name') . '</th>';
+$tblhtml .= '<th>' . _l('equipment_task_name') . '</th>';
 $tblhtml .= '<th>' . _l('equipment_equipment_item_name') . '</th>';
 $tblhtml .= '<th>' . _l('equipment_equipment_unit_code') . '</th>';
 $tblhtml .= '<th>' . _l('equipment_equipment_serial_number') . '</th>';
 $tblhtml .= '<th>' . _l('equipment_equipment_location') . '</th>';
 $tblhtml .= '<th>' . _l('equipment_equipment_cert_expired') . '</th>';
 $tblhtml .= '</tr>';
-foreach ($jobs as $job) {
+foreach ($tasks as $task) {
     $tblhtml .= '<tr>';
-    $tblhtml .= '<td>' . e($job['job_name'] ?? '') . '</td>';
-    $tblhtml .= '<td>' . e($job['item_name'] ?? '') . '</td>';
-    $tblhtml .= '<td>' . e($job['unit_code'] ?? '') . '</td>';
-    $tblhtml .= '<td>' . e($job['serial_number'] ?? '') . '</td>';
-    $tblhtml .= '<td>' . e($job['location'] ?? '') . '</td>';
-    $tblhtml .= '<td>' . e($job['cert_expired_date'] ?? '') . '</td>';
+    $tblhtml .= '<td>' . e($task['task_name'] ?? '') . '</td>';
+    $tblhtml .= '<td>' . e($task['item_name'] ?? '') . '</td>';
+    $tblhtml .= '<td>' . e($task['unit_code'] ?? '') . '</td>';
+    $tblhtml .= '<td>' . e($task['serial_number'] ?? '') . '</td>';
+    $tblhtml .= '<td>' . e($task['location'] ?? '') . '</td>';
+    $tblhtml .= '<td>' . e($task['cert_expired_date'] ?? '') . '</td>';
     $tblhtml .= '</tr>';
 }
 $tblhtml .= '</table>';

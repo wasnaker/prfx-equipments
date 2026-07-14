@@ -14,15 +14,15 @@
                                 <?= _l('equipment'); ?>
                             </a>
                         </li>
-                        <?php if (is_module_active('jobs')): ?>
+                        <?php if (is_module_active('tasks')): ?>
                         <li role="presentation">
-                            <a href="#tab_equipment_jobs"
-                                onclick="initDataTable('.table-equipment-jobs', admin_url + 'equipments/get_jobs_table/' + <?= (int)$equipment->id; ?>, [0], [0], undefined, [1,'asc']); return false;"
-                                aria-controls="tab_equipment_jobs" role="tab" data-toggle="tab">
+                            <a href="#tab_equipment_tasks"
+                                onclick="initDataTable('.table-equipment-tasks', admin_url + 'equipments/get_tasks_table/' + <?= (int)$equipment->id; ?>, [0], [0], undefined, [1,'asc']); return false;"
+                                aria-controls="tab_equipment_tasks" role="tab" data-toggle="tab">
                                 <?php if (! is_mobile()) { ?>
                                 <i class="fa fa-briefcase" aria-hidden="true"></i>
                                 <?php } else { ?>
-                                <?= _l('jobs'); ?>
+                                <?= _l('tasks'); ?>
                                 <?php } ?>
                             </a>
                         </li>
@@ -349,18 +349,18 @@ if ($equipment->sent == 1) {
                     <?php } ?>
 
                 </div>
-                <div role="tabpanel" class="tab-pane" id="tab_equipment_jobs">
+                <div role="tabpanel" class="tab-pane" id="tab_equipment_tasks">
                     <hr />
                     <?php render_datatable([
                         ['name' => '<span class="hide">-</span>', 'th_attrs' => ['class' => '']],
                         _l('the_number_sign'),
-                        _l('equipment_job_name'),
+                        _l('equipment_task_name'),
                         _l('equipment_equipment_item_name'),
                         _l('equipment_equipment_unit_code'),
                         _l('equipment_equipment_serial_number'),
                         _l('equipment_equipment_location'),
                         _l('equipment_equipment_cert_expired'),
-                    ], 'equipment-jobs'); ?>
+                    ], 'equipment-tasks'); ?>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="tab_reminders">
                     <a href="#" data-toggle="modal" class="btn btn-primary"

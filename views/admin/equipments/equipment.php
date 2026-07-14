@@ -36,8 +36,8 @@ init_currency = function() {};
 $(function() {
     validate_equipment_form();
     init_billing_and_shipping_details();
-    init_ajax_program_search_by_customer_id();
-    init_ajax_equipment_job_search_by_program_id();
+    init_ajax_project_search_by_customer_id();
+    init_ajax_equipment_task_search_by_project_id();
     init_ajax_search('equipment_member', '#equipment_members_select.ajax-search');
     init_ajax_search('equipment_member', '#equipment_assign_to_select.ajax-search');
 });

@@ -218,7 +218,7 @@ $lang['equipment_request_assigned_to_staff']                = 'Equipment Request
 $lang['show_equipment_request_in_customers_area']              = 'Show Equipment request link in customers area?';
 $lang['customers_equipment_request_link_text']                 = 'Request Equipment';
 $lang['equipment_convert_to_project']                          = 'Convert to Project';
-$lang['equipment_linked_to_program']                           = 'This equipment is linked to program';
+$lang['equipment_linked_to_project']                           = 'This equipment is linked to project';
 $lang['equipment_items_convert_to_tasks']                      = 'Items that will be converted to tasks';
 $lang['search_equipments']                = 'Search Equipments';
 $lang['automatically_set_logged_in_staff_sales_agent_help'] = 'Applicable for: Equipments, invoices, proposal';
@@ -244,8 +244,8 @@ $lang['equipment_dt_col_to']   = 'To';
 
 $lang['equipment_members']                  = 'Members';
 
-$lang['equipment_add_job']                  = 'Add Job';
-$lang['equipment_job_name']                 = 'Equipment Name';
+$lang['equipment_add_task']                  = 'Add Task';
+$lang['equipment_task_name']                 = 'Equipment Name';
 
 $lang['equipment_add_equipment']            = 'Add Equipment';
 $lang['equipment_equipment_item_name']      = 'Equipment';

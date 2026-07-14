@@ -59,7 +59,7 @@ $CI->db->query("CREATE TABLE IF NOT EXISTS `" . db_prefix() . "equipments` (
   `signature` varchar(40) DEFAULT NULL,
   `short_link` varchar(100) DEFAULT NULL,
   `cancel_overdue_reminders` tinyint(1) NOT NULL DEFAULT 0,
-  `program_id` BIGINT DEFAULT NULL,
+  `project_id` BIGINT DEFAULT NULL,
   `inspectionid` BIGINT DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `client_id` (`client_id`),

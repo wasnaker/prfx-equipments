@@ -131,7 +131,7 @@ class Myequipments extends AdminController
         }
     }
 
-    public function get_jobs_table($myequipment_id)
+    public function get_tasks_table($myequipment_id)
     {
         if (!$this->input->is_ajax_request()) { ajax_access_denied(); }
 
@@ -139,8 +139,8 @@ class Myequipments extends AdminController
 
         $aColumns = [
             '1',
-            db_prefix() . 'jobs.id as job_id',
-            db_prefix() . 'jobs.name as job_name',
+            db_prefix() . 'tasks.id as task_id',
+            db_prefix() . 'tasks.name as task_name',
             'i.description as item_name',
             'ce.unit_code',
             'ce.serial_number',
@@ -148,11 +148,11 @@ class Myequipments extends AdminController
             'ce.cert_expired_date',
         ];
 
-        $sTable       = $pfx . 'jobs';
+        $sTable       = $pfx . 'tasks';
         $sIndexColumn = 'id';
 
         $join = [
-            'LEFT JOIN ' . $pfx . 'customer_equipment ce ON ce.id = ' . $pfx . 'jobs.customer_equipment_id',
+            'LEFT JOIN ' . $pfx . 'customer_equipment ce ON ce.id = ' . $pfx . 'tasks.customer_equipment_id',
             'LEFT JOIN ' . $pfx . 'items i ON i.id = ce.item_id',
         ];
 
@@ -164,9 +164,9 @@ class Myequipments extends AdminController
 
         foreach ($rResult as $aRow) {
             $row   = [];
-            $row[] = '<div class="checkbox"><input type="checkbox" value="' . $aRow['job_id'] . '"><label></label></div>';
-            $row[] = '<a href="' . admin_url('jobs/list_jobs/' . $aRow['job_id']) . '" onclick="init_job(' . $aRow['job_id'] . '); return false;">' . $aRow['job_id'] . '</a>';
-            $row[] = e($aRow['job_name'] ?? '');
+            $row[] = '<div class="checkbox"><input type="checkbox" value="' . $aRow['task_id'] . '"><label></label></div>';
+            $row[] = '<a href="' . admin_url('tasks/list_tasks/' . $aRow['task_id']) . '" onclick="init_task(' . $aRow['task_id'] . '); return false;">' . $aRow['task_id'] . '</a>';
+            $row[] = e($aRow['task_name'] ?? '');
             $row[] = e($aRow['item_name'] ?? '');
             $row[] = e($aRow['unit_code'] ?? '');
             $row[] = e($aRow['serial_number'] ?? '');
@@ -182,6 +182,12 @@ class Myequipments extends AdminController
     {
         if (!$this->input->is_ajax_request()) { ajax_access_denied(); }
 
+        // Guard: modules tasks/projects/orders/quotations/rfqs/inspections harus terinstall
+        if (!is_module_active('tasks')) {
+            echo json_encode(['draw' => 0, 'recordsTotal' => 0, 'recordsFiltered' => 0, 'aaData' => []]);
+            return;
+        }
+
         $pfx = db_prefix();
 
         $aColumns = [
@@ -195,16 +201,16 @@ class Myequipments extends AdminController
             'ins.date as ins_date',
         ];
 
-        $sTable       = $pfx . 'jobs j';
+        $sTable       = $pfx . 'tasks j';
         $sIndexColumn = 'j.id';
 
         $join = [
-            'LEFT JOIN ' . $pfx . 'programs p ON p.id = j.rel_id AND j.rel_type = \'program\'',
+            'LEFT JOIN ' . $pfx . 'projects p ON p.id = j.rel_id AND j.rel_type = \'project\'',
             'LEFT JOIN ' . $pfx . 'orders o ON o.id = p.order_id',
             'LEFT JOIN ' . $pfx . 'quotations q ON q.id = o.quotation_id',
             'LEFT JOIN ' . $pfx . 'rfqs r ON r.id = q.rfq_id',
             'LEFT JOIN ' . $pfx . 'clients sv ON sv.userid = r.surveyor_id',
-            'LEFT JOIN ' . $pfx . 'inspection_jobs ij ON ij.job_id = j.id',
+            'LEFT JOIN ' . $pfx . 'inspection_tasks ij ON ij.task_id = j.id',
             'LEFT JOIN ' . $pfx . 'inspections ins ON ins.id = ij.inspection_id',
         ];
 
@@ -221,7 +227,7 @@ class Myequipments extends AdminController
             $row[] = e($aRow['surveyor_name'] ?? '—');
             $row[] = $aRow['quo_id'] ? '<a href="' . admin_url('quotations/list_quotations/' . $aRow['quo_id']) . '">' . e($aRow['quo_no']) . '</a>' : '—';
             $row[] = $aRow['ord_id'] ? '<a href="' . admin_url('orders/list_orders/' . $aRow['ord_id']) . '">' . e($aRow['ord_no']) . '</a>' : '—';
-            $row[] = $aRow['prg_id'] ? '<a href="' . admin_url('programs/list_programs/' . $aRow['prg_id']) . '">' . e($aRow['prg_no']) . '</a>' : '—';
+            $row[] = $aRow['prg_id'] ? '<a href="' . admin_url('projects/list_projects/' . $aRow['prg_id']) . '">' . e($aRow['prg_no']) . '</a>' : '—';
             $row[] = $aRow['ins_id'] ? '<a href="' . admin_url('inspections/list_inspections/' . $aRow['ins_id']) . '">' . e($aRow['ins_no']) . '</a>' : '—';
             $row[] = $aRow['ins_date'] ? e(_d($aRow['ins_date'])) : '—';
             $output['aaData'][] = $row;

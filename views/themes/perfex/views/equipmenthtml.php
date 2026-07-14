@@ -193,15 +193,15 @@ foreach ($pdf_custom_fields as $field) {
                             if (!class_exists('App_rows_table')) {
                                 require_once(FCPATH . 'modules/apps/libraries/App_rows_table.php');
                             }
-                            $job_columns = [
-                                ['label' => _l('equipment_job_name'),               'key' => 'job_name'],
+                            $task_columns = [
+                                ['label' => _l('equipment_task_name'),               'key' => 'task_name'],
                                 ['label' => _l('equipment_equipment_item_name'),    'key' => 'item_name'],
                                 ['label' => _l('equipment_equipment_unit_code'),    'key' => 'unit_code'],
                                 ['label' => _l('equipment_equipment_serial_number'),'key' => 'serial_number'],
                                 ['label' => _l('equipment_equipment_location'),     'key' => 'location'],
                                 ['label' => _l('equipment_equipment_cert_expired'), 'key' => 'cert_expired_date'],
                             ];
-                            echo (new App_rows_table($equipment->jobs ?? [], $job_columns, 'html', true))->table();
+                            echo (new App_rows_table($equipment->tasks ?? [], $task_columns, 'html', true))->table();
                             ?>
                         </div>
                     </div>
