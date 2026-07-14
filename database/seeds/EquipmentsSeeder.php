@@ -1646,7 +1646,6 @@ MD
                         'category_id' => $cat_id,
                         'rate'        => 0,
                         'unit'        => '',
-                        'addedfrom'   => 1,
                     ];
                     if (!empty($item['long_description'])) {
                         $insert_data['long_description'] = $item['long_description'];
